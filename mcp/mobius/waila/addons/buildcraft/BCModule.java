@@ -1,13 +1,10 @@
 package mcp.mobius.waila.addons.buildcraft;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.logging.Level;
 
 import mcp.mobius.waila.mod_Waila;
-import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergySink;
 import net.minecraftforge.common.ForgeDirection;
 
 public class BCModule {
@@ -16,6 +13,7 @@ public class BCModule {
 	public static Class  IPowerReceptor = null;
 	public static Class  PipeTransportPower = null;
 	public static Class  TileGenericPipe    = null;
+	public static Class  TileEngine         = null;
 	
 	public static Method TileTank_GetTanks           = null;
 	public static Method IPowerReceptor_PowerRequest = null;
@@ -34,6 +32,7 @@ public class BCModule {
 			IPowerReceptor      = Class.forName("buildcraft.api.power.IPowerReceptor");
 			PipeTransportPower  = Class.forName("buildcraft.transport.PipeTransportPower");
 			TileGenericPipe     = Class.forName("buildcraft.transport.TileGenericPipe");
+			TileEngine          = Class.forName("buildcraft.energy.TileEngine");
 			
 			TileTank_GetTanks   = TileTank.getMethod("getTanks", ForgeDirection.class);
 			IPowerReceptor_PowerRequest = IPowerReceptor.getMethod("powerRequest", ForgeDirection.class);
@@ -51,7 +50,8 @@ public class BCModule {
 		ExternalModulesHandler.instance().addConfigRemote("Buildcraft", "bc.powerpipe",   "Power pipes");
 		ExternalModulesHandler.instance().registerHeadProvider(new HUDHandlerBCTanks(), TileTank);			
 		ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBCTanks(), TileTank);
-		ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBCPipes(), TileGenericPipe);			
+		ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBCPipes(), TileGenericPipe);
+		//ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBCEngine(), TileEngine);			
 		//ExternalModulesHandler.instance().registerBodyProvider(new HUDHandlerBCIPowerReceptor(), PipeTransportPower);
 	}
 	

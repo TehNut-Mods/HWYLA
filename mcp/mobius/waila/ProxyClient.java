@@ -1,18 +1,11 @@
 package mcp.mobius.waila;
 
-import java.util.logging.Level;
-
 import codechicken.nei.api.API;
 import codechicken.nei.api.ItemInfo;
 import codechicken.nei.forge.GuiContainerManager;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 
-import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.addons.buildcraft.BCModule;
-import mcp.mobius.waila.addons.buildcraft.HUDHandlerBCTanks;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergySource;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergySink;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergyStorage;
 import mcp.mobius.waila.addons.ic2.IC2Module;
 import mcp.mobius.waila.addons.vanillamc.HUDHandlerVanilla;
 import mcp.mobius.waila.gui.ConfigKeyHandler;

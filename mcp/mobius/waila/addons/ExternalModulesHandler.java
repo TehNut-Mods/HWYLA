@@ -1,7 +1,6 @@
 package mcp.mobius.waila.addons;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import codechicken.nei.api.API;

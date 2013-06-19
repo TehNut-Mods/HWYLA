@@ -1,17 +1,14 @@
 package mcp.mobius.waila.addons.buildcraft;
 
 import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 
-public class HUDHandlerBCIPowerReceptor implements IWailaDataProvider {
-
-	public HUDHandlerBCIPowerReceptor() {
-		// TODO Auto-generated constructor stub
-	}
+public class HUDHandlerBCEngine implements IWailaDataProvider {
 
 	@Override
 	public ItemStack getWailaStack(IWailaDataAccessor accessor,	IWailaConfigHandler config) {
@@ -25,18 +22,16 @@ public class HUDHandlerBCIPowerReceptor implements IWailaDataProvider {
 
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
-//		int powerRequest = 0;
-//		try{
-//			powerRequest = (Integer)BCModule.IPowerReceptor_PowerRequest.invoke(BCModule.IPowerReceptor.cast(accessor.getTileEntity()), ForgeDirection.UNKNOWN);
-//		}
-//		catch (Exception e){
-//			mod_Waila.log.log(Level.SEVERE, "[BC] Unhandled exception trying to access a tank for display !.\n" + String.valueOf(e));
-//			return currenttip;
-//		}
-//		currenttip.add(String.valueOf(powerRequest));
 		
 		NBTTagCompound tag = accessor.getNBTData();
-		
+		if (tag.hasKey("energyF")){
+			//float output = tag.getFloat("energyF")*tag.getFloat("progress");
+			float output = tag.getFloat("energyF");
+			if (output > 1.0F)
+				currenttip.add(String.format("Output : %.1f MJ",output));
+			else
+				currenttip.add(String.format("Output : %.2f MJ",output));
+		}
 		return currenttip;
 	}
 

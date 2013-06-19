@@ -8,10 +8,7 @@ import java.io.IOException;
 
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 
 public class Packet0x02TENBTData {
 	public byte header;

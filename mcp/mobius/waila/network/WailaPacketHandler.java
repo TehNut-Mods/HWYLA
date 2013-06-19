@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import mcp.mobius.waila.mod_Waila;
 import mcp.mobius.waila.handlers.DataAccessor;
-import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -16,7 +15,6 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
-import cpw.mods.fml.server.FMLServerHandler;
 
 public class WailaPacketHandler implements IPacketHandler {
 

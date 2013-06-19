@@ -32,7 +32,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.ItemData;
 
-@Mod(modid="Waila", name="Waila", version="1.3.0_RC1")
+@Mod(modid="Waila", name="Waila", version="1.3.0")
 @NetworkMod(channels = {"Waila"},clientSideRequired=false, serverSideRequired=false, connectionHandler = WailaConnectionHandler.class, packetHandler = WailaPacketHandler.class)
 
 public class mod_Waila {
@@ -40,7 +40,7 @@ public class mod_Waila {
 	@Instance("Waila")
 	public static mod_Waila instance;
 
-	@SidedProxy(clientSide="mcp.mobius.waila.ProxyClient", serverSide="mcp.mobius.waila.ProxyServer")
+	@SidedProxy(clientSide="mcp.mobius.waila.ProxyClient", serverSide="mcp.mobius.waila.server.ProxyServer")
 	public static ProxyServer proxy;	
 	
 	public static Logger log = Logger.getLogger("Waila");

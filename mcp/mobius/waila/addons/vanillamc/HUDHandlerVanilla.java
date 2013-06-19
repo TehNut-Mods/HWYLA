@@ -3,14 +3,8 @@ package mcp.mobius.waila.addons.vanillamc;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLever;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityComparator;
 import net.minecraft.tileentity.TileEntityMobSpawner;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -62,7 +56,7 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
 		/* Crops */
 		if (config.getConfig("vanilla.growthvalue"))
 			if (blockID == cropsID || blockID == melonStemID || blockID == pumpkinStemID || blockID == carrotID || blockID == potatoID){
-				float growthValue = ((float)accessor.getMetadata() / 7.0F) * 100.0F;
+				float growthValue = (accessor.getMetadata() / 7.0F) * 100.0F;
 				if (growthValue != 100.0)
 					currenttip.add(String.format("Growth : %.0f %%", growthValue));
 				else

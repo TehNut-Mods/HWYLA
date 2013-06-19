@@ -1,6 +1,5 @@
 package mcp.mobius.waila.addons.buildcraft;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -11,17 +10,10 @@ import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.liquids.ILiquidTank;
 import net.minecraftforge.liquids.LiquidStack;
-import codechicken.nei.api.ItemInfo.Layout;
-import codechicken.nei.api.API;
-import codechicken.nei.api.IHighlightHandler;
 
 public class HUDHandlerBCTanks implements IWailaDataProvider {
 

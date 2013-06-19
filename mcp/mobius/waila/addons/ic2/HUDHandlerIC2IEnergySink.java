@@ -1,26 +1,16 @@
 package mcp.mobius.waila.addons.ic2;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.logging.Level;
 
 import mcp.mobius.waila.mod_Waila;
 import mcp.mobius.waila.addons.ConfigHandler;
-import mcp.mobius.waila.addons.ExternalModulesHandler;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
-import codechicken.nei.api.API;
-import codechicken.nei.api.IHighlightHandler;
-import codechicken.nei.api.ItemInfo.Layout;
 
 public class HUDHandlerIC2IEnergySink implements IWailaDataProvider {
 
@@ -48,7 +38,7 @@ public class HUDHandlerIC2IEnergySink implements IWailaDataProvider {
 
 		int ntransformers = this.getTransformerUpgrades(accessor);
 		if (ntransformers > 0){
-			maxinput = maxinput * (int)Math.pow(4.0D, (double)Math.min(3, ntransformers));
+			maxinput = maxinput * (int)Math.pow(4.0D, Math.min(3, ntransformers));
 		}
 		
 		

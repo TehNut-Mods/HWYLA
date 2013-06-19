@@ -1,21 +1,17 @@
 package mcp.mobius.waila;
 
-import java.util.logging.Level;
+import org.lwjgl.input.Keyboard;
 
 import codechicken.nei.api.API;
 import codechicken.nei.api.ItemInfo;
 import codechicken.nei.forge.GuiContainerManager;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 
-import mcp.mobius.waila.addons.ConfigHandler;
 import mcp.mobius.waila.addons.buildcraft.BCModule;
-import mcp.mobius.waila.addons.buildcraft.HUDHandlerBCTanks;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergySource;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergySink;
-import mcp.mobius.waila.addons.ic2.HUDHandlerIC2IEnergyStorage;
 import mcp.mobius.waila.addons.ic2.IC2Module;
 import mcp.mobius.waila.addons.vanillamc.HUDHandlerVanilla;
 import mcp.mobius.waila.gui.ConfigKeyHandler;
+import mcp.mobius.waila.handlers.EnchantmentHandler;
 import mcp.mobius.waila.handlers.HUDHandlerExternal;
 import mcp.mobius.waila.handlers.HUDHandlerWaila;
 import mcp.mobius.waila.handlers.TooltipHandlerWaila;
@@ -29,15 +25,16 @@ public class ProxyClient extends ProxyServer {
 	@Override
 	public void registerHandlers(){
 		GuiContainerManager.addTooltipHandler(new TooltipHandlerWaila());
-		//GuiContainerManager.addInputHandler(new EnchantementHandler());
 		API.registerHighlightHandler(new HUDHandlerExternal(), ItemInfo.Layout.HEADER);
 		API.registerHighlightHandler(new HUDHandlerExternal(), ItemInfo.Layout.BODY);
 		API.registerHighlightHandler(new HUDHandlerWaila(),    ItemInfo.Layout.FOOTER);
 		API.registerHighlightHandler(new HUDHandlerWaila(),    ItemInfo.Layout.HEADER);		
 		
-		//API.registerHighlightIdentifier(2000, new HUDHandlerExternal());
 		KeyBindingRegistry.registerKeyBinding(new ConfigKeyHandler());
-		//API.addKeyBind("showenchant", "Display enchantements", Keyboard.KEY_RSHIFT);
+		
+		GuiContainerManager.addInputHandler(new EnchantmentHandler());
+		API.addKeyBind("showenchant", "Display enchantements", Keyboard.KEY_RSHIFT);
+		
 		this.registerMods();		
 	}	
 

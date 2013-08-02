@@ -24,6 +24,7 @@ public class ButtonConfigNEI extends ButtonConfigOption {
 
 	@Override
 	public void setupInitialState(String _configKey, boolean _state){
+		//TODO : Update to last NEI
 		this.configKey = _configKey;
 		this.state = NEIClientConfig.getSetting(this.configKey).getBooleanValue();
 		this.displayString = state ? stateTrue:stateFalse;		
@@ -31,6 +32,7 @@ public class ButtonConfigNEI extends ButtonConfigOption {
 	
 	@Override
 	public void pressButton(){
+		//TODO : Update to last NEI
 		super.pressButton();
 		this.state = !NEIClientConfig.getSetting(this.configKey).getBooleanValue();
 		NEIClientConfig.getSetting(this.configKey).setBooleanValue(this.state);		

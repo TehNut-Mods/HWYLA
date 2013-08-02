@@ -40,9 +40,9 @@ public class ProxyClient extends ProxyServer {
 		KeyBindingRegistry.registerKeyBinding(new ConfigKeyHandler());
 		
 		GuiContainerManager.addInputHandler(new TechTreeHandler());
-		//API.addKeyBind("showenchant", "Display enchantements", Keyboard.KEY_RSHIFT);
-		//API.addKeyBind("showwiki", "Display wiki", Keyboard.KEY_RSHIFT);
-		API.addKeyBind("showtechtree", "Display techtree", Keyboard.KEY_RSHIFT);
+		//API.addKeyBind("showenchant",Keyboard.KEY_RSHIFT);
+		//API.addKeyBind("showwiki",Keyboard.KEY_RSHIFT);
+		API.addKeyBind("showtechtree", Keyboard.KEY_RSHIFT);
 		
 		ExternalModulesHandler.instance().registerShortDataProvider(new SummaryProviderDefault(), Item.class);
 		

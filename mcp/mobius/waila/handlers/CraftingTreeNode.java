@@ -97,6 +97,9 @@ public class CraftingTreeNode {
 	}
 	
 	public ArrayList<CachedRecipe> getRecipes(ItemStack stack, ArrayList<CachedRecipe> excluded){
+		
+		//TODO : Update to last NEI
+		/*
 		ArrayList<ICraftingHandler> craftinghandlers = ReflectionManager.getField(GuiCraftingRecipe.class, ArrayList.class, null, "craftinghandlers");
 		ArrayList<CachedRecipe>     cachedRecipes = new ArrayList<CachedRecipe>(); 
 
@@ -116,6 +119,8 @@ public class CraftingTreeNode {
 				}
 			}
 		return cachedRecipes;
+		*/
+		return null;
 	}
 	
 	public boolean areRecipesIdentical(CachedRecipe recipe1, CachedRecipe recipe2){

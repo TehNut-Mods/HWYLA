@@ -40,6 +40,7 @@ public class ConfigKeyHandler extends KeyHandler {
 			if(mc.currentScreen == null)
 				mc.displayGuiScreen(new GuiConfigScreen(mc.currentScreen));
 		}
+
 		else if (kb.keyDescription == "key.wailadisplay" && ConfigHandler.instance().getConfig("waila.showmode")){
 			boolean status = NEIClientConfig.getSetting("options.inworld tooltips").getBooleanValue();
 			NEIClientConfig.getSetting("options.inworld tooltips").setBooleanValue(!status);
@@ -47,6 +48,7 @@ public class ConfigKeyHandler extends KeyHandler {
 		else if (kb.keyDescription == "key.wailadisplay" && !ConfigHandler.instance().getConfig("waila.showmode")){
 			NEIClientConfig.getSetting("options.inworld tooltips").setBooleanValue(true);
 		}
+
 		//else if (kb.keyDescription == "key.wailatedump"){
 		//	this.dumpTag(DataAccessor.instance.remoteNbt, 0);
 		//}
@@ -100,10 +102,11 @@ public class ConfigKeyHandler extends KeyHandler {
 	*/
 	@Override
 	public void keyUp(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd) {
+		//TODO : Update to last NEI
 		if (!tickEnd) return;
 		if (kb.keyDescription == "key.wailadisplay" && !ConfigHandler.instance().getConfig("waila.showmode")){
 			NEIClientConfig.getSetting("options.inworld tooltips").setBooleanValue(false);
-		}		
+		}
 	}
 
 	@Override

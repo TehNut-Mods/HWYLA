@@ -2,6 +2,7 @@ package mcp.mobius.waila.handlers;
 
 import java.lang.reflect.Method;
 
+import mcp.mobius.waila.Constants;
 import mcp.mobius.waila.mod_Waila;
 import mcp.mobius.waila.gui.GuiEnchantScreen;
 import mcp.mobius.waila.gui.widget.Label;
@@ -36,7 +37,7 @@ public class EnchantmentHandler implements IContainerInputHandler {
 		if(stackover == null)
 			return false;		
 		 
-		if(keyID == NEIClientConfig.getKeyBinding("showenchant")){
+		if(keyID == NEIClientConfig.getKeyBinding(Constants.BIND_SCREEN_ENCH)){
 			//try{
 				int itemEnchantability = stackover.getItem().getItemEnchantability();	
 				if (itemEnchantability == 0){return false;}
@@ -49,7 +50,7 @@ public class EnchantmentHandler implements IContainerInputHandler {
 				
 				Enchantment[] enchants = null;
 				if (stackover.getItem() == Item.book)
-					enchants = Enchantment.enchantmentsBookList;
+					enchants = Enchantment.field_92090_c;
 				else
 					enchants = Enchantment.enchantmentsList;
 					

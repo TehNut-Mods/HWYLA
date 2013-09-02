@@ -5,7 +5,6 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
 
 public class Button2States extends GuiButton {
 
@@ -51,11 +50,7 @@ public class Button2States extends GuiButton {
         if (this.drawButton)
         {
             FontRenderer fontrenderer = par1Minecraft.fontRenderer;
-
-            //DONE : Changed from v1.5.2 to 1.6.2 resource handling
-            //par1Minecraft.renderEngine.bindTexture("/gui/gui.png");
-            ResourceLocation guipng = new ResourceLocation("textures/gui/widgets.png");
-            par1Minecraft.renderEngine.func_110577_a(guipng);
+            par1Minecraft.renderEngine.bindTexture("/gui/gui.png");
         	
         	if (this.labelSize == -1)
         		labelSize = fontrenderer.getStringWidth(this.label) + 5;

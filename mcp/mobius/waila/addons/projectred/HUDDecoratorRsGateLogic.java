@@ -58,6 +58,12 @@ public class HUDDecoratorRsGateLogic implements IWailaBlockDecorator {
 		
 		//System.out.printf("%s\n", ForgeDirection.getOrientation(vOrient));
 		
+		if (vOrient == ForgeDirection.EAST)
+			hOrient -= 1;
+
+		if (vOrient == ForgeDirection.WEST)
+			hOrient += 1;		
+		
 		String[] IOStr    = new String[4];
 		for (int i = 0; i < 4; i++)
 			IOStr[i] = IONAMES[IOARRAY[subID][i]];

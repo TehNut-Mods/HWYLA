@@ -19,18 +19,22 @@ public class WailaTickHandler implements ITickHandler {
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 		if(type.contains(TickType.RENDER)){
+			RayTracing.raytrace();
 			OverlayRenderer.renderOverlay();
 		}
 		
-		if (type.contains(TickType.CLIENT)){
-			RayTracing.raytrace();			
-		}
+		//if (ticks == 100){
+		//	ticks = 0;
+		//	mod_Waila.updateColors();
+		//}
+		//ticks++;
+			
 	}
 
     @Override
     public EnumSet<TickType> ticks() 
     {
-        return EnumSet.of(TickType.RENDER, TickType.CLIENT);
+        return EnumSet.of(TickType.RENDER);
     }
 
     @Override

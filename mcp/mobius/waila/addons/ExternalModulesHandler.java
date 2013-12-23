@@ -12,6 +12,7 @@ import java.util.logging.Level;
 
 import au.com.bytecode.opencsv.CSVReader;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import codechicken.lib.lang.LangUtil;
 import codechicken.nei.api.API;
 import mcp.mobius.waila.mod_Waila;
@@ -24,15 +25,20 @@ import mcp.mobius.waila.handlers.hud.HUDHandlerExternal;
 public class ExternalModulesHandler implements IWailaRegistrar {
 
 	private static ExternalModulesHandler instance = null;
-	public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> headProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();
-	public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> bodyProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();
-	public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> tailProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();	
+	//public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> headProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();
+	//public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> bodyProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();
+	//public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> tailProviders  = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();	
 	public LinkedHashMap<Integer, ArrayList<IWailaDataProvider>> stackProviders = new LinkedHashMap<Integer, ArrayList<IWailaDataProvider>>();	
 
 	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> headBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();
 	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> bodyBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();
 	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> tailBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();	
-	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> stackBlockProviders = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();	
+	//public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> stackBlockProviders = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();	
+	
+	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> cachedHeadBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();
+	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> cachedBodyBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();
+	public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> cachedTailBlockProviders  = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();	
+	//public LinkedHashMap<Class, ArrayList<IWailaDataProvider>> cachedStackBlockProviders = new LinkedHashMap<Class, ArrayList<IWailaDataProvider>>();		
 	
 	public LinkedHashMap<Integer, ArrayList<IWailaBlockDecorator>> blockIdDecorators    = new LinkedHashMap<Integer, ArrayList<IWailaBlockDecorator>>();
 	public LinkedHashMap<Class,   ArrayList<IWailaBlockDecorator>> blockClassDecorators = new LinkedHashMap<Class,   ArrayList<IWailaBlockDecorator>>();	
@@ -73,43 +79,49 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	
 	@Override
 	public void registerHeadProvider(IWailaDataProvider dataProvider, int blockID) {
-		if (!this.headProviders.containsKey(blockID))
-			this.headProviders.put(blockID, new ArrayList<IWailaDataProvider>());
-		this.headProviders.get(blockID).add(dataProvider);
+		this.registerHeadProvider(dataProvider, Block.blocksList[blockID].getClass());
 	}
 
 	@Override
 	public void registerHeadProvider(IWailaDataProvider dataProvider, Class block) {
 		if (!this.headBlockProviders.containsKey(block))
 			this.headBlockProviders.put(block, new ArrayList<IWailaDataProvider>());
+		
+		ArrayList<IWailaDataProvider> providers = this.headBlockProviders.get(block);
+		if (providers.contains(dataProvider)) return;
+		
 		this.headBlockProviders.get(block).add(dataProvider);		
 	}	
 	
 	@Override
 	public void registerBodyProvider(IWailaDataProvider dataProvider, int blockID) {
-		if (!this.bodyProviders.containsKey(blockID))
-			this.bodyProviders.put(blockID, new ArrayList<IWailaDataProvider>());
-		this.bodyProviders.get(blockID).add(dataProvider);
+		this.registerBodyProvider(dataProvider, Block.blocksList[blockID].getClass());		
 	}
 
 	@Override
 	public void registerBodyProvider(IWailaDataProvider dataProvider, Class block) {
 		if (!this.bodyBlockProviders.containsKey(block))
 			this.bodyBlockProviders.put(block, new ArrayList<IWailaDataProvider>());
+		
+		ArrayList<IWailaDataProvider> providers = this.bodyBlockProviders.get(block);
+		if (providers.contains(dataProvider)) return;		
+		
 		this.bodyBlockProviders.get(block).add(dataProvider);
 	}	
 	
 	@Override
 	public void registerTailProvider(IWailaDataProvider dataProvider, int blockID) {
-		if (!this.tailProviders.containsKey(blockID))
-			this.tailProviders.put(blockID, new ArrayList<IWailaDataProvider>());
-		this.tailProviders.get(blockID).add(dataProvider);
+		this.registerTailProvider(dataProvider, Block.blocksList[blockID].getClass());			
 	}	
 
 	@Override
 	public void registerTailProvider(IWailaDataProvider dataProvider, Class block) {
 		if (!this.tailBlockProviders.containsKey(block))
 			this.tailBlockProviders.put(block, new ArrayList<IWailaDataProvider>());
+		
+		ArrayList<IWailaDataProvider> providers = this.tailBlockProviders.get(block);
+		if (providers.contains(dataProvider)) return;		
+		
 		this.tailBlockProviders.get(block).add(dataProvider);
 	}		
 	
@@ -151,7 +163,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	}	
 	
 	/* Arrays getters */
-	
+	/*
 	public ArrayList<IWailaDataProvider> getHeadProviders(int blockID) {
 		return this.headProviders.get(blockID);
 	}
@@ -163,6 +175,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	public ArrayList<IWailaDataProvider> getTailProviders(int blockID) {
 		return this.tailProviders.get(blockID);
 	}		
+	*/
 
 	public ArrayList<IWailaDataProvider> getHeadProviders(Object block) {
 		ArrayList<IWailaDataProvider> returnList = new ArrayList<IWailaDataProvider>();
@@ -218,7 +231,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	}	
 	
 	/* Providers querry methods */
-	
+	/*
 	public boolean hasHeadProviders(int blockID){
 		return this.headProviders.containsKey(blockID);
 	}
@@ -230,6 +243,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	public boolean hasTailProviders(int blockID){
 		return this.tailProviders.containsKey(blockID);
 	}	
+	*/
 
 	public boolean hasStackProviders(int blockID){
 		return this.stackProviders.containsKey(blockID);
@@ -270,6 +284,67 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 				return true;
 		return false;
 	}	
+	
+	/* == CACHED DATA ACCESS == */
+	public boolean hasCachedHeadProviders(Object block){
+		if (block == null) return true;
+		if (this.cachedHeadBlockProviders.keySet().contains(block.getClass()))
+			return true;
+		return false;
+	}
+	
+	public boolean hasCachedBodyProviders(Object block){
+		if (block == null) return true;
+		if (this.cachedBodyBlockProviders.keySet().contains(block.getClass()))
+			return true;
+		return false;
+	}
+
+	public boolean hasCachedTailProviders(Object block){
+		if (block == null) return true;
+		if (this.cachedTailBlockProviders.keySet().contains(block.getClass()))
+			return true;
+		return false;
+	}
+	
+	public ArrayList<IWailaDataProvider> getCachedHeadProviders(Object block) {
+		if (block == null) return new ArrayList<IWailaDataProvider>();
+		return this.cachedHeadBlockProviders.get(block.getClass());
+	}
+
+	public ArrayList<IWailaDataProvider> getCachedBodyProviders(Object block) {
+		if (block == null) return new ArrayList<IWailaDataProvider>();
+		return this.cachedBodyBlockProviders.get(block.getClass());
+	}	
+
+	public ArrayList<IWailaDataProvider> getCachedTailProviders(Object block) {
+		if (block == null) return new ArrayList<IWailaDataProvider>();
+		return this.cachedTailBlockProviders.get(block.getClass());
+	}	
+	
+	public void cacheHeadProvider(Object block) {
+		ArrayList<IWailaDataProvider>   providers = new ArrayList<IWailaDataProvider>();		
+		if (ExternalModulesHandler.instance().hasHeadProviders(block))
+			providers.addAll(ExternalModulesHandler.instance().getHeadProviders(block));
+
+		this.cachedHeadBlockProviders.put(block.getClass(), providers);
+	}		
+	
+	public void cacheBodyProvider(Object block) {
+		ArrayList<IWailaDataProvider>   providers = new ArrayList<IWailaDataProvider>();		
+		if (ExternalModulesHandler.instance().hasBodyProviders(block))
+			providers.addAll(ExternalModulesHandler.instance().getBodyProviders(block));
+
+		this.cachedBodyBlockProviders.put(block.getClass(), providers);
+	}	
+	
+	public void cacheTailProvider(Object block) {
+		ArrayList<IWailaDataProvider>   providers = new ArrayList<IWailaDataProvider>();		
+		if (ExternalModulesHandler.instance().hasTailProviders(block))
+			providers.addAll(ExternalModulesHandler.instance().getTailProviders(block));
+
+		this.cachedTailBlockProviders.put(block.getClass(), providers);
+	}		
 	
 	/* ----------------- */
 	@Override

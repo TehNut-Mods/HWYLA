@@ -107,7 +107,26 @@ public class HUDHandlerExternal implements IHighlightHandler {
 			this.prevMOP     = mop;
 			this.prevWorldID = player.dimension;
 			
+			if (layout == Layout.HEADER && !ExternalModulesHandler.instance().hasCachedHeadProviders(block))
+				ExternalModulesHandler.instance().cacheHeadProvider(block);
+
+			else if (layout == Layout.BODY   && !ExternalModulesHandler.instance().hasCachedBodyProviders(block))
+				ExternalModulesHandler.instance().cacheBodyProvider(block);
+			
+			else if (layout == Layout.FOOTER && !ExternalModulesHandler.instance().hasCachedTailProviders(block))
+				ExternalModulesHandler.instance().cacheTailProvider(block);			
+
+			if (layout == Layout.HEADER && !ExternalModulesHandler.instance().hasCachedHeadProviders(accessor.getTileEntity()))
+				ExternalModulesHandler.instance().cacheHeadProvider(accessor.getTileEntity());
+
+			else if (layout == Layout.BODY   && !ExternalModulesHandler.instance().hasCachedBodyProviders(accessor.getTileEntity()))
+				ExternalModulesHandler.instance().cacheBodyProvider(accessor.getTileEntity());
+			
+			else if (layout == Layout.FOOTER && !ExternalModulesHandler.instance().hasCachedTailProviders(accessor.getTileEntity()))
+				ExternalModulesHandler.instance().cacheTailProvider(accessor.getTileEntity());			
+			
 			/* Lookup by block ID */
+			/*
 			if (layout == Layout.HEADER && ExternalModulesHandler.instance().hasHeadProviders(blockID))
 				headProviders.addAll(ExternalModulesHandler.instance().getHeadProviders(blockID));
 	
@@ -116,53 +135,50 @@ public class HUDHandlerExternal implements IHighlightHandler {
 			
 			if (layout == Layout.FOOTER && ExternalModulesHandler.instance().hasTailProviders(blockID))
 				tailProviders.addAll(ExternalModulesHandler.instance().getTailProviders(blockID));
-	
+			*/
 			
-			/* Lookup by class (for blocks)*/		
-			if (layout == Layout.HEADER && ExternalModulesHandler.instance().hasHeadProviders(block))
-				headProviders.addAll(ExternalModulesHandler.instance().getHeadProviders(block));
-	
-			if (layout == Layout.BODY && ExternalModulesHandler.instance().hasBodyProviders(block))
-				bodyProviders.addAll(ExternalModulesHandler.instance().getBodyProviders(block));
-	
-			if (layout == Layout.FOOTER && ExternalModulesHandler.instance().hasTailProviders(block))
-				tailProviders.addAll(ExternalModulesHandler.instance().getTailProviders(block));
-	
-			
-			/* Lookup by class (for tileentities)*/		
-			if (layout == Layout.HEADER && ExternalModulesHandler.instance().hasHeadProviders(accessor.getTileEntity()))
-				headProviders.addAll(ExternalModulesHandler.instance().getHeadProviders(accessor.getTileEntity()));
-	
-			if (layout == Layout.BODY && ExternalModulesHandler.instance().hasBodyProviders(accessor.getTileEntity()))
-				bodyProviders.addAll(ExternalModulesHandler.instance().getBodyProviders(accessor.getTileEntity()));
-		
-			if (layout == Layout.FOOTER && ExternalModulesHandler.instance().hasTailProviders(accessor.getTileEntity()))
-				tailProviders.addAll(ExternalModulesHandler.instance().getTailProviders(accessor.getTileEntity()));
-	
+			if (layout == Layout.HEADER){
+				headProviders.addAll(ExternalModulesHandler.instance().getCachedHeadProviders(block));
+				headProviders.addAll(ExternalModulesHandler.instance().getCachedHeadProviders(accessor.getTileEntity()));
+			}
+			else if (layout == Layout.BODY){
+				bodyProviders.addAll(ExternalModulesHandler.instance().getCachedBodyProviders(block));
+				bodyProviders.addAll(ExternalModulesHandler.instance().getCachedBodyProviders(accessor.getTileEntity()));
+			}
+			else if (layout == Layout.FOOTER){
+				tailProviders.addAll(ExternalModulesHandler.instance().getCachedTailProviders(block));
+				tailProviders.addAll(ExternalModulesHandler.instance().getCachedTailProviders(accessor.getTileEntity()));
+			}
 		}
 		
-		/* Apply all collected providers */ 
-		for (IWailaDataProvider dataProvider : headProviders)
-			try{				
-				currenttip = dataProvider.getWailaHead(itemStack, currenttip, accessor, ConfigHandler.instance());
-			} catch (Throwable e){
-				currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
+		/* Apply all collected providers */
+		if (layout == Layout.HEADER){
+			for (IWailaDataProvider dataProvider : headProviders){
+				try{				
+					currenttip = dataProvider.getWailaHead(itemStack, currenttip, accessor, ConfigHandler.instance());
+				} catch (Throwable e){
+					currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
+				}
 			}
-
-		for (IWailaDataProvider dataProvider : bodyProviders)
-			try{				
-				currenttip = dataProvider.getWailaBody(itemStack, currenttip, accessor, ConfigHandler.instance());
-			} catch (Throwable e){
-				currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
+		}
+		else if (layout == Layout.BODY){
+			for (IWailaDataProvider dataProvider : bodyProviders){
+				try{				
+					currenttip = dataProvider.getWailaBody(itemStack, currenttip, accessor, ConfigHandler.instance());
+				} catch (Throwable e){
+					currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
+				}
 			}
-		
-		for (IWailaDataProvider dataProvider : tailProviders)
-			try{				
-				currenttip = dataProvider.getWailaTail(itemStack, currenttip, accessor, ConfigHandler.instance());
-			} catch (Throwable e){
-				currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
-			}		
-		
+		}
+		else if (layout == Layout.FOOTER){
+			for (IWailaDataProvider dataProvider : tailProviders){
+				try{				
+					currenttip = dataProvider.getWailaTail(itemStack, currenttip, accessor, ConfigHandler.instance());
+				} catch (Throwable e){
+					currenttip = WailaExceptionHandler.handleErr(e, dataProvider.getClass().toString(), currenttip);
+				}
+			}
+		}
 		return currenttip;
 	}
 

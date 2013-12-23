@@ -21,6 +21,7 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.api.IWailaSummaryProvider;
 import mcp.mobius.waila.handlers.hud.HUDHandlerExternal;
+import mcp.mobius.waila.handlers.hud.HUDHandlerNEI;
 
 public class ExternalModulesHandler implements IWailaRegistrar {
 
@@ -130,7 +131,7 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 		if (!this.stackProviders.containsKey(blockID))
 			this.stackProviders.put(blockID, new ArrayList<IWailaDataProvider>());
 		this.stackProviders.get(blockID).add(dataProvider);
-		API.registerHighlightIdentifier(blockID, new HUDHandlerExternal());
+		API.registerHighlightIdentifier(blockID, new HUDHandlerNEI());
 	}	
 
 	@Override
@@ -332,8 +333,10 @@ public class ExternalModulesHandler implements IWailaRegistrar {
 	
 	public void cacheBodyProvider(Object block) {
 		ArrayList<IWailaDataProvider>   providers = new ArrayList<IWailaDataProvider>();		
-		if (ExternalModulesHandler.instance().hasBodyProviders(block))
+		if (ExternalModulesHandler.instance().hasBodyProviders(block)){
+			System.out.printf("AAA \n");
 			providers.addAll(ExternalModulesHandler.instance().getBodyProviders(block));
+		}
 
 		this.cachedBodyBlockProviders.put(block.getClass(), providers);
 	}	

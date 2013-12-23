@@ -22,6 +22,7 @@ import mcp.mobius.waila.gui.truetyper.FontLoader;
 import mcp.mobius.waila.gui.truetyper.TrueTypeFont;
 import mcp.mobius.waila.handlers.SummaryProviderDefault;
 import mcp.mobius.waila.handlers.hud.HUDHandlerExternal;
+import mcp.mobius.waila.handlers.hud.HUDHandlerNEI;
 import mcp.mobius.waila.handlers.hud.HUDHandlerWaila;
 import mcp.mobius.waila.handlers.tooltip.TooltipHandlerWaila;
 import mcp.mobius.waila.overlay.WailaTickHandler;
@@ -59,8 +60,8 @@ public class ProxyClient extends ProxyServer {
 		TickRegistry.registerTickHandler(new WailaTickHandler(), Side.CLIENT);		
 		
 		GuiContainerManager.addTooltipHandler(new TooltipHandlerWaila());
-		API.registerHighlightHandler(new HUDHandlerExternal(), ItemInfo.Layout.HEADER);
-		API.registerHighlightHandler(new HUDHandlerExternal(), ItemInfo.Layout.BODY);
+		API.registerHighlightHandler(new HUDHandlerNEI(), ItemInfo.Layout.HEADER);
+		API.registerHighlightHandler(new HUDHandlerNEI(), ItemInfo.Layout.BODY);
 		API.registerHighlightHandler(new HUDHandlerWaila(),    ItemInfo.Layout.FOOTER);
 		API.registerHighlightHandler(new HUDHandlerWaila(),    ItemInfo.Layout.HEADER);		
 		
@@ -127,7 +128,30 @@ public class ProxyClient extends ProxyServer {
 		OpenBlocksModule.register();
 		
 		/* Railcraft */
-		RailcraftModule.register();			
+		RailcraftModule.register();	
+		
+		
+		/*
+		
+		if (layout == Layout.HEADER && !ExternalModulesHandler.instance().hasCachedHeadProviders(block))
+			ExternalModulesHandler.instance().cacheHeadProvider(block);
+
+		else if (layout == Layout.BODY   && !ExternalModulesHandler.instance().hasCachedBodyProviders(block))
+			ExternalModulesHandler.instance().cacheBodyProvider(block);
+		
+		else if (layout == Layout.FOOTER && !ExternalModulesHandler.instance().hasCachedTailProviders(block))
+			ExternalModulesHandler.instance().cacheTailProvider(block);			
+
+		if (layout == Layout.HEADER && !ExternalModulesHandler.instance().hasCachedHeadProviders(accessor.getTileEntity()))
+			ExternalModulesHandler.instance().cacheHeadProvider(accessor.getTileEntity());
+
+		else if (layout == Layout.BODY   && !ExternalModulesHandler.instance().hasCachedBodyProviders(accessor.getTileEntity()))
+			ExternalModulesHandler.instance().cacheBodyProvider(accessor.getTileEntity());
+		
+		else if (layout == Layout.FOOTER && !ExternalModulesHandler.instance().hasCachedTailProviders(accessor.getTileEntity()))
+			ExternalModulesHandler.instance().cacheTailProvider(accessor.getTileEntity());
+		*/			
+		
 	}	
 	
 	@Override

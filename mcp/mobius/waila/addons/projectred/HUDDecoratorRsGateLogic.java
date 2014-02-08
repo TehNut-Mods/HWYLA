@@ -45,7 +45,7 @@ public class HUDDecoratorRsGateLogic implements IWailaBlockDecorator {
 			    id.equals("pr_agate") || id.equals("pr_rgate")){
 				orient = accessor.getNBTInteger(subtag, "orient");
 				subID  = accessor.getNBTInteger(subtag, "subID");
-				shape  = accessor.getNBTInteger(subtag, "shape");
+				shape  = accessor.getNBTInteger(subtag, "shape"); // <= Need to take this into account for mirrored gates.
 				found  = true;
 			}
 		}

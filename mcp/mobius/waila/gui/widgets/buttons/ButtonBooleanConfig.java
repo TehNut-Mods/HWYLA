@@ -1,7 +1,7 @@
 package mcp.mobius.waila.gui.widgets.buttons;
 
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 import mcp.mobius.waila.mod_Waila;
 import mcp.mobius.waila.gui.events.MouseEvent;
 import mcp.mobius.waila.gui.interfaces.IWidget;

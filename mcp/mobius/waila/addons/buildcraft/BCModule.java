@@ -5,7 +5,7 @@ import java.util.logging.Level;
 
 import mcp.mobius.waila.mod_Waila;
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class BCModule {
 

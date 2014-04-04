@@ -32,11 +32,12 @@ public class HUDHandlerIAspectContainer implements IWailaDataProvider {
 		ItemStack headSlot = accessor.getPlayer().inventory.armorInventory[3];
 		if (headSlot == null) return currenttip;
 		
-		boolean hasReveal =  ThaumcraftModule.ItemGoggles.isInstance(headSlot.getItem()) ||
-							(ThaumcraftModule.ItemRevealingHelm != null && ThaumcraftModule.ItemRevealingHelm.isInstance(headSlot.getItem())) ||
-							(ThaumcraftModule.ItemGemHelm != null && ThaumcraftModule.ItemGemHelm.isInstance(headSlot.getItem()));
+		//boolean hasReveal =  ThaumcraftModule.ItemGoggles.isInstance(headSlot.getItem()) ||
+		//					(ThaumcraftModule.ItemRevealingHelm != null && ThaumcraftModule.ItemRevealingHelm.isInstance(headSlot.getItem())) ||
+		//					(ThaumcraftModule.ItemGemHelm != null && ThaumcraftModule.ItemGemHelm.isInstance(headSlot.getItem()));
 		
-		if (!hasReveal) return currenttip;
+		//if (!hasReveal) return currenttip;
+		if (!ThaumcraftModule.IGoggles.isInstance(headSlot.getItem())) return currenttip;
 		
 		NBTTagCompound tag = accessor.getNBTData();
 		

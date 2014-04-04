@@ -116,10 +116,10 @@ public class Waila {
     public void loadComplete(FMLLoadCompleteEvent event) {    
     	proxy.registerMods();
     	
-    	String[] ores = OreDictionary.getOreNames();
-    	for (String s : ores)
-    		for (ItemStack stack : OreDictionary.getOres(s))
-    			System.out.printf("%s : %s\n", s, stack);
+    	//String[] ores = OreDictionary.getOreNames();
+    	//for (String s : ores)
+    	//	for (ItemStack stack : OreDictionary.getOres(s))
+    	//		System.out.printf("%s : %s\n", s, stack);
     	
     }    
     	

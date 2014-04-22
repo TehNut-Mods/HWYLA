@@ -39,7 +39,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="Waila", name="Waila", version="1.5.2", dependencies="required-after:NotEnoughItems")
+@Mod(modid="Waila", name="Waila", version="1.5.2a", dependencies="required-after:NotEnoughItems")
 @NetworkMod(channels = {"Waila"},clientSideRequired=false, serverSideRequired=false, connectionHandler = WailaConnectionHandler.class, 
 			packetHandler = WailaPacketHandler.class, versionBounds="[1.5.0,)")
 			//packetHandler = WailaPacketHandler.class)
@@ -116,10 +116,10 @@ public class Waila {
     public void loadComplete(FMLLoadCompleteEvent event) {    
     	proxy.registerMods();
     	
-    	String[] ores = OreDictionary.getOreNames();
-    	for (String s : ores)
-    		for (ItemStack stack : OreDictionary.getOres(s))
-    			System.out.printf("%s : %s\n", s, stack);
+    	//String[] ores = OreDictionary.getOreNames();
+    	//for (String s : ores)
+    	//	for (ItemStack stack : OreDictionary.getOres(s))
+    	//		System.out.printf("%s : %s\n", s, stack);
     	
     }    
     	

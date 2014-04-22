@@ -66,7 +66,11 @@ public class ThermalExpansionModule {
 			//TileConduitFluid_getRenderFluidLevel = TileConduitFluid.getMethod("getRenderFluidLevel");
 			//TileConduitItems = Class.forName("thermalexpansion.block.conduit.item.TileConduitItem");				
 			
-			TileTesseract = Class.forName("thermalexpansion.block.tesseract.TileTesseract");
+			try{
+				TileTesseract = Class.forName("thermalexpansion.block.tesseract.TileTesseract");
+			} catch (Exception e){
+				TileTesseract = Class.forName("thermalexpansion.block.ender.TileTesseract");
+			}
 			
 			ISecureTile   = Class.forName("cofh.api.tileentity.ISecureTile");
 			

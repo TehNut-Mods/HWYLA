@@ -1,6 +1,7 @@
 package mcp.mobius.waila.handlers.nei;
 
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -39,7 +40,7 @@ public class ModNameFilter implements ISearchProvider{
 		List<ISearchProvider> searchProviders = new LinkedList<ISearchProvider>();
 		
 	    public Filter(String searchText, List<ISearchProvider> providers) {
-	    	this.searchProviders = providers;
+	    	this.searchProviders = new ArrayList<ISearchProvider>(providers);
 	    	this.searchText      = searchText;
 	    	
 	        switch(NEIClientConfig.getIntSetting("inventory.searchmode")) {

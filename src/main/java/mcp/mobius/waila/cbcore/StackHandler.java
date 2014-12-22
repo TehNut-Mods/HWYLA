@@ -63,10 +63,13 @@ public class StackHandler {
 		return list.get(0);
 	}
 	
+	/*
     public static void drawItem(int i, int j, ItemStack itemstack) {
     	drawItem(i, j, itemstack, getFontRenderer(itemstack));
     }
+    */
     
+	/*
     public static FontRenderer getFontRenderer(ItemStack stack) {
     	if (stack != null && stack.getItem() != null) {
     		FontRenderer f = stack.getItem().getFontRenderer(stack);
@@ -75,7 +78,9 @@ public class StackHandler {
     		}
     		return fontRenderer;
     }
+    */
     
+	/*
     public static void drawItem(int i, int j, ItemStack itemstack, FontRenderer fontRenderer) {
         enable3DRender();
         float zLevel = drawItems.zLevel += 100F;
@@ -108,25 +113,33 @@ public class StackHandler {
         enable2DRender();
         drawItems.zLevel = zLevel - 100;
     }    
+    */
     
+	/*
     public static void enable3DRender() {
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
     }
+    */
 
+	/*
     public static void enable2DRender() {
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
     } 	
+	*/
 	
+	/*
     public static boolean checkMatrixStack() {
         return modelviewDepth < 0 || GL11.glGetInteger(GL11.GL_MODELVIEW_STACK_DEPTH) == modelviewDepth;
-    }    
+    } 
+    */   
     
+	/*
     public static void restoreMatrixStack() {
         if (modelviewDepth >= 0)
             for (int i = GL11.glGetInteger(GL11.GL_MODELVIEW_STACK_DEPTH); i > modelviewDepth; i--)
                 GL11.glPopMatrix();
     }    
-    
+    */
 }

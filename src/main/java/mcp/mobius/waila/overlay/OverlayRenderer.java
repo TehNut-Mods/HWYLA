@@ -18,6 +18,7 @@ import net.minecraft.util.MovingObjectPosition;
 
 public class OverlayRenderer {
 
+	protected static boolean hasAlphaTest;
 	protected static boolean hasBlending;
 	protected static boolean hasLight;
 	protected static boolean hasDepthTest;
@@ -53,7 +54,6 @@ public class OverlayRenderer {
     public static void renderOverlay(Tooltip tooltip)
     {
     	//TrueTypeFont font = (TrueTypeFont)mod_Waila.proxy.getFont();
-    	
     	GL11.glPushMatrix();
     	saveGLState();
     	
@@ -73,40 +73,43 @@ public class OverlayRenderer {
 
         tooltip.drawIcons();        
 
+
         if (tooltip.hasIcon)
         	RenderHelper.enableGUIStandardItemLighting();
-        
+
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         
-        if (tooltip.hasIcon && tooltip.stack != null && tooltip.stack.getItem() != null)
-            StackHandler.drawItem(tooltip.x+5, tooltip.y+tooltip.h/2-8, tooltip.stack);
-        
+        if (tooltip.hasIcon && tooltip.stack != null && tooltip.stack.getItem() != null){
+        	Minecraft.getMinecraft().getRenderItem().renderItemAndEffectIntoGUI(tooltip.stack, tooltip.x+5, tooltip.y+tooltip.h/2-8);
+            //StackHandler.drawItem(tooltip.x+5, tooltip.y+tooltip.h/2-8, tooltip.stack);
+        }
+
         loadGLState();
     	GL11.glPopMatrix();  
-    	
-    	
     }    
     
     public static void saveGLState(){
+    	hasAlphaTest  = GL11.glGetBoolean(GL11.GL_ALPHA_TEST);
 		hasBlending   = GL11.glGetBoolean(GL11.GL_BLEND);
 		hasLight      = GL11.glGetBoolean(GL11.GL_LIGHTING);
-		//hasLight0     = GL11.glGetBoolean(GL11.GL_LIGHT0);
-		//hasLight1     = GL11.glGetBoolean(GL11.GL_LIGHT1);
+		hasLight0     = GL11.glGetBoolean(GL11.GL_LIGHT0);
+		hasLight1     = GL11.glGetBoolean(GL11.GL_LIGHT1);
 		hasDepthTest     = GL11.glGetBoolean(GL11.GL_DEPTH_TEST);
-		//hasRescaleNormal = GL11.glGetBoolean(GL12.GL_RESCALE_NORMAL);
-		//hasColorMaterial = GL11.glGetBoolean(GL11.GL_COLOR_MATERIAL);
+		hasRescaleNormal = GL11.glGetBoolean(GL12.GL_RESCALE_NORMAL);
+		hasColorMaterial = GL11.glGetBoolean(GL11.GL_COLOR_MATERIAL);
     	boundTexIndex    = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);  
     	GL11.glPushAttrib(GL11.GL_CURRENT_BIT);
     }
     
     public static void loadGLState(){
+    	if (hasAlphaTest)     GL11.glEnable(GL11.GL_ALPHA_TEST);      else GL11.glDisable(GL11.GL_ALPHA_TEST);
     	if (hasBlending)      GL11.glEnable(GL11.GL_BLEND);      else GL11.glDisable(GL11.GL_BLEND);
-    	//if (hasLight)         GL11.glEnable(GL11.GL_LIGHTING);   else GL11.glDisable(GL11.GL_LIGHTING);
-    	//if (hasLight0)        GL11.glEnable(GL11.GL_LIGHT0);     else GL11.glDisable(GL11.GL_LIGHT0);
+    	if (hasLight)         GL11.glEnable(GL11.GL_LIGHTING);   else GL11.glDisable(GL11.GL_LIGHTING);
+    	if (hasLight0)        GL11.glEnable(GL11.GL_LIGHT0);     else GL11.glDisable(GL11.GL_LIGHT0);
     	if (hasLight1)        GL11.glEnable(GL11.GL_LIGHT1);     else GL11.glDisable(GL11.GL_LIGHT1);
     	if (hasDepthTest)     GL11.glEnable(GL11.GL_DEPTH_TEST); else GL11.glDisable(GL11.GL_DEPTH_TEST);
-    	//if (hasRescaleNormal) GL11.glEnable(GL12.GL_RESCALE_NORMAL); else GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-    	//if (hasColorMaterial) GL11.glEnable(GL11.GL_COLOR_MATERIAL); else GL11.glDisable(GL11.GL_COLOR_MATERIAL);
+    	if (hasRescaleNormal) GL11.glEnable(GL12.GL_RESCALE_NORMAL); else GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+    	if (hasColorMaterial) GL11.glEnable(GL11.GL_COLOR_MATERIAL); else GL11.glDisable(GL11.GL_COLOR_MATERIAL);
     	GL11.glBindTexture(GL11.GL_TEXTURE_2D, boundTexIndex);
     	GL11.glPopAttrib();
     	//GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

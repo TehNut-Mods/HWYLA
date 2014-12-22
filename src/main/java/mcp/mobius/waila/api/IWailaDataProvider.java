@@ -2,6 +2,7 @@ package mcp.mobius.waila.api;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -38,7 +39,7 @@ public interface IWailaDataProvider{
 	 * @param config Current configuration of Waila.
 	 * @return Modified input currenttip
 	 */
-	List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
+	ITipList getWailaHead(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
 	
 	/**
 	 * Callback used to add lines to one of the three sections of the tooltip (Head, Body, Tail).</br>
@@ -51,7 +52,7 @@ public interface IWailaDataProvider{
 	 * @param config Current configuration of Waila.
 	 * @return Modified input currenttip
 	 */	
-	List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
+	ITipList getWailaBody(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
 	
 	/**
 	 * Callback used to add lines to one of the three sections of the tooltip (Head, Body, Tail).</br>
@@ -64,7 +65,7 @@ public interface IWailaDataProvider{
 	 * @param config Current configuration of Waila.
 	 * @return Modified input currenttip
 	 */	
-	List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
+	ITipList getWailaTail(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
 	
 	/**
 	 * Callback used server side to return a custom synchronization NBTTagCompound.</br>

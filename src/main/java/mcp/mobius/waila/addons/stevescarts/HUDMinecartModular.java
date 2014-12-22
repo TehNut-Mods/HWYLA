@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
@@ -22,7 +23,7 @@ public class HUDMinecartModular implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaHead(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaHead(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		if (currenttip.get(0).contains("entity.StevesCarts.Minecart")){
 			currenttip.remove(0);
 			currenttip.add(WHITE + "Modular Minecart");
@@ -32,7 +33,7 @@ public class HUDMinecartModular implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaBody(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		if (!config.getConfig("stevescarts.showall")) return currenttip;
 		if (config.getConfig("stevescarts.shifttoggle") && !accessor.getPlayer().isSneaking()){
 			currenttip.add(ITALIC + "Press shift for more data");
@@ -80,7 +81,7 @@ public class HUDMinecartModular implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaTail(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		return currenttip;
 	}
 

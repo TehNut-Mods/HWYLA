@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import mcp.mobius.waila.Waila;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 
 public class WailaExceptionHandler {
 
@@ -13,7 +14,7 @@ public class WailaExceptionHandler {
 	
 	private static ArrayList<String> errs = new ArrayList<String>(); 
 	
-	public static  List<String> handleErr(Throwable e, String className, List<String> currenttip){
+	public static  ITipList handleErr(Throwable e, String className, ITipList currenttip){
 		if (!errs.contains(className)){
 			errs.add(className);
 			

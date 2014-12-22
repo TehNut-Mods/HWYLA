@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import mcp.mobius.waila.Waila;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaBlock;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaEntityProvider;
@@ -52,7 +53,7 @@ public class MetaDataProvider{
 		return null;
 	}
 
-	public List<String> handleBlockTextData(ItemStack itemStack, World world, EntityPlayer player, MovingObjectPosition mop, DataAccessorBlock accessor, List<String> currenttip, Layout layout) {
+	public ITipList handleBlockTextData(ItemStack itemStack, World world, EntityPlayer player, MovingObjectPosition mop, DataAccessorBlock accessor, ITipList currenttip, Layout layout) {
 		Block block   = accessor.getBlock();
 		
 		if (accessor.getTileEntity() != null && Waila.instance.serverPresent && accessor.isTimeElapsed(250)){
@@ -125,7 +126,7 @@ public class MetaDataProvider{
 		return currenttip;
 	}
 	
-	public List<String> handleEntityTextData(Entity entity, World world, EntityPlayer player, MovingObjectPosition mop, DataAccessorEntity accessor, List<String> currenttip, Layout layout) {
+	public ITipList handleEntityTextData(Entity entity, World world, EntityPlayer player, MovingObjectPosition mop, DataAccessorEntity accessor, ITipList currenttip, Layout layout) {
 		
 		if (accessor.getEntity() != null && Waila.instance.serverPresent && accessor.isTimeElapsed(250)){
 			accessor.resetTimer();

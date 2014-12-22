@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -22,12 +23,12 @@ public class HUDHandlerIEnergyHandler implements IWailaDataProvider {
 	}
 
 	@Override
-	public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaHead(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 		return currenttip;
 	}
 
 	@Override
-	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaBody(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 		
 		if (!config.getConfig("thermalexpansion.energyhandler")) return currenttip;
 		if (!accessor.getNBTData().hasKey("Energy")) return currenttip;
@@ -35,8 +36,8 @@ public class HUDHandlerIEnergyHandler implements IWailaDataProvider {
 		int energy    = accessor.getNBTInteger(accessor.getNBTData(), "Energy");
 		int maxEnergy = accessor.getNBTInteger(accessor.getNBTData(), "MaxStorage");
 		try {
-			if ((maxEnergy != 0) && (((ITaggedList)currenttip).getEntries("RFEnergyStorage").size() == 0)){
-				((ITaggedList)currenttip).add(String.format("%d / %d RF", energy, maxEnergy), "RFEnergyStorage");
+			if ((maxEnergy != 0) && (currenttip.getEntries("RFEnergyStorage").size() == 0)){
+				currenttip.add(String.format("%d / %d RF", energy, maxEnergy), "RFEnergyStorage");
 			}
 		} catch (Exception e){    
 			currenttip = WailaExceptionHandler.handleErr(e, accessor.getTileEntity().getClass().getName(), currenttip);
@@ -46,7 +47,7 @@ public class HUDHandlerIEnergyHandler implements IWailaDataProvider {
 	}
 
 	@Override
-	public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaTail(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 		return currenttip;
 	}
 

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
@@ -27,7 +28,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaHead(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaHead(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		try{
 			currenttip.add(WHITE + entity.getName());
 		} catch (Exception e){
@@ -37,7 +38,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaBody(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		if (!config.getConfig("general.showhp")) return currenttip;
 		
 		if (entity instanceof EntityLivingBase){
@@ -85,7 +86,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 	}
 
 	@Override
-	public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaTail(Entity entity, ITipList currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 		try{
 			currenttip.add(BLUE + ITALIC + getEntityMod(entity));
 		} catch (Exception e){

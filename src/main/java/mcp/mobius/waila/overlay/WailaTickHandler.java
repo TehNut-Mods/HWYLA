@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.impl.ConfigHandler;
 import mcp.mobius.waila.api.impl.DataAccessorBlock;
 import mcp.mobius.waila.api.impl.DataAccessorEntity;
@@ -32,10 +33,10 @@ public class WailaTickHandler{
 	
 	private int ticks = 0;
 	public ItemStack identifiedHighlight = new ItemStack(Blocks.dirt);
-	private List<String> currenttip      = new TipList<String, String>();
-	private List<String> currenttipHead  = new TipList<String, String>();
-	private List<String> currenttipBody  = new TipList<String, String>();
-	private List<String> currenttipTail  = new TipList<String, String>();
+	private ITipList currenttip      = new TipList();
+	private ITipList currenttipHead  = new TipList();
+	private ITipList currenttipBody  = new TipList();
+	private ITipList currenttipTail  = new TipList();
 	public  Tooltip      tooltip         = null;
 	public  MetaDataProvider handler     = new MetaDataProvider();
 	private Minecraft mc = Minecraft.getMinecraft();

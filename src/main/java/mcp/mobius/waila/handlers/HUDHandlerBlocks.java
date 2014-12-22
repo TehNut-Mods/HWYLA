@@ -3,6 +3,7 @@ package mcp.mobius.waila.handlers;
 import java.util.List;
 
 import static mcp.mobius.waila.api.SpecialChars.*;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -26,7 +27,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
 	}
 
 	@Override
-	public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaHead(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 
         String name = null;
         try
@@ -64,7 +65,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
 	}
 
 	@Override
-	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaBody(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 		/*
 		if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_SHIFTBLOCK, false) && currenttip.size() > 0 && !accessor.getPlayer().isSneaking()){
 			currenttip.clear();
@@ -76,7 +77,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
 	}
 
 	@Override
-	public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
+	public ITipList getWailaTail(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor,	IWailaConfigHandler config) {
 		String modName = ModIdentification.nameFromStack(itemStack);
 		if (modName != null && !modName.equals("")){
 			currenttip.add(BLUE + ITALIC + modName);

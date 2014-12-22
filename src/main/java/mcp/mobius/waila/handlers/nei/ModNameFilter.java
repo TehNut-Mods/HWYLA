@@ -10,12 +10,10 @@ import mcp.mobius.waila.Waila;
 import mcp.mobius.waila.utils.ModIdentification;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import codechicken.nei.NEIClientConfig;
-import codechicken.nei.SearchField;
-import codechicken.nei.SearchField.ISearchProvider;
-import codechicken.nei.api.ItemFilter;
-import codechicken.nei.api.ItemInfo;
 
+public class ModNameFilter {}
+
+/*
 public class ModNameFilter implements ISearchProvider{
 
 	List<ISearchProvider> searchProviders = null;
@@ -97,3 +95,4 @@ public class ModNameFilter implements ISearchProvider{
 	    }
 	}
 }
+*/

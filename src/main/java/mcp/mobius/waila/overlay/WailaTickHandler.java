@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.impl.DataAccessorBlock;
 import mcp.mobius.waila.api.impl.DataAccessorEntity;
 import mcp.mobius.waila.api.impl.MetaDataProvider;
 import mcp.mobius.waila.api.impl.TipList;
+import mcp.mobius.waila.cbcore.Layout;
 import mcp.mobius.waila.client.KeyEvent;
 import mcp.mobius.waila.utils.Constants;
 import net.minecraft.client.Minecraft;
@@ -19,11 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
-import codechicken.nei.api.ItemInfo.Layout;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import static mcp.mobius.waila.api.SpecialChars.*;
 
 public class WailaTickHandler{

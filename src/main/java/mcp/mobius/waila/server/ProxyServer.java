@@ -1,26 +1,9 @@
 package mcp.mobius.waila.server;
 
 import java.lang.reflect.Method;
-import cpw.mods.fml.common.Loader;
+
+import net.minecraftforge.fml.common.Loader;
 import mcp.mobius.waila.Waila;
-import mcp.mobius.waila.addons.agriculture.AgricultureModule;
-import mcp.mobius.waila.addons.buildcraft.BCModule;
-import mcp.mobius.waila.addons.carpenters.CarpentersModule;
-import mcp.mobius.waila.addons.enderstorage.EnderStorageModule;
-import mcp.mobius.waila.addons.etb.ETBModule;
-import mcp.mobius.waila.addons.exu.ExtraUtilitiesModule;
-import mcp.mobius.waila.addons.gravestone.GravestoneModule;
-import mcp.mobius.waila.addons.harvestcraft.HarvestcraftModule;
-import mcp.mobius.waila.addons.ic2.IC2Module;
-import mcp.mobius.waila.addons.magicalcrops.MagicalCropsModule;
-import mcp.mobius.waila.addons.openblocks.OpenBlocksModule;
-import mcp.mobius.waila.addons.projectred.ProjectRedModule;
-import mcp.mobius.waila.addons.railcraft.RailcraftModule;
-import mcp.mobius.waila.addons.statues.StatuesModule;
-import mcp.mobius.waila.addons.stevescarts.StevesCartsModule;
-import mcp.mobius.waila.addons.thaumcraft.ThaumcraftModule;
-import mcp.mobius.waila.addons.thermalexpansion.ThermalExpansionModule;
-import mcp.mobius.waila.addons.twilightforest.TwilightForestModule;
 import mcp.mobius.waila.addons.vanillamc.HUDHandlerVanilla;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
@@ -38,64 +21,64 @@ public class ProxyServer {
 		HUDHandlerVanilla.register();
 		
 		/* BUILDCRAFT */
-		BCModule.register();
+		//BCModule.register();
 		
 		/* INDUSTRIALCRAFT2 */
-		IC2Module.register();
+		//IC2Module.register();
 		
 		/*Thaumcraft*/
-		ThaumcraftModule.register();
+		//ThaumcraftModule.register();
 		
 		/*EnderStorage*/
-		EnderStorageModule.register();
+		//EnderStorageModule.register();
 		
 		/*Gravestone*/
-		GravestoneModule.register();
+		//GravestoneModule.register();
 		
 		/*Twilight forest*/
-		TwilightForestModule.register();
+		//TwilightForestModule.register();
 		
 		/* Thermal Expansion */
-		ThermalExpansionModule.register();
+		//ThermalExpansionModule.register();
 		
 		/* ETB */
-		ETBModule.register();
+		//ETBModule.register();
 		
 		/* EnderIO */
 		//EnderIOModule.register();		
 		
 		/* ProjectRed API */
-		ProjectRedModule.register();
+		//ProjectRedModule.register();
 		
 		/* ExtraUtilities */
-		ExtraUtilitiesModule.register();	
+		//ExtraUtilitiesModule.register();	
 		
 		/* OpenBlocks */
-		OpenBlocksModule.register();
+		//OpenBlocksModule.register();
 		
 		/* Railcraft */
-		RailcraftModule.register();		
+		//RailcraftModule.register();		
 		
 		/* Steve's Carts */
-		StevesCartsModule.register();
+		//StevesCartsModule.register();
 		
 		/* Secret Rooms */
 		//SecretRoomsModule.register();
 		
 		/* Carpenter's Blocks */
-		CarpentersModule.register();	
+		//CarpentersModule.register();	
 
 		/* Pam's HarvestCraft */
-		HarvestcraftModule.register();
+		//HarvestcraftModule.register();
 		
 		/* Magical crops */
-		MagicalCropsModule.register();		
+		//MagicalCropsModule.register();		
 		
 		/* Statues */
-		StatuesModule.register();
+		//StatuesModule.register();
 		
 		/* Agriculture */
-		AgricultureModule.register();		
+		//AgricultureModule.register();		
 		
 		if(Loader.isModLoaded("ForgeMultipart")){
 			HUDHandlerFMP.register();

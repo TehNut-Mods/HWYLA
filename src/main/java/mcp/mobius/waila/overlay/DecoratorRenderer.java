@@ -2,9 +2,6 @@ package mcp.mobius.waila.overlay;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mcp.mobius.waila.api.IWailaBlockDecorator;
 import mcp.mobius.waila.api.impl.ConfigHandler;
 import mcp.mobius.waila.api.impl.DataAccessorBlock;
@@ -12,10 +9,14 @@ import mcp.mobius.waila.api.impl.ModuleRegistrar;
 import mcp.mobius.waila.utils.WailaExceptionHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DecoratorRenderer {
 
@@ -29,7 +30,7 @@ public class DecoratorRenderer {
 		DataAccessorBlock accessor  = DataAccessorBlock.instance;
 		World world                 = Minecraft.getMinecraft().theWorld;
 		EntityPlayer player         = Minecraft.getMinecraft().thePlayer;
-		EntityLivingBase viewEntity = Minecraft.getMinecraft().renderViewEntity;
+		Entity       viewEntity     = Minecraft.getMinecraft().getRenderViewEntity();
 		
 		if (world == null || player == null || viewEntity == null) return;
 		

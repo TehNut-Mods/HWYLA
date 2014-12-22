@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -36,8 +37,9 @@ public class DataAccessorEntity implements IWailaEntityAccessor {
 		if (viewEntity != null){
 			double px = viewEntity.lastTickPosX + (viewEntity.posX - viewEntity.lastTickPosX) * partialTicks;
 			double py = viewEntity.lastTickPosY + (viewEntity.posY - viewEntity.lastTickPosY) * partialTicks;
-			double pz = viewEntity.lastTickPosZ + (viewEntity.posZ - viewEntity.lastTickPosZ) * partialTicks;		
-			this.renderingvec = Vec3.createVectorHelper(_mop.blockX - px, _mop.blockY - py, _mop.blockZ - pz);
+			double pz = viewEntity.lastTickPosZ + (viewEntity.posZ - viewEntity.lastTickPosZ) * partialTicks;
+			BlockPos pos = _mop.getBlockPos();
+			this.renderingvec = new Vec3(pos.getX() - px, pos.getY() - py, pos.getZ() - pz);			
 			this.partialFrame = partialTicks;
 		}
 	}	
@@ -84,7 +86,10 @@ public class DataAccessorEntity implements IWailaEntityAccessor {
 		int y = tag.getInteger("y");
 		int z = tag.getInteger("z");
 		
-		if (x == this.mop.blockX && y == this.mop.blockY && z == this.mop.blockZ)
+		BlockPos posNBT = new BlockPos(x, y, z);
+		BlockPos posMOP = this.mop.getBlockPos();
+		
+		if (posNBT.equals(posMOP))
 			return true;
 		else {
 			this.timeLastUpdate = System.currentTimeMillis() - 250;			

@@ -35,7 +35,7 @@ apply plugin: 'java'
 apply plugin: 'forge'
 apply plugin: 'maven'
 
-version = "1.5.7_1.7.10"
+version = "1.6.0_dev1_1.8.1"
 group= "mcp.mobius.waila" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Waila"
 
@@ -50,15 +50,22 @@ configFile.withReader {
 }
 
 dependencies {
-    compile "codechicken:CodeChickenLib:${config.mc_version}-${config.ccl_version}:dev"
-    compile "codechicken:CodeChickenCore:${config.mc_version}-${config.ccc_version}:dev"
-    compile "codechicken:NotEnoughItems:${config.mc_version}-${config.nei_version}:dev"
+    // compile "codechicken:CodeChickenLib:${config.mc_version}-${config.ccl_version}:dev"
+    // compile "codechicken:CodeChickenCore:${config.mc_version}-${config.ccc_version}:dev"
+    // compile "codechicken:NotEnoughItems:${config.mc_version}-${config.nei_version}:dev"
     deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
 }
 
 minecraft {
-    version = "1.7.10-10.13.2.1264"
+    version = "1.8-11.14.0.1274-1.8"
     runDir = "eclipse"
+    
+    // the mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   snapshot are built nightly.
+    // stable_#            stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not allways work.
+    // simply re-run your setup task after changing the mappings to update your workspace.
+    mappings = "snapshot_nodoc_20141130"
 }
 
 def root = project.projectDir.parentFile

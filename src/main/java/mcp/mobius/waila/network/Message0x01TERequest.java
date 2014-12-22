@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
 import mcp.mobius.waila.utils.AccessHelper;
@@ -17,8 +15,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -48,16 +49,14 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
 	public int posX;
 	public int posY;
 	public int posZ;	
-	public HashSet<String> keys = new HashSet<String> ();	
 	
 	public Message0x01TERequest(){}	
 	
-	public Message0x01TERequest(TileEntity ent, HashSet<String> keys){
-		this.dim  = ent.getWorldObj().provider.dimensionId;
-		this.posX = ent.xCoord;
-		this.posY = ent.yCoord;
-		this.posZ = ent.zCoord;
-		this.keys = keys;
+	public Message0x01TERequest(TileEntity ent){
+		this.dim  = ent.getWorld().provider.getDimensionId();
+		this.posX = ent.getPos().getX();
+		this.posY = ent.getPos().getY();
+		this.posZ = ent.getPos().getZ();
 	}
 	
 	@Override
@@ -66,10 +65,6 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
 		target.writeInt(posX);
 		target.writeInt(posY);
 		target.writeInt(posZ);
-		target.writeInt(this.keys.size());
-		
-		for (String key : keys)
-			WailaPacketHandler.INSTANCE.writeString(target, key);
 	}
 
 	@Override
@@ -80,11 +75,6 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
 			msg.posX = dat.readInt();
 			msg.posY = dat.readInt();
 			msg.posZ = dat.readInt();
-			
-			int nkeys = dat.readInt();
-			
-			for (int i = 0; i < nkeys; i++)
-				this.keys.add(WailaPacketHandler.INSTANCE.readString(dat));
 		
 		}catch (Exception e){
 			WailaExceptionHandler.handleErr(e, this.getClass().toString(), null);
@@ -95,8 +85,8 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
 	protected void channelRead0(ChannelHandlerContext ctx, Message0x01TERequest msg) throws Exception {
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
         World           world  = DimensionManager.getWorld(msg.dim);
-        TileEntity      entity = world.getTileEntity(msg.posX, msg.posY, msg.posZ);
-        Block           block  = world.getBlock(msg.posX, msg.posY, msg.posZ);
+        TileEntity      entity = world.getTileEntity(new BlockPos(msg.posX, msg.posY, msg.posZ));
+        Block           block  = world.getBlockState(new BlockPos(msg.posX, msg.posY, msg.posZ)).getBlock();
         
         if (entity != null){
         	try{
@@ -128,19 +118,13 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
         				}       					
         			}
         			
-        		} else {
-        			entity.writeToNBT(tag);
-        			tag = NBTUtil.createTag(tag, msg.keys);
+        			tag.setInteger("WailaX", msg.posX);
+            		tag.setInteger("WailaY", msg.posY);
+            		tag.setInteger("WailaZ", msg.posZ);
+            		tag.setString ("WailaID", (String)((HashMap)classToNameMap.get(null)).get(entity.getClass()));        		
+            		
+        			ctx.writeAndFlush(new Message0x02TENBTData(tag)).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);        			
         		}
-        		
-    			tag.setInteger("WailaX", msg.posX);
-        		tag.setInteger("WailaY", msg.posY);
-        		tag.setInteger("WailaZ", msg.posZ);
-        		tag.setString ("WailaID", (String)((HashMap)classToNameMap.get(null)).get(entity.getClass()));        		
-        		
-    			ctx.writeAndFlush(new Message0x02TENBTData(tag)).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);        			
-        		
-        		
         	}catch(Throwable e){
         		e.printStackTrace();
         		WailaExceptionHandler.handleErr(e, entity.getClass().toString(), null);

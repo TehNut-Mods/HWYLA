@@ -1,10 +1,18 @@
 package mcp.mobius.waila.network;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufInputStream;
+import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.EnumMap;
 
 import com.google.common.base.Charsets;
@@ -13,12 +21,13 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTSizeTracker;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.FMLEmbeddedChannel;
-import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
-import cpw.mods.fml.common.network.FMLOutboundHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.relauncher.Side;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.FMLEmbeddedChannel;
+import net.minecraftforge.fml.common.network.FMLIndexedMessageToMessageCodec;
+import net.minecraftforge.fml.common.network.FMLOutboundHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+
 
 public enum WailaPacketHandler {
 	INSTANCE;
@@ -92,22 +101,18 @@ public enum WailaPacketHandler {
         if (tag == null)
         	target.writeShort(-1);
         else{
-            byte[] abyte = CompressedStreamTools.compress(tag);
-            target.writeShort((short)abyte.length);
-            target.writeBytes(abyte);
+        	target.writeShort(0);
+        	CompressedStreamTools.writeCompressed(tag, new ByteBufOutputStream(target));
         }
     }
 
     public NBTTagCompound readNBT(ByteBuf dat) throws IOException
     {
-        short short1 = dat.readShort();
-
+    	short short1 = dat.readShort();
         if (short1 < 0)
             return null;
-        else{
-            byte[] abyte = new byte[short1];
-            dat.readBytes(abyte);
-            return CompressedStreamTools.func_152457_a(abyte, NBTSizeTracker.field_152451_a);
+        else{    	
+        	return CompressedStreamTools.readCompressed(new ByteBufInputStream(dat));
         }
     }
     

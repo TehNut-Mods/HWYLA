@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneOre;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -64,10 +65,8 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
 		}
 		
 		if (block == doubleplant && (accessor.getMetadata() & 8) != 0){
-			int x = accessor.getPosition().blockX;
-			int y = accessor.getPosition().blockY - 1;
-			int z = accessor.getPosition().blockZ;
-			int meta = accessor.getWorld().getBlockMetadata(x, y, z);
+			
+			int meta = accessor.getMetadata();// accessor.getWorld().getBlockState(accessor.getPosition());
 			
 			return new ItemStack(doubleplant, 0, meta);
 		}
@@ -93,11 +92,13 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
 		Block block       = accessor.getBlock();
 		
 		/* Mob spawner handler */
+		/*
 		if (block == mobSpawner && accessor.getTileEntity() instanceof TileEntityMobSpawner && config.getConfig("vanilla.spawntype")){
 			String name = currenttip.get(0);
 			String mobname = ((TileEntityMobSpawner)accessor.getTileEntity()).func_145881_a().getEntityNameToSpawn();
 			currenttip.set(0, String.format("%s (%s)", name, mobname));
 		}
+		*/
 
 		if (block == redstone){
 			String name = currenttip.get(0).replaceFirst(String.format(" %s", accessor.getMetadata()), "");

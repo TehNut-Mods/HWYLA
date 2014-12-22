@@ -34,7 +34,7 @@ public class HUDHandlerFMP implements IWailaDataProvider {
 			String id = subtag.getString("id");
 
 			if (ModuleRegistrar.instance().hasHeadFMPProviders(id)){
-				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getPosition(), subtag, id); 
+				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getMOP(), subtag, id); 
 				
 				for (IWailaFMPProvider provider : ModuleRegistrar.instance().getHeadFMPProviders(id))
 					currenttip = provider.getWailaHead(itemStack, currenttip, DataAccessorFMP.instance, config);
@@ -52,7 +52,7 @@ public class HUDHandlerFMP implements IWailaDataProvider {
 			String id = subtag.getString("id");
 
 			if (ModuleRegistrar.instance().hasBodyFMPProviders(id)){
-				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getPosition(), subtag, id); 
+				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getMOP(), subtag, id); 
 				
 				for (IWailaFMPProvider provider : ModuleRegistrar.instance().getBodyFMPProviders(id))
 					currenttip = provider.getWailaBody(itemStack, currenttip, DataAccessorFMP.instance, config);
@@ -70,7 +70,7 @@ public class HUDHandlerFMP implements IWailaDataProvider {
 			String id = subtag.getString("id");
 
 			if (ModuleRegistrar.instance().hasTailFMPProviders(id)){
-				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getPosition(), subtag, id); 
+				DataAccessorFMP.instance.set(accessor.getWorld(), accessor.getPlayer(), accessor.getMOP(), subtag, id); 
 				
 				for (IWailaFMPProvider provider : ModuleRegistrar.instance().getTailFMPProviders(id))
 					currenttip = provider.getWailaTail(itemStack, currenttip, DataAccessorFMP.instance, config);

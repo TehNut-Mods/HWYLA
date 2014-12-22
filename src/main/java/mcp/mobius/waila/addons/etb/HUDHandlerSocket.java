@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -46,7 +46,7 @@ public class HUDHandlerSocket implements IWailaDataProvider {
 							
 							
 							ItemStack stack = new ItemStack(module, 1, sides[s]);
-							String tipstr = String.format("%-5s : %s ", ForgeDirection.getOrientation(s), stack.getDisplayName());
+							String tipstr = String.format("%-5s : %s ", EnumFacing.values()[s], stack.getDisplayName());
 							
 							String configstr = "[ ";
 							

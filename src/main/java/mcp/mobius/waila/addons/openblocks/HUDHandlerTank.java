@@ -6,8 +6,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -30,7 +30,7 @@ public class HUDHandlerTank implements IWailaDataProvider {
 		IFluidHandler handler = (IFluidHandler)accessor.getTileEntity();
 		if (handler == null) return currenttip;
 		
-		FluidTankInfo[] tanks = handler.getTankInfo(ForgeDirection.UNKNOWN);
+		FluidTankInfo[] tanks = handler.getTankInfo(EnumFacing.DOWN);
 		if (tanks.length != 1) return currenttip;
 		
 		FluidStack  fluid = tanks[0].fluid; 
@@ -54,7 +54,7 @@ public class HUDHandlerTank implements IWailaDataProvider {
 		IFluidHandler handler = (IFluidHandler)accessor.getTileEntity();
 		if (handler == null) return currenttip;
 		
-		FluidTankInfo[] tanks = handler.getTankInfo(ForgeDirection.UNKNOWN);
+		FluidTankInfo[] tanks = handler.getTankInfo(EnumFacing.DOWN);
 		if (tanks.length != 1) return currenttip;
 		
 		if(tanks[0].fluid != null)

@@ -5,6 +5,8 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.Vec3;
 
@@ -20,12 +22,13 @@ public class UIHelper {
         float zLevel = 0.0F;
         float f = 0.00390625F;
         
-        Tessellator tess = Tessellator.instance;
-        tess.startDrawingQuads();
-        tess.addVertexWithUV((double)(posX + 0),     (double)(posY + sizeY), (double)zLevel, texU*f, (texV + texSizeV)*f);
-        tess.addVertexWithUV((double)(posX + sizeX), (double)(posY + sizeY), (double)zLevel, (texU + texSizeU)*f, (texV + texSizeV)*f);
-        tess.addVertexWithUV((double)(posX + sizeX), (double)(posY + 0),     (double)zLevel, (texU + texSizeU)*f, texV*f);
-        tess.addVertexWithUV((double)(posX + 0),     (double)(posY + 0),     (double)zLevel, texU*f, texV*f);
+        Tessellator tess = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tess.getWorldRenderer();
+        worldrenderer.startDrawingQuads();
+        worldrenderer.addVertexWithUV((double)(posX + 0),     (double)(posY + sizeY), (double)zLevel, texU*f, (texV + texSizeV)*f);
+        worldrenderer.addVertexWithUV((double)(posX + sizeX), (double)(posY + sizeY), (double)zLevel, (texU + texSizeU)*f, (texV + texSizeV)*f);
+        worldrenderer.addVertexWithUV((double)(posX + sizeX), (double)(posY + 0),     (double)zLevel, (texU + texSizeU)*f, texV*f);
+        worldrenderer.addVertexWithUV((double)(posX + 0),     (double)(posY + 0),     (double)zLevel, texU*f, texV*f);
         tess.draw();
     }	    
     
@@ -44,14 +47,16 @@ public class UIHelper {
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glShadeModel(GL11.GL_SMOOTH);
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-        tessellator.setColorRGBA_F(red1, green1, blue1, alpha1);
-        tessellator.addVertex((double)maxx, (double)miny, (double)zlevel);
-        tessellator.addVertex((double)minx, (double)miny, (double)zlevel);
-        tessellator.setColorRGBA_F(red2, green2, blue2, alpha2);
-        tessellator.addVertex((double)minx, (double)maxy, (double)zlevel);
-        tessellator.addVertex((double)maxx, (double)maxy, (double)zlevel);
+        Tessellator   tessellator   = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.startDrawingQuads();
+        worldrenderer.startDrawingQuads();
+        worldrenderer.setColorRGBA_F(red1, green1, blue1, alpha1);
+        worldrenderer.addVertex((double)maxx, (double)miny, (double)zlevel);
+        worldrenderer.addVertex((double)minx, (double)miny, (double)zlevel);
+        worldrenderer.setColorRGBA_F(red2, green2, blue2, alpha2);
+        worldrenderer.addVertex((double)minx, (double)maxy, (double)zlevel);
+        worldrenderer.addVertex((double)maxx, (double)maxy, (double)zlevel);
         tessellator.draw();
         GL11.glShadeModel(GL11.GL_FLAT);
         GL11.glDisable(GL11.GL_BLEND);
@@ -64,7 +69,7 @@ public class UIHelper {
     }
     
     public static void drawBillboard(float posX, float posY, float posZ, float offX, float offY, float offZ, double x1, double y1, double x2, double y2, int r, int g, int b, int a, double partialFrame){
-        EntityLivingBase player = Minecraft.getMinecraft().renderViewEntity;
+        Entity player = Minecraft.getMinecraft().getRenderViewEntity();
         float playerViewY = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * (float)partialFrame;
         float playerViewX = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * (float)partialFrame;  
         
@@ -103,7 +108,7 @@ public class UIHelper {
     }
     
     public static void drawBillboardText(String text, float posX, float posY, float posZ, float offX, float offY, float offZ, double partialFrame){
-        EntityLivingBase player = Minecraft.getMinecraft().renderViewEntity;
+        Entity player = Minecraft.getMinecraft().getRenderViewEntity();
         float playerViewY = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * (float)partialFrame;
         float playerViewX = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * (float)partialFrame;      	
         
@@ -118,7 +123,7 @@ public class UIHelper {
     	
     	if (text.isEmpty()) return;
     	
-        FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;    	
+        FontRenderer fontrenderer = Minecraft.getMinecraft().fontRendererObj;    	
     	
         float f = 1.6F;
         float f1 = 0.016666668F * f;
@@ -161,30 +166,32 @@ public class UIHelper {
     }     
     
     public static void drawRectangle(double x1, double y1, double z1, double x2, double y2, double z2, int r, int g, int b, int a){
-		Tessellator tessellator = Tessellator.instance;
-		
-        tessellator.startDrawingQuads();
-        tessellator.setColorRGBA(r, g, b, a);
+        Tessellator   tessellator   = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.startDrawingQuads();
         
-        tessellator.addVertex(x1, y2, z1);
-        tessellator.addVertex(x1, y1, z2);
-        tessellator.addVertex(x2, y1, z2);
-        tessellator.addVertex(x2, y2, z1);
+        worldrenderer.setColorRGBA(r, g, b, a);
+        
+        worldrenderer.addVertex(x1, y2, z1);
+        worldrenderer.addVertex(x1, y1, z2);
+        worldrenderer.addVertex(x2, y1, z2);
+        worldrenderer.addVertex(x2, y2, z1);
 
         tessellator.draw();
         
     }
     
     public static void drawRectangleEW(double x1, double y1, double z1, double x2, double y2, double z2, int r, int g, int b, int a){
-		Tessellator tessellator = Tessellator.instance;
-		
-        tessellator.startDrawingQuads();
-        tessellator.setColorRGBA(r, g, b, a);
+        Tessellator   tessellator   = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.startDrawingQuads();
         
-        tessellator.addVertex(x1, y1, z1);
-        tessellator.addVertex(x1, y1, z2);
-        tessellator.addVertex(x2, y2, z2);
-        tessellator.addVertex(x2, y2, z1);        
+        worldrenderer.setColorRGBA(r, g, b, a);
+        
+        worldrenderer.addVertex(x1, y1, z1);
+        worldrenderer.addVertex(x1, y1, z2);
+        worldrenderer.addVertex(x2, y2, z2);
+        worldrenderer.addVertex(x2, y2, z1);        
         
         tessellator.draw();    	
     }    

@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import codechicken.lib.gui.GuiDraw;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import mcp.mobius.waila.api.impl.ConfigHandler;
+import mcp.mobius.waila.cbcore.GuiDraw;
 import mcp.mobius.waila.utils.Constants;
 import static mcp.mobius.waila.api.SpecialChars.*;
 

@@ -4,13 +4,6 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
-import codechicken.nei.api.API;
-import codechicken.nei.guihook.GuiContainerManager;
-import codechicken.nei.recipe.GuiCraftingRecipe;
-import codechicken.nei.recipe.GuiUsageRecipe;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import mcp.mobius.waila.api.impl.ConfigHandler;
 import mcp.mobius.waila.cbcore.LangUtil;
 import mcp.mobius.waila.gui.screens.config.ScreenConfig;
@@ -25,6 +18,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class KeyEvent {
 	public static KeyBinding key_cfg;
@@ -81,17 +77,16 @@ public class KeyEvent {
 		ClientRegistry.registerKeyBinding(KeyEvent.key_liquid);
 		ClientRegistry.registerKeyBinding(KeyEvent.key_recipe);
 		ClientRegistry.registerKeyBinding(KeyEvent.key_usage);
-		GuiContainerManager.addInputHandler(new HandlerEnchants());
-		API.addKeyBind(Constants.BIND_SCREEN_ENCH, Keyboard.KEY_I);
+		
+		// TODO : NEI related key bindings
+		// GuiContainerManager.addInputHandler(new HandlerEnchants());
+		// API.addKeyBind(Constants.BIND_SCREEN_ENCH, Keyboard.KEY_I);
 
-		/*
-        Minecraft.getMinecraft().gameSettings.keyBindings = (KeyBinding[])ArrayUtils.addAll(
-        		new KeyBinding[] {KeyHandler.key_cfg,  KeyHandler.key_show, KeyHandler.key_liquid}, 
-        		Minecraft.getMinecraft().gameSettings.keyBindings);
-        */        
 	}
 	
 	public void openRecipeGUI(boolean recipe){
+		// TODO : NEI Related keybindings
+		/*
 		Minecraft mc = Minecraft.getMinecraft();
 		boolean   uiResult;
 		String    msg;
@@ -128,5 +123,6 @@ public class KeyEvent {
 					}
 			}
 		}
+		*/
 	}	
 }

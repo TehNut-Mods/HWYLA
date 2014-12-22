@@ -2,6 +2,7 @@ package mcp.mobius.waila.handlers.nei;
 
 import java.util.Map;
 
+import mcp.mobius.waila.cbcore.IContainerInputHandler;
 import mcp.mobius.waila.gui.screens.info.ScreenEnchants;
 import mcp.mobius.waila.utils.Constants;
 import mcp.mobius.waila.utils.ModIdentification;
@@ -11,9 +12,6 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import codechicken.nei.NEIClientConfig;
-import codechicken.nei.guihook.GuiContainerManager;
-import codechicken.nei.guihook.IContainerInputHandler;
 
 public class HandlerEnchants implements IContainerInputHandler {
 
@@ -25,6 +23,8 @@ public class HandlerEnchants implements IContainerInputHandler {
 
 	@Override
 	public boolean lastKeyTyped(GuiContainer gui, char keyChar, int keyID) {
+		// TODO : NEI Compat
+		/*
 		GuiContainerManager.getManager();
 		ItemStack stackover = GuiContainerManager.getStackMouseOver(gui);
 		if(stackover == null)
@@ -100,7 +100,7 @@ public class HandlerEnchants implements IContainerInputHandler {
 				}
 				mc.displayGuiScreen(screen);
 		}
-		
+		*/
 		return false;
 	}
 

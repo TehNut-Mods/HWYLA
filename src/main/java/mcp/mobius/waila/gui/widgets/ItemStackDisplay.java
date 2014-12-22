@@ -7,8 +7,6 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Point;
 
-import codechicken.nei.guihook.GuiContainerManager;
-
 public class ItemStackDisplay extends WidgetBase {
 
 	ItemStack stack = null;
@@ -42,7 +40,9 @@ public class ItemStackDisplay extends WidgetBase {
 		GL11.glScalef(scaleX, scaleY, 1.0f);
 		
         RenderHelper.enableGUIStandardItemLighting();
-		GuiContainerManager.drawItem((int)(pos.getX()/scaleX), (int)(pos.getY()/scaleX), this.stack);
+        
+        // TODO : NEI Dep !!!
+		//GuiContainerManager.drawItem((int)(pos.getX()/scaleX), (int)(pos.getY()/scaleX), this.stack);
 		GL11.glPopMatrix();
 	}
 

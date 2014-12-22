@@ -1,15 +1,19 @@
 package mcp.mobius.waila.api.impl;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
+import net.minecraft.util.Vec3i;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.utils.NBTUtil;
 
@@ -20,8 +24,8 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 	public MovingObjectPosition mop;
 	public Vec3 renderingvec = null;
 	public Block block;
-	public int blockID;
-	public int metadata;
+	//public int blockID;
+	public IBlockState blockState;
 	public TileEntity entity;
 	public NBTTagCompound remoteNbt = null;
 	public long timeLastUpdate = System.currentTimeMillis();
@@ -34,23 +38,24 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 		this.set(_world, _player, _mop, null, 0.0);
 	}
 	
-	public void set(World _world, EntityPlayer _player, MovingObjectPosition _mop, EntityLivingBase viewEntity, double partialTicks) {
+	public void set(World _world, EntityPlayer _player, MovingObjectPosition _mop, Entity viewEntity, double partialTicks) {
 		this.world    = _world;
 		this.player   = _player;
 		this.mop      = _mop;
 		//this.blockID  = world.getBlockId(_mop.blockX, _mop.blockY, _mop.blockZ);
 		//this.block    = Block.blocksList[this.blockID];
-		this.block    = world.getBlock(_mop.blockX, _mop.blockY, _mop.blockZ);
-		this.metadata = world.getBlockMetadata(_mop.blockX, _mop.blockY, _mop.blockZ);
-		this.entity   = world.getTileEntity(_mop.blockX, _mop.blockY, _mop.blockZ);
-		try{ this.stack = new ItemStack(this.block, 1, this.metadata); } catch (Exception e) {}
+		this.block      = world.getBlockState(_mop.getBlockPos()).getBlock();
+		this.blockState = world.getBlockState(_mop.getBlockPos());
+		this.entity   = world.getTileEntity(_mop.getBlockPos());
+		try{ this.stack = new ItemStack(this.block, 1, this.block.getMetaFromState(this.blockState)); } catch (Exception e) {}
 			
 		
 		if (viewEntity != null){
 			double px = viewEntity.lastTickPosX + (viewEntity.posX - viewEntity.lastTickPosX) * partialTicks;
 			double py = viewEntity.lastTickPosY + (viewEntity.posY - viewEntity.lastTickPosY) * partialTicks;
-			double pz = viewEntity.lastTickPosZ + (viewEntity.posZ - viewEntity.lastTickPosZ) * partialTicks;		
-			this.renderingvec = Vec3.createVectorHelper(_mop.blockX - px, _mop.blockY - py, _mop.blockZ - pz);
+			double pz = viewEntity.lastTickPosZ + (viewEntity.posZ - viewEntity.lastTickPosZ) * partialTicks;
+			BlockPos pos = _mop.getBlockPos();
+			this.renderingvec = new Vec3(pos.getX() - px, pos.getY() - py, pos.getZ() - pz);
 			this.partialFrame = partialTicks;
 		}
 	}
@@ -70,27 +75,29 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 		return this.block;
 	}
 
-	@Override
-	public int getBlockID() {
-		return this.blockID;
-	}	
+	//@Override
+	//public int getBlockID() {
+	//	return this.blockID;
+	//}	
 	
 	@Override
 	public int getMetadata() {
-		return this.metadata;
+		return this.block.getMetaFromState(this.blockState);
 	}
 
 	public void setBlock(Block block) {
 		this.block = block;
 	}
 
-	public void setBlockID(int val) {
-		this.blockID = val;
-	}	
+	//public void setBlockID(int val) {
+	//	this.blockID = val;
+	//}	
 	
-	public void setMetadata(int val) {
-		this.metadata = val;
-	}	
+	/*
+	public void setMetadata(IBlockState val) {
+		this.blockState = val;
+	}
+	*/	
 	
 	@Override
 	public TileEntity getTileEntity() {
@@ -98,7 +105,12 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 	}
 
 	@Override
-	public MovingObjectPosition getPosition() {
+	public BlockPos getPosition() {
+		return this.mop.getBlockPos();
+	}
+	
+	@Override
+	public MovingObjectPosition getMOP(){
 		return this.mop;
 	}
 
@@ -131,7 +143,10 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 		int y = tag.getInteger("WailaY");
 		int z = tag.getInteger("WailaZ");
 		
-		if (x == this.mop.blockX && y == this.mop.blockY && z == this.mop.blockZ)
+		BlockPos posNBT = new BlockPos(x, y, z);
+		BlockPos posMOP = this.mop.getBlockPos();
+		
+		if (posNBT.equals(posMOP))
 			return true;
 		else {
 			this.timeLastUpdate = System.currentTimeMillis() - 250;			
@@ -150,8 +165,8 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 	}
 	
 	@Override
-	public ForgeDirection getSide(){
-		return ForgeDirection.getOrientation(this.getPosition().sideHit);
+	public EnumFacing getSide(){
+		return this.getMOP().sideHit;
 	}
 	
 	public boolean isTimeElapsed(long time){
@@ -165,6 +180,11 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 	@Override
 	public ItemStack getStack() {
 		return this.stack;
+	}
+
+	@Override
+	public IBlockState getBlockState() {
+		return this.blockState;
 	}
 	
 }

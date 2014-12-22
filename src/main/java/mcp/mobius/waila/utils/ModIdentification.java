@@ -3,10 +3,12 @@ package mcp.mobius.waila.utils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
+
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.registry.GameData;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.common.registry.GameData;
 
 public class ModIdentification {
 	
@@ -117,13 +119,10 @@ public class ModIdentification {
 	
 	public static String nameFromStack(ItemStack stack){
 		try{
-			//String modID = itemMap.get(itemstack.itemID);
-			//ModContainer mod = ModIdentification.findModContainer(modID);
-			ModContainer mod = GameData.findModOwner(GameData.itemRegistry.getNameForObject(stack.getItem()));
-			String modname = mod == null ? "Minecraft" : mod.getName();		
+			ResourceLocation ressource = (ResourceLocation)GameData.getItemRegistry().getNameForObject(stack.getItem());
+			String modname = ressource.getResourceDomain();
 			return modname;
 		} catch (NullPointerException e){
-			//System.out.printf("NPE : %s\n",itemstack.toString());
 			return "";
 		}
 	}

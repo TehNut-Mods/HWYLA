@@ -3,14 +3,15 @@ package mcp.mobius.waila.overlay;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.guihook.GuiContainerManager;
 import mcp.mobius.waila.api.impl.ConfigHandler;
+import mcp.mobius.waila.cbcore.GuiDraw;
+import mcp.mobius.waila.cbcore.StackHandler;
 import mcp.mobius.waila.utils.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraft.util.MovingObjectPosition;
@@ -25,7 +26,7 @@ public class OverlayRenderer {
 	protected static boolean hasRescaleNormal;
 	protected static boolean hasColorMaterial;
 	protected static int     boundTexIndex;   	
-	protected static RenderItem renderItem = new RenderItem();
+	protected static RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 	
     public static void renderOverlay()
     {
@@ -33,7 +34,7 @@ public class OverlayRenderer {
         if(!(mc.currentScreen == null &&
              mc.theWorld != null &&
              Minecraft.isGuiEnabled() &&
-             !mc.gameSettings.keyBindPlayerList.getIsKeyPressed() &&
+             !mc.gameSettings.keyBindPlayerList.isKeyDown() &&
              ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_SHOW, true) &&
              RayTracing.instance().getTarget()      != null))
         	return;
@@ -78,7 +79,7 @@ public class OverlayRenderer {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         
         if (tooltip.hasIcon && tooltip.stack != null && tooltip.stack.getItem() != null)
-            GuiContainerManager.drawItem(tooltip.x+5, tooltip.y+tooltip.h/2-8, tooltip.stack);
+            StackHandler.drawItem(tooltip.x+5, tooltip.y+tooltip.h/2-8, tooltip.stack);
         
         loadGLState();
     	GL11.glPopMatrix();  
@@ -133,13 +134,14 @@ public class OverlayRenderer {
         float f  = 0.00390625F;
         float f1 = 0.00390625F;
         float zLevel = 0.0F;
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-    	tessellator.setColorOpaque_F(1, 1, 1);        
-        tessellator.addVertexWithUV(x + 0, y + h, zLevel, (u + 0)  * f, (v + th) * f1);
-        tessellator.addVertexWithUV(x + w, y + h, zLevel, (u + tw) * f, (v + th) * f1);
-        tessellator.addVertexWithUV(x + w, y + 0, zLevel, (u + tw) * f, (v + 0)  * f1);
-        tessellator.addVertexWithUV(x + 0, y + 0, zLevel, (u + 0)  * f, (v + 0)  * f1);
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer renderer  = tessellator.getWorldRenderer();
+        renderer.startDrawingQuads();
+        renderer.setColorOpaque_F(1, 1, 1);        
+        renderer.addVertexWithUV(x + 0, y + h, zLevel, (u + 0)  * f, (v + th) * f1);
+        renderer.addVertexWithUV(x + w, y + h, zLevel, (u + tw) * f, (v + th) * f1);
+        renderer.addVertexWithUV(x + w, y + 0, zLevel, (u + tw) * f, (v + 0)  * f1);
+        renderer.addVertexWithUV(x + 0, y + 0, zLevel, (u + 0)  * f, (v + 0)  * f1);
         tessellator.draw();
     }    
     

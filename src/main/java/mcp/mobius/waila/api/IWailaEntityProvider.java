@@ -70,10 +70,9 @@ public interface IWailaEntityProvider {
 	 * Callback used server side to return a custom synchronization NBTTagCompound.</br>
 	 * Will be used if the implementing class is registered via {@link IWailaRegistrar}.{@link registerNBTProvider} server and client side.</br>
 	 * You are supposed to always return the modified input NBTTagCompound tag.</br>
-	 * @param player The player requesting data synchronization (The owner of the current connection).
 	 * @param ent The Entity targeted for synchronization.
 	 * @param tag Current synchronization tag (might have been processed by other providers and might be processed by other providers).
-	 * @param world TileEntity's World.
+	 * @param accessor Contains most of the relevant information about the current environment.
 	 * @return Modified input NBTTagCompound tag.
 	 */
 	NBTTagCompound getNBTData(Entity ent, NBTTagCompound tag, IWailaEntityAccessorServer accessor);	

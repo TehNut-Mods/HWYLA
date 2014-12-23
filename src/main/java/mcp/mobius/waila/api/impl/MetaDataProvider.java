@@ -6,7 +6,6 @@ import java.util.List;
 
 import mcp.mobius.waila.Waila;
 import mcp.mobius.waila.api.ITaggedList.ITipList;
-import mcp.mobius.waila.api.IWailaBlock;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.cbcore.Layout;

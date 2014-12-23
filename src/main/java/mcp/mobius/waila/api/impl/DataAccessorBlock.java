@@ -47,6 +47,7 @@ public class DataAccessorBlock implements IWailaDataAccessor {
 		this.block      = world.getBlockState(_mop.getBlockPos()).getBlock();
 		this.blockState = world.getBlockState(_mop.getBlockPos());
 		this.entity   = world.getTileEntity(_mop.getBlockPos());
+		
 		try{ this.stack = new ItemStack(this.block, 1, this.block.getMetaFromState(this.blockState)); } catch (Exception e) {}
 			
 		

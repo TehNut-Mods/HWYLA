@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataAccessorServer;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import static mcp.mobius.waila.api.SpecialChars.*;
 
@@ -62,19 +63,19 @@ public class HUDHandlerIAspectContainer implements IWailaDataProvider{
 	}
 
 	@Override
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag,	World world, int x, int y, int z) {
+	public NBTTagCompound getNBTData(TileEntity te, NBTTagCompound tag, IWailaDataAccessorServer accessor) {
 	
 		try{
 			tag.setTag("Aspects", new NBTTagList());
 			NBTTagList aspects = tag.getTagList("Aspects", 10);			
 			
-			ItemStack headSlot = player.inventory.armorInventory[3];
+			ItemStack headSlot = accessor.getPlayer().inventory.armorInventory[3];
 			if (headSlot == null) return tag;
 			boolean hasReveal =  ThaumcraftModule.IGoggles.isInstance(headSlot.getItem());
 			if (!hasReveal) return tag;
 			
 			HashMap knownAspects        = (HashMap)       ThaumcraftModule.CommonProxy_getKnownAspects.invoke(ThaumcraftModule.Thaumcraft_proxy.get(null));
-			LinkedHashMap playerAspects = (LinkedHashMap) ThaumcraftModule.AspectList_aspects.get(knownAspects.get(player.getName()));
+			LinkedHashMap playerAspects = (LinkedHashMap) ThaumcraftModule.AspectList_aspects.get(knownAspects.get(accessor.getPlayer().getName()));
 			LinkedHashMap tileAspects   = new LinkedHashMap();
 			
 			if (ThaumcraftModule.IAspectContainer.isInstance(te)){

@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
 import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaEntityAccessorServer;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import static mcp.mobius.waila.api.SpecialChars.*;
 
@@ -96,7 +97,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 	}
 
 	@Override
-	public NBTTagCompound getNBTData(EntityPlayerMP player, Entity te, NBTTagCompound tag, World world) {
+	public NBTTagCompound getNBTData(Entity ent, NBTTagCompound tag, IWailaEntityAccessorServer accessor) {
 		return tag;
 	}	
 	

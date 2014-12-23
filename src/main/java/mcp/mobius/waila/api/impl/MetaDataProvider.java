@@ -131,7 +131,7 @@ public class MetaDataProvider{
 			accessor.resetTimer();
 		
 			if (ModuleRegistrar.instance().hasNBTEntityProviders(accessor.getEntity()))
-				WailaPacketHandler.INSTANCE.sendToServer(new Message0x03EntRequest(accessor.getEntity()));			
+				WailaPacketHandler.INSTANCE.sendToServer(new Message0x03EntRequest(accessor.getEntity(), accessor.getMOP()));			
 			
 		} else if (accessor.getEntity() != null && !Waila.instance.serverPresent && accessor.isTimeElapsed(250)) {
 			

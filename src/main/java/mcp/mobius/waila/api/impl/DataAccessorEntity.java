@@ -60,7 +60,7 @@ public class DataAccessorEntity implements IWailaEntityAccessor {
 	}
 
 	@Override
-	public MovingObjectPosition getPosition() {
+	public MovingObjectPosition getMOP() {
 		return this.mop;
 	}
 

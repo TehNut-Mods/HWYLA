@@ -2,7 +2,9 @@ package mcp.mobius.waila.network;
 
 import java.util.HashSet;
 
+import mcp.mobius.waila.api.IWailaEntityAccessorServer;
 import mcp.mobius.waila.api.IWailaEntityProvider;
+import mcp.mobius.waila.api.impl.DataAccessorEntityServer;
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
 import mcp.mobius.waila.utils.AccessHelper;
 import mcp.mobius.waila.utils.NBTUtil;
@@ -12,6 +14,9 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -25,18 +30,30 @@ public class Message0x03EntRequest extends SimpleChannelInboundHandler<Message0x
 
 	public int dim;
 	public int id;
+	public double vecX;
+	public double vecY;
+	public double vecZ;
+	public EnumFacing sideHit;
 	
 	public Message0x03EntRequest(){}	
 	
-	public Message0x03EntRequest(Entity ent){
+	public Message0x03EntRequest(Entity ent, MovingObjectPosition mop){
 		this.dim  = ent.worldObj.provider.getDimensionId();
 		this.id   = ent.getEntityId();
+		this.vecX    = mop.hitVec.xCoord;
+		this.vecY    = mop.hitVec.yCoord;
+		this.vecZ    = mop.hitVec.zCoord;
+		this.sideHit = mop.sideHit;		
 	}	
 	
 	@Override
 	public void encodeInto(ChannelHandlerContext ctx, IWailaMessage msg, ByteBuf target) throws Exception {
 		target.writeInt(dim);
 		target.writeInt(id);
+		target.writeDouble(vecX);
+		target.writeDouble(vecY);
+		target.writeDouble(vecZ);
+		target.writeInt(sideHit.ordinal());		
 	}
 
 	@Override
@@ -45,6 +62,10 @@ public class Message0x03EntRequest extends SimpleChannelInboundHandler<Message0x
 			Message0x03EntRequest msg = (Message0x03EntRequest)rawmsg;
 			msg.dim  = dat.readInt();
 			msg.id   = dat.readInt();
+			msg.vecX    = dat.readDouble();
+			msg.vecY    = dat.readDouble();
+			msg.vecZ    = dat.readDouble();
+			msg.sideHit = EnumFacing.values()[dat.readInt()];			
 		}catch (Exception e){
 			WailaExceptionHandler.handleErr(e, this.getClass().toString(), null);
 		}		
@@ -58,17 +79,22 @@ public class Message0x03EntRequest extends SimpleChannelInboundHandler<Message0x
         
         if (entity != null){
         	try{
-        		NBTTagCompound tag = new NBTTagCompound();
         		
-        		EntityPlayerMP player = ((NetHandlerPlayServer) ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity;
+        		IWailaEntityAccessorServer accessor = new DataAccessorEntityServer(
+        				msg.dim,
+        				world,
+        				((NetHandlerPlayServer) ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity,
+        				new Vec3(msg.vecX, msg.vecY, msg.vecZ),
+        				msg.sideHit,
+        				entity        				
+        				);
+        		
+        		NBTTagCompound tag = new NBTTagCompound();
+
         		
         		if (ModuleRegistrar.instance().hasNBTEntityProviders(entity)){
         			for (IWailaEntityProvider provider : ModuleRegistrar.instance().getNBTEntityProviders(entity)){
-        				try{
-        					tag = provider.getNBTData(player, entity, tag, world);
-        				} catch (AbstractMethodError ame){
-        					tag = AccessHelper.getNBTData(provider, entity, tag);
-        				}        				
+        				tag = provider.getNBTData(entity, tag, accessor);
         			}
             		ctx.writeAndFlush(new Message0x04EntNBTData(tag)).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
         		}

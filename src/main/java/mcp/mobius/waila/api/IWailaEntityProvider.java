@@ -76,5 +76,5 @@ public interface IWailaEntityProvider {
 	 * @param world TileEntity's World.
 	 * @return Modified input NBTTagCompound tag.
 	 */
-	NBTTagCompound getNBTData(EntityPlayerMP player, Entity ent, NBTTagCompound tag, World world);	
+	NBTTagCompound getNBTData(Entity ent, NBTTagCompound tag, IWailaEntityAccessorServer accessor);	
 }

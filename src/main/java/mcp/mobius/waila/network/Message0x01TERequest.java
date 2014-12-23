@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import mcp.mobius.waila.api.IWailaDataAccessorServer;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.impl.DataAccessorBlockServer;
 import mcp.mobius.waila.api.impl.ModuleRegistrar;
@@ -113,7 +114,7 @@ public class Message0x01TERequest extends SimpleChannelInboundHandler<Message0x0
         if (entity != null){
         	
         	try{
-        		DataAccessorBlockServer accessor = new DataAccessorBlockServer(
+        		IWailaDataAccessorServer accessor = new DataAccessorBlockServer(
         				msg.dim, 
         				world, 
         				pos, 

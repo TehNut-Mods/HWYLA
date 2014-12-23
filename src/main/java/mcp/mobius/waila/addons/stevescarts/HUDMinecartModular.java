@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaEntityAccessorServer;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.utils.WailaExceptionHandler;
 import static mcp.mobius.waila.api.SpecialChars.*;
@@ -86,9 +87,9 @@ public class HUDMinecartModular implements IWailaEntityProvider {
 	}
 
 	@Override
-	public NBTTagCompound getNBTData(EntityPlayerMP player, Entity te, NBTTagCompound tag, World world) {
-		if (te != null)
-			te.writeToNBT(tag);
+	public NBTTagCompound getNBTData(Entity ent, NBTTagCompound tag, IWailaEntityAccessorServer accessor) {
+		if (ent != null)
+			ent.writeToNBT(tag);
 		return tag;
 	}	
 }

@@ -43,7 +43,7 @@ import mcp.mobius.waila.cbcore.LangUtil;
 import mcp.mobius.waila.client.KeyEvent;
 import mcp.mobius.waila.commands.CommandDumpHandlers;
 
-@Mod(modid="Waila", name="Waila", version="1.5.7", acceptableRemoteVersions="*")
+@Mod(modid="Waila", name="Waila", version="1.6.0_B1", acceptableRemoteVersions="*")
 /*
 @NetworkMod(channels = {"Waila"},clientSideRequired=false, serverSideRequired=false, connectionHandler = WailaConnectionHandler.class, 
 			packetHandler = WailaPacketHandler.class, versionBounds="[1.5.0,)")

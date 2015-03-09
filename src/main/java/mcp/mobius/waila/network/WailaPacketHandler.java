@@ -1,24 +1,23 @@
 package mcp.mobius.waila.network;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-
-import java.io.IOException;
-import java.util.EnumMap;
-
 import com.google.common.base.Charsets;
-
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTSizeTracker;
-import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.NBTSizeTracker;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetHandlerPlayServer;
+
+import java.io.IOException;
+import java.util.EnumMap;
 
 public enum WailaPacketHandler {
 	INSTANCE;
@@ -123,5 +122,9 @@ public enum WailaPacketHandler {
         int j = buffer.readShort();
         String s = new String(buffer.readBytes(j).array(), Charsets.UTF_8);
         return s;
-    }    
+    }
+
+    public static EntityPlayerMP getPlayer(ChannelHandlerContext ctx){
+        return ((NetHandlerPlayServer) ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()).playerEntity;
+    }
 }

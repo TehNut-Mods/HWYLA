@@ -49,17 +49,21 @@ public class DataAccessorCommon implements IWailaCommonAccessor, IWailaDataAcces
 		this.world      = _world;
 		this.player     = _player;
 		this.mop        = _mop;
-		
+
 		if (this.mop.typeOfHit == MovingObjectType.BLOCK){
-			this.block      = world.getBlockState(_mop.getBlockPos()).getBlock();
-			this.metadata   = world.getBlockState(_mop.getBlockPos()).getBlock().getMetaFromState(world.getBlockState(_mop.getBlockPos()));
-			this.tileEntity = world.getTileEntity(_mop.getBlockPos());
+			this.pos 		= _mop.getBlockPos();
+			this.state      = world.getBlockState(this.pos);
+			this.block      = this.state.getBlock();
+			this.metadata   = this.state.getBlock().getMetaFromState(this.state);
+			this.tileEntity = world.getTileEntity(this.pos);
 			this.entity     = null;
 			this.blockID       = Block.getIdFromBlock(this.block);
 			this.blockResource = String.valueOf(GameData.getBlockRegistry().getNameForObject(this.block));
 			try{ this.stack = new ItemStack(this.block, 1, this.metadata); } catch (Exception e) {}
 			
 		} else if (this.mop.typeOfHit == MovingObjectType.ENTITY){
+			this.pos        = new BlockPos(_mop.entityHit);
+			this.state      = null;
 			this.block      = null;
 			this.metadata   = -1;
 			this.tileEntity = null;
@@ -71,7 +75,7 @@ public class DataAccessorCommon implements IWailaCommonAccessor, IWailaDataAcces
 			double px = viewEntity.lastTickPosX + (viewEntity.posX - viewEntity.lastTickPosX) * partialTicks;
 			double py = viewEntity.lastTickPosY + (viewEntity.posY - viewEntity.lastTickPosY) * partialTicks;
 			double pz = viewEntity.lastTickPosZ + (viewEntity.posZ - viewEntity.lastTickPosZ) * partialTicks;
-			this.renderingvec = new Vec3(_mop.getBlockPos().getX() - px, _mop.getBlockPos().getY() - py, _mop.getBlockPos().getZ() - pz);
+			this.renderingvec = new Vec3(this.pos.getX() - px, this.pos.getY() - py, this.pos.getZ() - pz);
 			this.partialFrame = partialTicks;
 		}
 	}	

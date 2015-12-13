@@ -8,6 +8,8 @@ import mcp.mobius.waila.api.impl.ModuleRegistrar;
 import mcp.mobius.waila.cbcore.LangUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneOre;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -70,8 +72,11 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
 			return new ItemStack(Items.redstone);
 		}
 
-		if (block == doubleplant && (accessor.getMetadata() & 8) != 0) {
-			int meta = accessor.getMetadata();
+        if (block == doubleplant && (accessor.getMetadata() & 8) != 0) {
+            int x = accessor.getPosition().getX();
+            int y = accessor.getPosition().getY() - 1;
+            int z = accessor.getPosition().getZ();
+            int meta = doubleplant.getMetaFromState(accessor.getWorld().getBlockState(new BlockPos(x, y, z)));
             return new ItemStack(doubleplant, 1, meta);
         }
 		

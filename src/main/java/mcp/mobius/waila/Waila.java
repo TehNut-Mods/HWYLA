@@ -28,7 +28,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 
-@Mod(modid="Waila", name="Waila", version="1.5.11", dependencies="after:NotEnoughItems@[1.0.5.0,)", acceptableRemoteVersions="*")
+@Mod(modid="Waila", name="Waila", version="1.6.0", dependencies="after:NotEnoughItems@[1.0.5.0,)", acceptableRemoteVersions="*")
 /*
 @NetworkMod(channels = {"Waila"},clientSideRequired=false, serverSideRequired=false, connectionHandler = WailaConnectionHandler.class, 
 			packetHandler = WailaPacketHandler.class, versionBounds="[1.5.0,)")

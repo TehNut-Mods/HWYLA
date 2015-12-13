@@ -32,24 +32,25 @@ public class HandlerEnchants implements IContainerInputHandler {
 	@Override
 	public boolean lastKeyTyped(GuiContainer guiContainer, char keyChar, int keyID) {
 		GuiContainerManager.getManager();
-		ItemStack stackover = GuiContainerManager.getStackMouseOver(guiContainer);
-		if (stackover == null)
+		ItemStack stackMouseOver = GuiContainerManager.getStackMouseOver(guiContainer);
+		if (stackMouseOver == null) {
 			return false;
+		}
 
 		if (keyID == NEIClientConfig.getKeyBinding(Constants.BIND_SCREEN_ENCH)) {
-			int itemEnchantability = stackover.getItem().getItemEnchantability();
+			int itemEnchantability = stackMouseOver.getItem().getItemEnchantability();
 			if (itemEnchantability == 0) {
 				return false;
 			}
 
 			Minecraft mc = Minecraft.getMinecraft();
 			ScreenEnchants screen = new ScreenEnchants(mc.currentScreen);
-			screen.setStack(stackover);
-			screen.setName(stackover.getDisplayName());
+			screen.setStack(stackMouseOver);
+			screen.setName(stackMouseOver.getDisplayName());
 			screen.setEnchantability(String.valueOf(itemEnchantability));
 
-			Enchantment[] enchants = null;
-			if (stackover.getItem() == Items.book)
+			Enchantment[] enchants;
+			if (stackMouseOver.getItem() == Items.book)
 				enchants = Enchantment.enchantmentsBookList;
 			else
 				enchants = Enchantment.enchantmentsBookList;
@@ -62,21 +63,36 @@ public class HandlerEnchants implements IContainerInputHandler {
 				if (enchant == null) {
 					continue;
 				}
-				if (enchant.canApplyAtEnchantingTable(stackover) || stackover.getItem() == Items.book) {
+				if (enchant.canApplyAtEnchantingTable(stackMouseOver) || stackMouseOver.getItem() == Items.book) {
 
-					if (stackover.isItemEnchanted()) {
-						Map stackenchants = EnchantmentHelper.getEnchantments(stackover);
-						for (Object id : stackenchants.keySet()) {
+					if (stackMouseOver.isItemEnchanted()) {
+						Map stackEnchants = EnchantmentHelper.getEnchantments(stackMouseOver);
+						for (Object id : stackEnchants.keySet()) {
 							if (!enchant.canApplyTogether(Enchantment.getEnchantmentById((Integer) id)))
 								isCompatible = false;
 							if ((Integer) id == enchant.effectId) {
 								isApplied = true;
-								level = (Integer) stackenchants.get(id);
+								level = (Integer) stackEnchants.get(id);
 							}
 						}
 					}
-
 					for (int lvl = enchant.getMinLevel(); lvl <= enchant.getMaxLevel(); lvl++) {
+						int minEnchantEnchantability = enchant.getMinEnchantability(lvl);
+						int maxEnchantEnchantability = enchant.getMaxEnchantability(lvl);
+
+						int minItemEnchantability = 1;
+						int meanItemEnchantability = 1 + itemEnchantability / 4;
+						int maxItemEnchantability = 1 + itemEnchantability / 2;
+
+						int minModifiedEnchantability = (int) (0.85 * minItemEnchantability + 0.5);
+						int meanModifiedEnchantability = (int) (1.00 * meanItemEnchantability + 0.5);
+						int maxModifiedEnchantability = (int) (1.15 * maxItemEnchantability + 0.5);
+
+						int minLevel = (int) ((minEnchantEnchantability - minModifiedEnchantability) / 1.15);
+						int maxLevel = (int) ((maxEnchantEnchantability - maxModifiedEnchantability) / 0.85);
+
+						int meanMinLevel = (int) ((minEnchantEnchantability - meanModifiedEnchantability) / 1.0);
+						int meanMaxLevel = (int) ((maxEnchantEnchantability - meanModifiedEnchantability) / 1.0);
 
 						String colorcode = isCompatible ? "\u00a7f" : "\u00a7c";
 
@@ -84,13 +100,13 @@ public class HandlerEnchants implements IContainerInputHandler {
 							colorcode = "\u00a7e";
 
 						String enchantModName = getEnchantModName(enchant);
-						if (enchantModName == null) {
+						if (enchantModName == "Forge") {
 							enchantModName = "Minecraft";
 						}
 
 						screen.addRow(colorcode + enchant.getTranslatedName(lvl),
-								colorcode + String.valueOf(enchant.getMinLevel()),
-								colorcode + String.valueOf(enchant.getMaxLevel()),
+								colorcode + String.valueOf(minLevel),
+								colorcode + String.valueOf(maxLevel),
 								colorcode + String.valueOf(enchant.getWeight()),
 								"\u00a79\u00a7o" + enchantModName);
 					}
@@ -101,17 +117,15 @@ public class HandlerEnchants implements IContainerInputHandler {
 		return false;
 	}
 
-	public String getEnchantModName(Enchantment enchant){
+	public String getEnchantModName(Enchantment enchant) {
 		String enchantPath = enchant.getClass().getProtectionDomain().getCodeSource().getLocation().toString();
 
-		Waila.log.log(Level.DEBUG, enchantPath);
-
 		String enchantModName = "<Unknown>";
-		for (String s: ModIdentification.modSource_ID.keySet())
-			if (enchantPath.toLowerCase(Locale.US).contains(s.toLowerCase(Locale.US)))
-				return enchantModName = ModIdentification.modSource_ID.get(s);
-
-		return null;
+		for (String s : ModIdentification.modSource_ID.keySet())
+			if (enchantPath.toLowerCase(Locale.US).contains(s.toLowerCase(Locale.US))) {
+				enchantModName = ModIdentification.modSource_ID.get(s);
+			}
+		return enchantModName;
 	}
 
 	@Override

@@ -35,7 +35,7 @@ apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 
-version = "1.5.11-RC3_1.8"
+version = "1.6.0-B2_1.8"
 group= "mcp.mobius.waila" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Waila"
 

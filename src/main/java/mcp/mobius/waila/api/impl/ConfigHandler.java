@@ -162,6 +162,7 @@ public class ConfigHandler implements IWailaConfigHandler {
 
 
         VanillaTooltipHandler.namePrefix = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NAMEPREFIX, StringEscapeUtils.escapeJava("\u00a79\u00a7o")).getString());
+        VanillaTooltipHandler.nameSuffix = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NAMESUFFIX, StringEscapeUtils.escapeJava("\u00a7r")).getString());
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();
         HUDHandlerEntities.maxhpfortext = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MAXHP, 40).getInt();

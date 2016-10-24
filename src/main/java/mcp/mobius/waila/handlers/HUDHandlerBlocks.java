@@ -84,7 +84,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
 
         String modName = ModIdentification.nameFromStack(itemStack);
         if (!Strings.isNullOrEmpty(modName))
-            currenttip.add(VanillaTooltipHandler.namePrefix + modName);
+            currenttip.add(VanillaTooltipHandler.namePrefix + modName + VanillaTooltipHandler.nameSuffix);
 
         return currenttip;
     }

@@ -161,8 +161,7 @@ public class ConfigHandler implements IWailaConfigHandler {
         OverlayConfig.scale = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_SCALE, 100).getInt() / 100.0f;
 
 
-        config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NAMEPREFIX, StringEscapeUtils.escapeJava("\u00a79\u00a7o")).getString();
-        VanillaTooltipHandler.namePrefix = String.valueOf(StringEscapeUtils.UNESCAPE_JAVA);
+        VanillaTooltipHandler.namePrefix = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NAMEPREFIX, StringEscapeUtils.escapeJava("\u00a79\u00a7o")).getString());
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();
         HUDHandlerEntities.maxhpfortext = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MAXHP, 40).getInt();

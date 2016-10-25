@@ -8,14 +8,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class VanillaTooltipHandler {
-    public static String namePrefix = "\u00a79\u00a7o";
-    public static String nameSuffix = "\u00a7r";
+    public static String modNameWrapper = "\u00a79\u00a7o%s";
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void tooltipEvent(ItemTooltipEvent event) {
         String canonicalName = ModIdentification.nameFromStack(event.getItemStack());
         if (!Strings.isNullOrEmpty(canonicalName))
-            event.getToolTip().add(namePrefix + canonicalName + nameSuffix);
+            String.format(VanillaTooltipHandler.modNameWrapper, canonicalName);
+            event.getToolTip().add(modNameWrapper);
+
     }
 }

@@ -62,9 +62,9 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
         try {
-            currenttip.add(VanillaTooltipHandler.namePrefix + getEntityMod(entity) + VanillaTooltipHandler.nameSuffix);
+            currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, getEntityMod(entity)));
         } catch (Exception e) {
-            currenttip.add(VanillaTooltipHandler.namePrefix + "Unknown" + VanillaTooltipHandler.nameSuffix);
+            currenttip.add("Unknown");
         }
         return currenttip;
     }

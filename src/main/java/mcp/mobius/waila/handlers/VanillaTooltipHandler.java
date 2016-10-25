@@ -15,8 +15,8 @@ public class VanillaTooltipHandler {
     public void tooltipEvent(ItemTooltipEvent event) {
         String canonicalName = ModIdentification.nameFromStack(event.getItemStack());
         if (!Strings.isNullOrEmpty(canonicalName))
-            String.format(VanillaTooltipHandler.modNameWrapper, canonicalName);
-            event.getToolTip().add(modNameWrapper);
+
+            event.getToolTip().add(String.format(VanillaTooltipHandler.modNameWrapper, canonicalName));
 
     }
 }

@@ -56,8 +56,19 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
         if (currenttip.size() == 0)
             currenttip.add("< Unnamed >");
         else {
+
+            String metaMetaData = String.format(
+
+                    VanillaTooltipHandler.metaDataThroughput,
+                    accessor.getBlock().getRegistryName().toString(),
+                    accessor.getMetadata()
+
+            );
+
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-                currenttip.add(String.format(VanillaTooltipHandler.metaDataThroughput,accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
+
+                currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, metaMetaData));
+
         }
         return currenttip;
     }

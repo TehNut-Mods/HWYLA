@@ -15,7 +15,7 @@ public class VanillaTooltipHandler {
     public static String metaDataThroughput = "%s:%d";
     public static String metaDataWrapper = String.format("\u00a77[%s]", metaDataThroughput);
 
-    public static String modNameWrapper = "\u00a79\u00a7o%s";
+    public static String modNameWrapper = "\u00A7o\u00A79%s";
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)

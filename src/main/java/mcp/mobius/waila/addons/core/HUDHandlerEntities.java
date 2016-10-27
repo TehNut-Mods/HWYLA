@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -50,7 +51,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
                 if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext) {
                     currenttip.add(
                             String.format(
-                                    "Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
+                                    I18n.translateToLocal("hud.msg.health") + ": " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
                                     ((EntityLivingBase) entity).getHealth(),
                                     ((EntityLivingBase) entity).getMaxHealth()
                             )

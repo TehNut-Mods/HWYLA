@@ -3,7 +3,7 @@
 **Here's What You're Looking At** (Pronounced "Hwhy-la", similar to "Coo-Hwhip")
 
 A fork of [WAILA](https://minecraft.curseforge.com/projects/waila) by [ProfMobius](https://minecraft.curseforge.com/members/ProfMobius).
-This fork is permitted under the [CC BY-NC-SA 4.0](https://github.com/TehNut/Waila-Reborn/blob/1.10/LICENSE.md) license.
+This fork is permitted under the [CC BY-NC-SA 4.0](https://github.com/TehNut/HWYLA/blob/1.10/LICENSE.md) license.
 
 I intend to update this fork quickly and often.
 

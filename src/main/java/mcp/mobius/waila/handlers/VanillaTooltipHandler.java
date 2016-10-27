@@ -23,11 +23,17 @@ public class VanillaTooltipHandler {
 
         String canonicalName = ModIdentification.nameFromStack(event.getItemStack());
 
-        if (!Strings.isNullOrEmpty(modNameWrapper))
+        if (!Strings.isNullOrEmpty(modNameWrapper)) {
 
-            if (!Strings.isNullOrEmpty(canonicalName))
-            event.getToolTip().add(String.format(modNameWrapper, canonicalName));
+            if (!Strings.isNullOrEmpty(canonicalName)) {
+
+                event.getToolTip().add(String.format(modNameWrapper, canonicalName));
+
+            }
+
+        }
 
     }
+
 }
 

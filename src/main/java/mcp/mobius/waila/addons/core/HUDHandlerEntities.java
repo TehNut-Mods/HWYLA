@@ -32,67 +32,75 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 
     @Override
     public List<String> getWailaHead(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
+
         try {
+
             currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, entity.getName()));
+
         } catch (Exception e) {
+
             currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, "Unknown"));
+
         }
+
         return currenttip;
+
     }
 
     @Override
     public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
-        if (!config.getConfig("general.showhp")) return currenttip;
 
-        if (entity instanceof EntityLivingBase) {
-            String hptip = "";
+        if (config.getConfig("general.showhp") && entity instanceof EntityLivingBase) {
 
-            nhearts = nhearts <= 0 ? 20 : nhearts;
+                //String hptip = "";
 
-            float health = ((EntityLivingBase) entity).getHealth() / 2.0f;
-            float maxhp = ((EntityLivingBase) entity).getMaxHealth() / 2.0f;
+                nhearts = nhearts <= 0 ? 20 : nhearts;
 
-            if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext) {
+                float health = ((EntityLivingBase) entity).getHealth() / 2.0f;
+                float maxhp = ((EntityLivingBase) entity).getMaxHealth() / 2.0f;
 
-                currenttip.add(
+                if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext) {
 
-                        String.format(
+                    currenttip.add(
 
-                                "Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
-                                ((EntityLivingBase) entity).getHealth(),
-                                ((EntityLivingBase) entity).getMaxHealth()
+                            String.format(
 
-                        )
+                                    "Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
+                                    ((EntityLivingBase) entity).getHealth(),
+                                    ((EntityLivingBase) entity).getMaxHealth()
 
-                );
+                            )
 
-            }
-            else {
+                    );
 
-                currenttip.add(
+                } else {
 
-                        getRenderString(
+                    currenttip.add(
 
-                                "waila.health",
-                                String.valueOf(nhearts),
-                                String.valueOf(health),
-                                String.valueOf(maxhp)
+                            getRenderString(
 
-                        )
+                                    "waila.health",
+                                    String.valueOf(nhearts),
+                                    String.valueOf(health),
+                                    String.valueOf(maxhp)
 
-                );
+                            )
 
-                if (Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
+                    );
+
+                /*if (Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
 
                     currenttip.add(" ");
+
+                }*/
 
                 }
 
             }
-        }
 
-        return currenttip;
-    }
+            return currenttip;
+
+        }
 
     @Override
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
@@ -121,14 +129,22 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
     }
 
     private static String getEntityMod(Entity entity) {
+
         String modName = "";
+
         try {
+
             EntityRegistration er = EntityRegistry.instance().lookupModSpawn(entity.getClass(), true);
             ModContainer modC = er.getContainer();
             modName = modC.getName();
+
         } catch (NullPointerException e) {
+
             modName = "Minecraft";
         }
+
         return modName;
+
     }
+
 }

@@ -53,7 +53,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
             currenttip.add("< Unnamed >");
         else {
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-                currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
+                currenttip.add(String.format(VanillaTooltipHandler.metaDataThroughput, accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
         }
         return currenttip;
     }

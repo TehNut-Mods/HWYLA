@@ -12,7 +12,8 @@ public class VanillaTooltipHandler {
     public static String blockNameWrapper = "\u00a7r\u00a7f%s";
     public static String entityNameWrapper = "\u00a7r\u00a7f%s";
 
-    public static String metaDataWrapper = "\u00a77[%s:%d]";
+    public static String metaDataThroughput = "%s:%d";
+    public static String metaDataWrapper = String.format("\u00a77[%s]", metaDataThroughput);
 
     public static String modNameWrapper = "\u00a79\u00a7o%s";
 

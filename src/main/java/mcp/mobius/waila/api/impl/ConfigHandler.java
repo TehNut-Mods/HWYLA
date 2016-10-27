@@ -163,7 +163,7 @@ public class ConfigHandler implements IWailaConfigHandler {
         VanillaTooltipHandler.modNameWrapper = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MODNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00A7e%s")).getString());
         VanillaTooltipHandler.blockNameWrapper = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
         VanillaTooltipHandler.entityNameWrapper = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
-        VanillaTooltipHandler.metaDataWrapper = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, StringEscapeUtils.escapeJava("\u00a77[%s:%d]")).getString());
+        VanillaTooltipHandler.metaDataWrapper = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, StringEscapeUtils.escapeJava("\u00a77[%s]")).getString());
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();
         HUDHandlerEntities.maxhpfortext = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MAXHP, 40).getInt();

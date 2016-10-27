@@ -26,8 +26,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
-import static mcp.mobius.waila.api.SpecialChars.LPURPLE;
-
 public class HUDHandlerFluids implements IWailaDataProvider {
 
     static final IWailaDataProvider INSTANCE = new HUDHandlerFluids();
@@ -42,7 +40,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
         Pair<Fluid, Boolean> fluidPair = getFluidFromBlock(accessor.getBlockState());
         String name = null;
         try {
-            String s = String.format(VanillaTooltipHandler.objectNameWrapper, fluidPair.getLeft().getLocalizedName(new FluidStack(fluidPair.getLeft(), 1000)));
+            String s = String.format(VanillaTooltipHandler.blockNameWrapper, fluidPair.getLeft().getLocalizedName(new FluidStack(fluidPair.getLeft(), 1000)));
             if (s != null && !s.endsWith("Unnamed"))
                 name = s;
 
@@ -55,7 +53,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
             currenttip.add("< Unnamed >");
         else {
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-                currenttip.add(String.format(LPURPLE + "%s:%d", accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
+                currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
         }
         return currenttip;
     }

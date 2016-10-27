@@ -20,8 +20,6 @@ import net.minecraftforge.common.config.Configuration;
 
 import java.util.List;
 
-import static mcp.mobius.waila.api.SpecialChars.*;
-
 public class HUDHandlerBlocks implements IWailaDataProvider {
 
     static final IWailaDataProvider INSTANCE = new HUDHandlerBlocks();
@@ -59,7 +57,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
             currenttip.add("< Unnamed >");
         else {
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-                currenttip.add(String.format(LPURPLE + "%s:%d", accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
+                currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper,accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
         }
         return currenttip;
     }

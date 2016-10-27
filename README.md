@@ -1,6 +1,6 @@
-# Here's What You're Looking At [![Build Status](http://tehnut.info/jenkins/buildStatus/icon?job=HWYLA/1.10)](http://tehnut.info/jenkins/job/HWYLA/job/1.10/) [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-blue.svg)](https://tldrlegal.com/license/creative-commons-attribution-noncommercial-sharealike-4.0-international-(cc-by-nc-sa-4.0))
+# HWYLA [![Build Status](http://tehnut.info/jenkins/buildStatus/icon?job=HWYLA/1.10)](http://tehnut.info/jenkins/job/HWYLA/job/1.10/) [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-blue.svg)](https://tldrlegal.com/license/creative-commons-attribution-noncommercial-sharealike-4.0-international-(cc-by-nc-sa-4.0))
 
-**HWYLA** (Pronounced "Hwhy-la", similar to "Coo-Hwhip")
+**Here's What You're Looking At** (Pronounced "Hwhy-la", similar to "Coo-Hwhip")
 
 A fork of [WAILA](https://minecraft.curseforge.com/projects/waila) by [ProfMobius](https://minecraft.curseforge.com/members/ProfMobius).
 This fork is permitted under the [CC BY-NC-SA 4.0](https://github.com/TehNut/HWYLA/blob/1.10/LICENSE.md) license.

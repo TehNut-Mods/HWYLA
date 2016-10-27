@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class VanillaTooltipHandler {
 
     public static String blockNameWrapper = "\u00a7r\u00a7f%s";
+    public static String fluidNameWrapper = "\u00a7r\u00a7f%s";
     public static String entityNameWrapper = "\u00a7r\u00a7f%s";
 
     public static String metaDataThroughput = "%s:%d";

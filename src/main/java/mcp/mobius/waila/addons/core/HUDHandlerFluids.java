@@ -40,7 +40,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
         Pair<Fluid, Boolean> fluidPair = getFluidFromBlock(accessor.getBlockState());
         String name = null;
         try {
-            String s = String.format(VanillaTooltipHandler.blockNameWrapper, fluidPair.getLeft().getLocalizedName(new FluidStack(fluidPair.getLeft(), 1000)));
+            String s = String.format(VanillaTooltipHandler.fluidNameWrapper, fluidPair.getLeft().getLocalizedName(new FluidStack(fluidPair.getLeft(), 1000)));
             if (s != null && !s.endsWith("Unnamed"))
                 name = s;
 

@@ -19,6 +19,7 @@ public final class Constants {
     public static String CFG_WAILA_SHOW = "waila.cfg.show";
     public static String CFG_WAILA_MODNAMEWRAPPER = "waila.cfg.modnamewrapper";
     public static String CFG_WAILA_BLOCKNAMEWRAPPER = "waila.cfg.blocknamewrapper";
+    public static String CFG_WAILA_FLUIDNAMEWRAPPER = "waila.cfg.fluidnamewrapper";
     public static String CFG_WAILA_ENTITYNAMEWRAPPER = "waila.cfg.entitynamewrapper";
     public static String CFG_WAILA_METADATAWRAPPER = "waila.cfg.metadatawrapper";
     public static String CFG_WAILA_MODE = "waila.cfg.showmode";

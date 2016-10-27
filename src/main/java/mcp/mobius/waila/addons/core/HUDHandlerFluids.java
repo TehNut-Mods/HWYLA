@@ -26,7 +26,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
-import static mcp.mobius.waila.api.SpecialChars.ITALIC;
+import static mcp.mobius.waila.api.SpecialChars.LPURPLE;
 
 public class HUDHandlerFluids implements IWailaDataProvider {
 
@@ -55,7 +55,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
             currenttip.add("< Unnamed >");
         else {
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-                currenttip.add(String.format(ITALIC + "[%s:%d]", accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
+                currenttip.add(String.format(LPURPLE + "%s:%d", accessor.getBlock().getRegistryName().toString(), accessor.getMetadata()));
         }
         return currenttip;
     }

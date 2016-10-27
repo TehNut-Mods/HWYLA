@@ -57,12 +57,14 @@ public class HUDHandlerFluids implements IWailaDataProvider {
                     accessor.getMetadata()
             );
 
-            if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
+            if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true) && !Strings.isNullOrEmpty(VanillaTooltipHandler.metaDataWrapper)) {
                 currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, metaMetaData));
+                }
         }
 
         return currenttip;
     }
+
 
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {return null;}

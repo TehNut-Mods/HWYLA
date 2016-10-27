@@ -65,7 +65,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
                                     String.valueOf(maxhp)
                             )
                     );
-                    // Putting a cheap bandage on this until I figure it out.
+                    // Putting a cheat bandage on this until I figure it out.
                 if (Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
                     currenttip.add(" ");
                 }

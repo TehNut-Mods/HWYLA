@@ -79,8 +79,11 @@ public class HUDHandlerFluids implements IWailaDataProvider {
         Pair<Fluid, Boolean> fluidPair = getFluidFromBlock(accessor.getBlockState());
         String modName = ModIdentification.findModContainer(FluidRegistry.getDefaultFluidName(fluidPair.getLeft()).split(":")[0]).getName();
 
-        if (!Strings.isNullOrEmpty(modName))
-            currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, modName));
+        if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
+
+        currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, modName));
+
+        }
 
         return currenttip;
     }

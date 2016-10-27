@@ -1,5 +1,6 @@
 package mcp.mobius.waila.addons.core;
 
+import com.google.common.base.Strings;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
@@ -51,11 +52,28 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
             float health = ((EntityLivingBase) entity).getHealth() / 2.0f;
             float maxhp = ((EntityLivingBase) entity).getMaxHealth() / 2.0f;
 
-            if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext)
-                currenttip.add(String.format("Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f", ((EntityLivingBase) entity).getHealth(), ((EntityLivingBase) entity).getMaxHealth()));
+            if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext) {
 
+                currenttip.add(
+
+                        String.format(
+
+                                "Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
+                                ((EntityLivingBase) entity).getHealth(),
+                                ((EntityLivingBase) entity).getMaxHealth()
+
+                        )
+                );
+
+            }
             else {
+
                 currenttip.add(getRenderString("waila.health", String.valueOf(nhearts), String.valueOf(health), String.valueOf(maxhp)));
+
+                /*if (Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
+                    currenttip.add(" ");
+                }*/
+
             }
         }
 
@@ -64,12 +82,23 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 
     @Override
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
-        try {
-            currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, getEntityMod(entity)));
-        } catch (Exception e) {
-            currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, "Unknown"));
+
+        if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
+
+            try {
+
+                currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, getEntityMod(entity)));
+
+            } catch (Exception e) {
+
+                currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, "Unknown"));
+
+            }
+
         }
+
         return currenttip;
+
     }
 
     @Override

@@ -49,56 +49,43 @@ public class HUDHandlerFluids implements IWailaDataProvider {
         } catch (Exception e) {
         }
 
-        if (currenttip.size() == 0)
-            currenttip.add("< Unnamed >");
+        if (currenttip.size() == 0) currenttip.add("< Unnamed >");
         else {
-
             String metaMetaData = String.format(
-
                     VanillaTooltipHandler.metaDataThroughput,
                     accessor.getBlock().getRegistryName().toString(),
                     accessor.getMetadata()
-
             );
 
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-
                 currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, metaMetaData));
-
         }
+
         return currenttip;
     }
 
     @Override
-    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        return null;
-    }
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {return null;}
 
     @Override
     public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         Pair<Fluid, Boolean> fluidPair = getFluidFromBlock(accessor.getBlockState());
         String modName = ModIdentification.findModContainer(FluidRegistry.getDefaultFluidName(fluidPair.getLeft()).split(":")[0]).getName();
-
         if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper) && !Strings.isNullOrEmpty(modName)) {
-
-        currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, modName));
-
+            currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, modName));
         }
 
         return currenttip;
     }
 
     @Override
-    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
-        return null;
-    }
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {return null;}
 
     private static ItemStack getStackFromLiquid(IBlockState state) {
         Pair<Fluid, Boolean> fluidPair = getFluidFromBlock(state);
         Fluid fluid = fluidPair.getLeft();
         boolean vanilla = fluidPair.getRight();
         ItemStack ret = null;
-
         if (fluid != null) {
             if (FluidRegistry.isUniversalBucketEnabled())
                 ret = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, fluid);
@@ -107,6 +94,7 @@ public class HUDHandlerFluids implements IWailaDataProvider {
             else
                 ret = FluidContainerRegistry.fillFluidContainer(new FluidStack(fluid, 1000), new ItemStack(Items.BUCKET));
         }
+
         return ret != null ? ret : null;
     }
 
@@ -117,8 +105,8 @@ public class HUDHandlerFluids implements IWailaDataProvider {
             Block fluidBlock = BlockLiquid.getStaticBlock(state.getMaterial());
             fluid = fluidBlock == Blocks.WATER ? FluidRegistry.WATER : FluidRegistry.LAVA;
             vanilla = true;
-        } else if (state.getBlock() instanceof IFluidBlock) fluid = ((IFluidBlock) state.getBlock()).getFluid();
-
+        }
+        else if (state.getBlock() instanceof IFluidBlock) fluid = ((IFluidBlock) state.getBlock()).getFluid();
 
         return Pair.of(fluid, vanilla);
     }

@@ -32,119 +32,70 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
 
     @Override
     public List<String> getWailaHead(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
-
-        try {
-
-            currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, entity.getName()));
-
-        } catch (Exception e) {
-
-            currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, "Unknown"));
-
-        }
+        try {currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, entity.getName()));}
+        catch (Exception e) {currenttip.add(String.format(VanillaTooltipHandler.entityNameWrapper, "Unknown"));}
 
         return currenttip;
-
     }
 
     @Override
     public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
-
         if (config.getConfig("general.showhp") && entity instanceof EntityLivingBase) {
-
-                //String hptip = "";
-
                 nhearts = nhearts <= 0 ? 20 : nhearts;
-
                 float health = ((EntityLivingBase) entity).getHealth() / 2.0f;
                 float maxhp = ((EntityLivingBase) entity).getMaxHealth() / 2.0f;
 
                 if (((EntityLivingBase) entity).getMaxHealth() > maxhpfortext) {
-
                     currenttip.add(
-
                             String.format(
-
                                     "Health : " + WHITE + "%.0f" + GRAY + " / " + WHITE + "%.0f",
                                     ((EntityLivingBase) entity).getHealth(),
                                     ((EntityLivingBase) entity).getMaxHealth()
-
                             )
-
                     );
 
                 } else {
-
                     currenttip.add(
-
                             getRenderString(
-
                                     "waila.health",
                                     String.valueOf(nhearts),
                                     String.valueOf(health),
                                     String.valueOf(maxhp)
-
                             )
-
                     );
-
                 /*if (Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
-
                     currenttip.add(" ");
-
                 }*/
-
                 }
-
             }
 
             return currenttip;
-
         }
 
     @Override
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
-
         if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper) && !Strings.isNullOrEmpty(getEntityMod(entity))) {
-
-            try {
-
-                currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, getEntityMod(entity)));
-
-            } catch (Exception e) {
-
-                currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, "Unknown"));
-
-            }
-
+            try {currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, getEntityMod(entity)));}
+            catch (Exception e) {currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, "Unknown"));}
         }
 
         return currenttip;
-
     }
 
     @Override
     public NBTTagCompound getNBTData(EntityPlayerMP player, Entity te, NBTTagCompound tag, World world) {
         return tag;
     }
-
     private static String getEntityMod(Entity entity) {
 
         String modName = "";
-
         try {
-
             EntityRegistration er = EntityRegistry.instance().lookupModSpawn(entity.getClass(), true);
             ModContainer modC = er.getContainer();
             modName = modC.getName();
-
-        } catch (NullPointerException e) {
-
-            modName = "Minecraft";
         }
+        catch (NullPointerException e) {modName = "Minecraft";}
 
         return modName;
-
     }
-
 }

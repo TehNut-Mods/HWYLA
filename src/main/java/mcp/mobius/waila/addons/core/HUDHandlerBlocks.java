@@ -39,11 +39,9 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
             String s = DisplayUtil.itemDisplayNameShort(itemStack);
             if (s != null && !s.endsWith("Unnamed"))
                 name = s;
-
             if (name != null)
                 currenttip.add(name);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
 
         if (itemStack.getItem() == Items.REDSTONE) {
             int md = accessor.getMetadata();
@@ -52,24 +50,19 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
                 s = " " + s;
             currenttip.set(currenttip.size() - 1, name + " " + s);
         }
-
         if (currenttip.size() == 0)
             currenttip.add("< Unnamed >");
         else {
-
             String metaMetaData = String.format(
-
                     VanillaTooltipHandler.metaDataThroughput,
                     accessor.getBlock().getRegistryName().toString(),
                     accessor.getMetadata()
-
             );
 
             if (ConfigHandler.instance().getConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATA, true))
-
                 currenttip.add(String.format(VanillaTooltipHandler.metaDataWrapper, metaMetaData));
-
         }
+
         return currenttip;
     }
 
@@ -82,13 +75,9 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
     public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         if (accessor.getBlockState().getMaterial().isLiquid())
             return currenttip;
-
         String modName = ModIdentification.nameFromStack(itemStack);
-
         if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
-
             currenttip.add(String.format(VanillaTooltipHandler.modNameWrapper, modName));
-
         }
 
         return currenttip;

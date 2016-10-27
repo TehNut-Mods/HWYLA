@@ -83,7 +83,7 @@ public class HUDHandlerEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
-        if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper)) {
+        if (!Strings.isNullOrEmpty(VanillaTooltipHandler.modNameWrapper) && !Strings.isNullOrEmpty(getEntityMod(entity))) {
 
             try {
 

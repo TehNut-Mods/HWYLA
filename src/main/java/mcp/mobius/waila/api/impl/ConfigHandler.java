@@ -1,9 +1,8 @@
 package mcp.mobius.waila.api.impl;
 
 import mcp.mobius.waila.Waila;
-import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.addons.core.HUDHandlerEntities;
-import mcp.mobius.waila.handlers.VanillaTooltipHandler;
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.overlay.FormattingConfig;
 import mcp.mobius.waila.overlay.OverlayConfig;
 import mcp.mobius.waila.utils.Constants;
@@ -170,7 +169,7 @@ public class ConfigHandler implements IWailaConfigHandler {
         FormattingConfig.blockFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
         FormattingConfig.fluidFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
         FormattingConfig.entityFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
-        FormattingConfig.metaFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, StringEscapeUtils.escapeJava("\u00a77[%s]")).getString());
+        FormattingConfig.metaFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, StringEscapeUtils.escapeJava("\u00a77[%s@%d]")).getString());
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();
         HUDHandlerEntities.maxhpfortext = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MAXHP, 40).getInt();

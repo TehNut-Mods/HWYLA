@@ -165,7 +165,8 @@ public class DisplayUtil {
 
     public static String itemDisplayNameShort(ItemStack itemstack) {
         List<String> list = itemDisplayNameMultiline(itemstack);
-        return String.format(FormattingConfig.blockFormat, list.get(0));
+        String formatResetBlock = "\u00a7r%s";
+        return (String.format(formatResetBlock,String.format(FormattingConfig.blockFormat, list.get(0))));
     }
 
     public static void renderIcon(int x, int y, int sx, int sy, IconUI icon) {

@@ -130,27 +130,27 @@ public class ScreenFormatConfig extends GuiScreen {
         ConfigHandler config = ConfigHandler.instance();
 
         if (nameFormat.getText().contains("%s")) {
-            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MODNAMEWRAPPER, nameFormat.getText());
+            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MODNAMEFORMAT, nameFormat.getText());
             FormattingConfig.modNameFormat = StringEscapeUtils.unescapeJava(nameFormat.getText());
         }
 
         if (blockFormat.getText().contains("%s")) {
-            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEWRAPPER, blockFormat.getText());
+            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEFORMAT, blockFormat.getText());
             FormattingConfig.blockFormat = StringEscapeUtils.unescapeJava(blockFormat.getText());
         }
 
         if (fluidFormat.getText().contains("%s")) {
-            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEWRAPPER, fluidFormat.getText());
+            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEFORMAT, fluidFormat.getText());
             FormattingConfig.fluidFormat = StringEscapeUtils.unescapeJava(fluidFormat.getText());
         }
 
         if (entityFormat.getText().contains("%s")) {
-            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEWRAPPER, entityFormat.getText());
+            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEFORMAT, entityFormat.getText());
             FormattingConfig.entityFormat = StringEscapeUtils.unescapeJava(entityFormat.getText());
         }
 
         if (metaFormat.getText().contains("%s") && metaFormat.getText().contains("%d")) {
-            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, metaFormat.getText());
+            config.setConfig(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAFORMAT, metaFormat.getText());
             FormattingConfig.metaFormat = StringEscapeUtils.unescapeJava(metaFormat.getText());
         }
     }

@@ -166,9 +166,9 @@ public class ConfigHandler implements IWailaConfigHandler {
         OverlayConfig.updateColors();
 
         FormattingConfig.modNameFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MODNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00A79\u00A7o%s")).getString());
-        FormattingConfig.blockFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
-        FormattingConfig.fluidFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
-        FormattingConfig.entityFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7r\u00a7f%s")).getString());
+        FormattingConfig.blockFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_BLOCKNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7f%s")).getString());
+        FormattingConfig.fluidFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7f%s")).getString());
+        FormattingConfig.entityFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEWRAPPER, StringEscapeUtils.escapeJava("\u00a7f%s")).getString());
         FormattingConfig.metaFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAWRAPPER, StringEscapeUtils.escapeJava("\u00a77[%s@%d]")).getString());
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();

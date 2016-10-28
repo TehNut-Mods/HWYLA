@@ -40,7 +40,7 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
             if (s != null && !s.endsWith("Unnamed"))
                 name = s;
             if (name != null)
-                currenttip.add(name);
+                currenttip.add("\u00A7r" + String.format(FormattingConfig.blockFormat, name));
         } catch (Exception e) {}
 
         if (itemStack.getItem() == Items.REDSTONE) {

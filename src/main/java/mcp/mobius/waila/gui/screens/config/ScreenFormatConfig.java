@@ -20,9 +20,9 @@ import java.io.IOException;
 public class ScreenFormatConfig extends GuiScreen {
 
     public static final String MOD_NAME_FORMAT = "\u00A79\u00A7o%s";
-    public static final String BLOCK_FORMAT = "\u00a7r\u00a7f%s";
-    public static final String FLUID_FORMAT = "\u00a7r\u00a7f%s";
-    public static final String ENTITY_FORMAT = "\u00a7r\u00a7f%s";
+    public static final String BLOCK_FORMAT = "\u00a7f%s";
+    public static final String FLUID_FORMAT = "\u00a7f%s";
+    public static final String ENTITY_FORMAT = "\u00a7f%s";
     public static final String META_FORMAT = "\u00a77[%s@%d]";
 
     private final GuiScreen parent;

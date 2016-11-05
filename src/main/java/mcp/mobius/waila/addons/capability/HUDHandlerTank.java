@@ -1,5 +1,7 @@
 package mcp.mobius.waila.addons.capability;
 
+import mcp.mobius.waila.addons.HUDHandlerBase;
+import mcp.mobius.waila.api.ITaggedList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -16,19 +18,9 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 import java.util.List;
 
-public class HUDHandlerTank implements IWailaDataProvider {
+public class HUDHandlerTank extends HUDHandlerBase {
 
     static final IWailaDataProvider INSTANCE = new HUDHandlerTank();
-
-    @Override
-    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        return null;
-    }
-
-    @Override
-    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        return null;
-    }
 
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
@@ -44,18 +36,13 @@ public class HUDHandlerTank implements IWailaDataProvider {
         for (IFluidTankProperties property : fluidHandler.getTankProperties()) {
             if (property.getContents() != null) {
                 if (fluidCount <= 5) {
-                    currenttip.add(String.format("%s: %d / %d mB", property.getContents().getLocalizedName(), property.getContents().amount, property.getCapacity()));
+                    ((ITaggedList<String, String>) currenttip).add(String.format("%s: %d / %d mB", property.getContents().getLocalizedName(), property.getContents().amount, property.getCapacity()), "IFluidHandler");
                     fluidCount++;
-                } else currenttip.add(I18n.translateToLocal("hud.msg.toomuch"));
+                } else ((ITaggedList<String, String>) currenttip).add(I18n.translateToLocal("hud.msg.toomuch"), "IFluidHandler");
             }
         }
 
         return currenttip;
-    }
-
-    @Override
-    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        return null;
     }
 
     @Override

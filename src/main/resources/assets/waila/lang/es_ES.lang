@@ -15,7 +15,6 @@ screen.button.maintained=Mantenido
 screen.button.toggled=Cazonete
 
 choice.showhidewaila=Mostrar/Ocultar Waila
-//choice.showhideidmeta=Mostrar ID:Metadata
 choice.toggledmaintained=Cazonete/Mantenido
 choice.showliquids=Líquidos
 choice.shifttoggledblock=SHIFT para bloques
@@ -25,7 +24,6 @@ choice.format.modname=Nombre Mod
 choice.format.blockname=Nombre del Bloque
 choice.format.fluidname=Nombre del Fluido
 choice.format.entityname=Nombre de la Entidad
-//choice.format.metadata=Metadata
 choice.format.background=Color de fondo
 choice.format.gradienttop=Color del degradado (parte superior)
 choice.format.gradientbottom=Color del degradado (Fondo)
@@ -38,7 +36,7 @@ enchant.title.name=Nombre
 enchant.title.minlvl=Nivel mínimo
 enchant.title.maxlvl=Nivel máximo
 enchant.title.weight=Peso
-//enchant.label.enchantability=Enchantability 
+
 
 waila.keybind.wailaconfig=[Waila] Pantalla Configurar
 waila.keybind.wailadisplay=[Waila] Mostrar/Ocultar
@@ -109,12 +107,9 @@ hud.msg.toomuch=Demasiado...
 hud.msg.offers=Ofrecer
 hud.msg.demands=Peticiones
 
-//hud.msg.career=Career: %s
-
 hud.item.melonstem=Tallo de melón
 hud.item.pumpkinstem=Tallo de calabaza
 
-//cfg.theme.vanilla=Vanilla
 cfg.theme.dark=Oscuro
 
 option.appeng.monitorcontent=Contenido del monitor
@@ -128,7 +123,6 @@ option.ic2.inputeu=Entrada máxima EU
 option.ic2.outputeu=Salida máxima 
 option.ic2.storage=Energía almacenada
 option.ic2.consump=Mostrar consumo
-//option.ic2.tradeomat=Show Trade-O-Mat request
 option.thaumcraft.storedvis=Almacenamiento de condensadores
 option.thermalexpansion.energyhandler=Mostrar almacenamiento RF
 option.thermalexpansion.energycell=Mostrar Entrada/Salida de célula energía
@@ -139,7 +133,6 @@ option.thermalexpansion.tesssendrecv=Tesseract modo
 option.thermalexpansion.tessfreq=Tesseract frecuencia
 option.thermalexpansion.owner=Mostrar dueño
 option.thermalexpansion.conditemmode=Mostrar modo de Itemduct
-//option.vanilla.spawntype=Spawner type
 option.vanilla.growthvalue=Valor de crecimiento
 option.vanilla.leverstate=Estado de palanca
 option.vanilla.repeater=Retardo del repetidor

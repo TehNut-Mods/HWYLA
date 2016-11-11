@@ -46,8 +46,6 @@ hud.msg.stored=Hoiustatud
 hud.msg.any=Iga
 hud.msg.mode=Mood
 hud.msg.maxpower=Max Võimsus
-hud.msg.trigger=Trigger
-hud.msg.maxio=Max IO
 
 hud.msg.send=Saada
 hud.msg.recv=Võtavastu

@@ -1,16 +1,12 @@
-screen.button.waila=Waila
 screen.button.modules=Módulos
 screen.label.scale=Escala
 screen.label.dragtuto=Arrastre el HUD para configurar su posición
 
 screen.button.default=Defecto
 screen.button.cancel=Cancelar
-screen.button.ok=Ok 
 screen.button.yes=Sí
-screen.button.no=No
 screen.button.back=Atrás
 screen.button.hidden=Ocultar
-screen.button.visible=Visible
 screen.button.maintained=Mantenido
 screen.button.toggled=Cazonete
 

@@ -5,7 +5,7 @@ screen.label.dragtuto=Arrastre el HUD para configurar su posición
 
 screen.button.default=Defecto
 screen.button.cancel=Cancelar
-//screen.button.ok=Ok 
+screen.button.ok=Ok 
 screen.button.yes=Sí
 screen.button.no=No
 screen.button.back=Atrás
@@ -15,12 +15,12 @@ screen.button.maintained=Mantenido
 screen.button.toggled=Cazonete
 
 choice.showhidewaila=Mostrar/Ocultar Waila
-choice.showhideidmeta=Mostrar ID:Metadata
+//choice.showhideidmeta=Mostrar ID:Metadata
 choice.toggledmaintained=Cazonete/Mantenido
 choice.showliquids=Líquidos
-//choice.shifttoggledblock=Sneak toggle blocks
-//choice.shifttoggledents=Sneak toggle entities
-//choice.hidefromlist=Hide from player list
+choice.shifttoggledblock=SHIFT para bloques
+choice.shifttoggledents=SHIFT para entidades
+choice.hidefromlist=Ocultar de la lista de jugadores
 choice.format.modname=Nombre Mod
 choice.format.blockname=Nombre del Bloque
 choice.format.fluidname=Nombre del Fluido

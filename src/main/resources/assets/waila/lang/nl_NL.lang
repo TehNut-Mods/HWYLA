@@ -36,7 +36,6 @@ hud.msg.empty=<Leeg>
 hud.msg.output=Uitvoer
 hud.msg.input=Invoer
 hud.msg.out=Uit
-hud.msg.in=In
 hud.msg.power=Vermogen
 hud.msg.storage=Opslag
 hud.msg.any=Om het even welke
@@ -44,7 +43,6 @@ hud.msg.mode=Modus
 
 hud.msg.send=Zend
 hud.msg.recv=Ontv
-hud.msg.item=Item
 hud.msg.fluid=Vloeistof
 hud.msg.energ=Energie
 hud.msg.frequency=Frequentie

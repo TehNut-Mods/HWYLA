@@ -1,5 +1,3 @@
-screen.button.waila=Waila
-screen.button.modules=Module
 screen.label.scale=Maße
 screen.label.dragtuto=Verschiebe das HUD, um seine Position zu ändern.
 
@@ -34,9 +32,6 @@ screen.button.configureaspect=Konfiguriere Aspekt...
 screen.button.configureformat=Formatiere Inhalt...
 screen.button.exporttheme=Exportiere Thema
 
-enchant.title.name=Name
-enchant.title.minlvl=Min Lvl
-enchant.title.maxlvl=Max Lvl
 enchant.title.weight=Gewicht
 enchant.label.enchantability=Verzauberbarkeit
 
@@ -115,7 +110,6 @@ hud.msg.career=Beruf: %s
 hud.item.melonstem=Melonenpflanze
 hud.item.pumpkinstem=Kürbispflanze
 
-cfg.theme.vanilla=Vanilla
 cfg.theme.dark=Dunkel
 
 option.appeng.monitorcontent=Monitorinhalt

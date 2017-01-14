@@ -35,6 +35,8 @@ screen.button.exporttheme=Exportiere Thema
 enchant.title.weight=Gewicht
 enchant.label.enchantability=Verzauberbarkeit
 
+enchant.title.minlvl=Min. Lvl
+enchant.title.maxlvl=Max. Lvl
 waila.keybind.wailaconfig=[Waila] Config-Bildschirm
 waila.keybind.wailadisplay=[Waila] Zeigen/Verstecken
 waila.keybind.liquid=[Waila] Zeige Flüssigkeiten

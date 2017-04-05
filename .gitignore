@@ -21,6 +21,7 @@
 *.classpath
 *.project
 *.class
+*.launch
 
 # Specific files
 Thumbs.db

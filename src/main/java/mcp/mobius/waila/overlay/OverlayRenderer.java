@@ -40,6 +40,9 @@ public class OverlayRenderer {
         if (RayTracing.instance().getTarget() == null)
             return;
 
+        if (RayTracing.instance().getTargetStack() == null)
+            return;
+
         if (RayTracing.instance().getTarget().typeOfHit == RayTraceResult.Type.BLOCK && !RayTracing.instance().getTargetStack().isEmpty()) {
             renderOverlay(WailaTickHandler.instance().tooltip);
         }

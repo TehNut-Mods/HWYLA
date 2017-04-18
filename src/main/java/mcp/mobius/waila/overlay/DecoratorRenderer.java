@@ -23,7 +23,8 @@ public class DecoratorRenderer {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onRenderWorldLast(RenderWorldLastEvent event) {
-        if (RayTracing.instance().getTarget() == null || RayTracing.instance().getTargetStack().isEmpty())
+        if (RayTracing.instance().getTarget() == null || RayTracing.instance().getTargetStack() == null 
+                || RayTracing.instance().getTargetStack().isEmpty())
             return;
 
         double partialTicks = event.getPartialTicks();

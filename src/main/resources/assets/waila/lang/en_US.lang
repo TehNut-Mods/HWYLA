@@ -78,6 +78,7 @@ option.vanilla.redstone=Redstone power
 option.vanilla.jukebox=Jukebox disk
 option.vanilla.silverfish=Hide silverfish
 option.vanilla.furnacedisplay=Show furnace progress
+option.vanilla.horseinventory=Horse inventory
 option.general.showents=Show entities
 option.general.showhp=Show entities health
 option.general.showcrop=Show crop growth

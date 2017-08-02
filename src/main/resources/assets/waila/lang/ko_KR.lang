@@ -1,0 +1,90 @@
+screen.button.waila=Waila
+screen.button.modules=모듈
+screen.label.scale=크기
+screen.label.dragtuto=HUD를 드래그하여 위치를 설정하십시오.
+
+screen.button.default=기본값
+screen.button.cancel=취소
+screen.button.ok=적용
+screen.button.yes=예
+screen.button.no=아니요
+screen.button.back=뒤로
+screen.button.hidden=숨기기
+screen.button.visible=보기
+screen.button.maintained=키를 눌러 켜기
+screen.button.toggled=키로 끄거나 켜기
+
+choice.showhidewaila=Waila를 보이기/숨기기
+choice.showhideidmeta=ID:메타데이터
+choice.toggledmaintained=키로 끄거나 켜기/키를 눌러 켜기
+choice.showliquids=액체
+choice.shifttoggledblock=웅크려서 블럭 정보를 보기
+choice.shifttoggledents=웅크려서 개체 정보를 보기
+choice.hidefromlist=플레이어 목록을 볼 때 숨기기
+choice.showitem=아이템
+choice.format.modname=모드 이름
+choice.format.blockname=블록 이름
+choice.format.fluidname=액체 이름
+choice.format.entityname=개체 이름
+choice.format.metadata=메타데이터
+choice.format.background=배경색
+choice.format.gradienttop=그라데이션 색 (윗부분)
+choice.format.gradientbottom=그라데이션 색 (아랫부분)
+choice.format.font=글자 색
+screen.button.configureaspect=HUD 위치 설정...
+screen.button.configureformat=HUD 내용 설정...
+screen.button.exporttheme=테마 내보내기
+
+waila.keybind.wailaconfig=설정 화면
+waila.keybind.wailadisplay=보기/숨기기
+waila.keybind.liquid=액체 정보 보이기
+waila.keybind.recipe=블럭의 제작법 보기
+waila.keybind.usage=블럭의 사용법 보기
+
+client.msg.norecipe=제작법을 찾지 못했습니다.
+client.msg.nousage=사용법을 찾지 못했습니다.
+
+hud.msg.empty=<비어있음>
+hud.msg.health=체력
+hud.msg.growth=성장도
+hud.msg.mature=완전히 자람
+hud.msg.off=꺼짐
+hud.msg.on=켜짐
+hud.msg.state=상태
+hud.msg.delay=지연 시간
+hud.msg.comparator=비교
+hud.msg.substractor=빼기
+hud.msg.record=음반
+hud.msg.toomuch=너무 많음
+hud.msg.power=세기
+
+hud.msg.offers=Offers
+hud.msg.demands=Demands
+
+hud.msg.career=직업: %s
+
+hud.item.melonstem=수박 줄기
+hud.item.pumpkinstem=호박 줄기
+
+cfg.theme.vanilla=바닐라
+cfg.theme.dark=암흑
+
+option.vanilla.spawntype=스포너 유형
+option.vanilla.growthvalue=성장도
+option.vanilla.leverstate=레버 상태
+option.vanilla.repeater=중계기 지연 시간
+option.vanilla.comparator=비교기 모드
+option.vanilla.redstone=레드스톤 세기
+option.vanilla.alternatecropitem=Alternate Crop
+option.vanilla.jukebox=주크박스 음반
+option.vanilla.silverfish=좀벌레가 숨은 블럭 숨기기
+option.vanilla.furnacedisplay=화로 진행 상태 표시
+option.general.showents=개체 보이기
+option.general.showhp=개체의 체력 보이기
+option.general.showcrop=작물의 성장도 보이기
+option.general.registry=registry data 보이기
+option.capability.tankinfo=§m탱크 정보 보이기
+option.capability.energyinfo=§m에너지 정보 보이기
+option.capability.inventoryinfo=§m인벤토리 정보 보이기
+
+nei.options.keys.showenchant=Show enchanting values

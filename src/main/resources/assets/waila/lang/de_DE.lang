@@ -1,5 +1,6 @@
+screen.button.waila=Waila
 screen.button.modules=Module
-screen.label.scale=Maße
+screen.label.scale=Größe
 screen.label.dragtuto=Verschiebe das HUD, um seine Position zu ändern.
 
 screen.button.default=Standard
@@ -11,19 +12,20 @@ screen.button.back=Zurück
 screen.button.hidden=Versteckt
 screen.button.visible=Sichtbar
 screen.button.maintained=Gewartet
-screen.button.toggled=An/Aus
+screen.button.toggled=Umgeschaltet
 
 choice.showhidewaila=Zeige/Verstecke Waila
 choice.showhideidmeta=Zeige ID:Metadaten
-choice.toggledmaintained=An/Aus/Gewartet
+choice.toggledmaintained=Umgeschaltet/Gewartet
 choice.showliquids=Flüssigkeiten
-choice.shifttoggledblock=Blöcke schleichend umschalten
-choice.shifttoggledents=Lebewesen schleichend umschalten
+choice.shifttoggledblock=Schleichen schaltet Blöcke um
+choice.shifttoggledents=Schleichen schaltet Lebewesen um
 choice.hidefromlist=Auf Spielerliste verstecken
+choice.showitem=Zeige Gegenstand
 choice.format.modname=Modname
 choice.format.blockname=Blockname
 choice.format.fluidname=Flüssigkeitsname
-choice.format.entityname=Wesensname
+choice.format.entityname=Lebewesensname
 choice.format.metadata=Metadaten
 choice.format.background=Hintergrundfarbe
 choice.format.gradienttop=Verlaufsfarbe (Oben)
@@ -31,10 +33,10 @@ choice.format.gradientbottom=Verlaufsfarbe (Unten)
 choice.format.font=Textfarbe
 screen.button.configureaspect=Konfiguriere Aspekt...
 screen.button.configureformat=Formatiere Inhalt...
-screen.button.exporttheme=Exportiere Thema
+screen.button.exporttheme=Exportiere Aussehen
 
 waila.keybind.wailaconfig=Einstellungsbildschirm
-waila.keybind.wailadisplay=Einbelnden/Ausblenden
+waila.keybind.wailadisplay=Zeigen/Verstecken
 waila.keybind.liquid=Zeige Flüssigkeiten
 waila.keybind.recipe=Zeige Rezept
 waila.keybind.usage=Zeige Verwendung
@@ -50,35 +52,39 @@ hud.msg.off=Aus
 hud.msg.on=An
 hud.msg.state=Status
 hud.msg.delay=Verzögerung
-hud.msg.comparator=Vergleicher
-hud.msg.substractor=Substraktor
-hud.msg.record=Aufzeichnung
-hud.msg.toomuch=Zu viele...
+hud.msg.comparator=Komparator
+hud.msg.substractor=Subtraktor
+hud.msg.record=Aufzeichnen
+hud.msg.toomuch=Zu viel...
+hud.msg.power=Leistung
 
 hud.msg.offers=Angebote
 hud.msg.demands=Anforderungen
 
+hud.sgm.career=Beruf: %s
+
 hud.item.melonstem=Melonenpflanze
 hud.item.pumpkinstem=Kürbispflanze
 
+cfg.theme.vanilla=Vanilla
 cfg.theme.dark=Dunkel
 
 option.vanilla.spawntype=Spawner-Typ
 option.vanilla.growthvalue=Wachstumswert
 option.vanilla.leverstate=Hebelstatus
-option.vanilla.repeater=Repeater-Verzögerung
+option.vanilla.repeater=Verstärker-Verzögerung
 option.vanilla.comparator=Komparatormodus
 option.vanilla.redstone=Redstone-Stärke
-option.vanilla.alternatecropitem=Wechselnde Ernte
+option.vanilla.alternatecropitem=Wechsle Pflanze
 option.vanilla.jukebox=Musikbox-Platte
-option.vanilla.silverfish=Silberfisch verdecken
-option.vanilla.furnacedisplay=Zeige Ofen Fortschritt
-option.general.showents=Zeige Wesen
+option.vanilla.silverfish=Silberfisch verstecken
+option.vanilla.furnacedisplay=Zeige Ofen-Fortschritt
+option.general.showents=Zeige Lebewesen
 option.general.showhp=Zeige Gesundheit von Lebewesen
 option.general.showcrop=Zeige Pflanzenwachstum
 option.general.registry=Zeige Registrierungsdaten
-option.capability.tankinfo=Zeige Tankdaten
-option.capability.energyinfo=Zeige Energiedaten
-option.capability.inventoryinfo=Zeige Inventardaten
+option.capability.tankinfo=§mZeige Tankdaten
+option.capability.energyinfo=§mZeige Energiedaten
+option.capability.inventoryinfo=§mZeige Inventardaten
 
-nei.options.keys.showenchant=Zeige verzauberungs Werte
+nei.options.keys.showenchant=Zeige Verzauberungswerte

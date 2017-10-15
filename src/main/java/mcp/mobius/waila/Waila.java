@@ -23,13 +23,12 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.util.Set;
 
-@Mod(modid = Waila.MODID, name = Waila.NAME, version = Waila.VERSION, dependencies = Waila.DEPEND, acceptableRemoteVersions = "*", guiFactory = "mcp.mobius.waila.gui.ConfigGuiFactory")
+@Mod(modid = Waila.MODID, name = Waila.NAME, version = Waila.VERSION, acceptableRemoteVersions = "*", guiFactory = "mcp.mobius.waila.gui.ConfigGuiFactory")
 public class Waila {
 
     public static final String MODID = "waila";
     public static final String NAME = "Waila";
     public static final String VERSION = "@VERSION@";
-    public static final String DEPEND = "";
     public static final Logger LOGGER = LogManager.getLogger("Waila");
     public static final SimpleNetworkWrapper NETWORK_WRAPPER = new SimpleNetworkWrapper(MODID);
 

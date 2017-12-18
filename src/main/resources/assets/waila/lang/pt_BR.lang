@@ -1,0 +1,89 @@
+screen.button.waila=Waila
+screen.button.modules=Módulos
+screen.label.scale=Tamanho
+screen.label.dragtuto=Arraste a HUD para mudar sua posição.
+
+screen.button.default=Padrão
+screen.button.cancel=Cancelar
+screen.button.ok=Ok
+screen.button.yes=Sim
+screen.button.no=Não
+screen.button.back=Voltar
+screen.button.hidden=Escondido
+screen.button.visible=Visível
+screen.button.maintained=Mantido
+screen.button.toggled=Alternado
+screen.hwyla.warning=§cAlerta:§r Você está usando um fork do Waila, chamado Hwyla. Você pode ver uma lista de alterações clicando no canto superior esquerdo desta tela.
+
+choice.showhidewaila=Mostrar/Esconder o Waila
+choice.showhideidmeta=Mostrar ID:Metadata
+choice.toggledmaintained=Alternado/Mantido
+choice.showliquids=Líquidos
+choice.shifttoggledblock=Shift alterna os blocos
+choice.shifttoggledents=Shift alterna as entidades
+choice.hidefromlist=Esconder da lista de players
+choice.showitem=Mostrar item
+choice.tts=Narra blocos
+choice.format.modname=Nome do Mod
+choice.format.blockname=Nome do Bloco
+choice.format.fluidname=Nome do Fluido
+choice.format.entityname=Nome da Entidade
+choice.format.metadata=Metadata
+choice.format.background=Cor do Fundo
+choice.format.gradienttop=Degradê (Cima)
+choice.format.gradientbottom=Degradê (Baixo)
+choice.format.font=Cor do Texto
+screen.button.configureaspect=Configurar aspecto...
+screen.button.configureformat=Formatar conteúdo...
+screen.button.exporttheme=Exportar Tema
+
+waila.keybind.wailaconfig=Config tela
+waila.keybind.wailadisplay=Mostrar/Esconder
+waila.keybind.liquid=Mostrar Líquidos
+waila.keybind.recipe=Mostrar Receita
+waila.keybind.usage=Mostrar Uso
+
+client.msg.norecipe=Receita não encontrada.
+client.msg.nousage=Usos não encontrados.
+
+hud.msg.empty=<vazio>
+hud.msg.health=Vida
+hud.msg.growth=Crescimento
+hud.msg.growth.value=%.0f %%
+hud.msg.mature=Maduro
+hud.msg.off=Desligado
+hud.msg.on=Ligado
+hud.msg.state=Estado
+hud.msg.delay=Delay
+hud.msg.comparator=Comparador
+hud.msg.substractor=Diminuidor
+hud.msg.record=Gravar
+hud.msg.toomuch=Demais...
+hud.msg.power=Energia
+hud.msg.offers=Oferta
+hud.msg.demands=Demanda
+hud.msg.career=Profissão: %s
+
+hud.item.melonstem=Haste de Melancia
+hud.item.pumpkinstem=Haste de Abóbora
+
+cfg.theme.vanilla=Vanilla
+cfg.theme.dark=Escuro
+
+option.vanilla.spawntype=Tipo de Spawner
+option.vanilla.growthvalue=Valor de Crescimento
+option.vanilla.leverstate=Estado da Alavanca
+option.vanilla.repeater=Delay do Repetidor
+option.vanilla.comparator=Modo do Comparador
+option.vanilla.redstone=Sinal de Redstone
+option.vanilla.jukebox=Disco de Jukebox
+option.vanilla.silverfish=Esconder Silverfish
+option.vanilla.furnacedisplay=Mostrar progresso da fornalha
+option.general.showents=Mostrar Entidades
+option.general.showhp=Mostrar vida das entidades
+option.general.showcrop=Mostrar nível de crescimento
+option.general.registry=Mostrar dados de registro
+option.capability.tankinfo=Mostrar dados dos tanques
+option.capability.energyinfo=Mostrar dados de energia
+
+nei.options.keys.showenchant=Mostrar valores de encantamento

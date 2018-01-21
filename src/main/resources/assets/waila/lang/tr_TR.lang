@@ -1,0 +1,89 @@
+screen.button.waila=Waila
+screen.button.modules=Modüller
+screen.label.scale=Skala
+screen.label.dragtuto=Konumunu ayarlamak için HUD'u sürükleyin.
+
+screen.button.default=Varsayılan
+screen.button.cancel=İptal
+screen.button.ok=Tamam
+screen.button.yes=Evet
+screen.button.no=Hayır
+screen.button.back=Geri
+screen.button.hidden=Gizli
+screen.button.visible=Görünür
+screen.button.maintained=Maintained
+screen.button.toggled=Toggled
+screen.hwyla.warning=§cUyarı:§r Waila'nın üst yeni sürümü olan Hwyla yı kullanıyorsun. Değişiklikleri ekranın sol altındaki butondan görebilirsin.
+
+choice.showhidewaila=Göster/Gizle Waila
+choice.showhideidmeta=Göster ID:Metadata
+choice.toggledmaintained=Toggled/Maintained
+choice.showliquids=Sıvılar
+choice.shifttoggledblock=Sneak Toggle Blocks
+choice.shifttoggledents=Sneak Toggle Entities
+choice.hidefromlist=Oyuncu Listesinden Gizle
+choice.showitem=Eşya Göster
+choice.tts=Blokları Anlat
+choice.format.modname=Mod İsmi
+choice.format.blockname=Blok İsmi
+choice.format.fluidname=Sıvı İsmi
+choice.format.entityname=Varlık İsmi
+choice.format.metadata=Metadata
+choice.format.background=Arkaplan Rengi
+choice.format.gradienttop=Degrade Rengi (Üst)
+choice.format.gradientbottom=Degrade Rengi (Alt)
+choice.format.font=Yazı Rengi
+screen.button.configureaspect=Boyut yapılandır...
+screen.button.configureformat=İçeriği biçimlendir...
+screen.button.exporttheme=Temayı dışa aktar
+
+waila.keybind.wailaconfig=Yapılandırma Ekranı
+waila.keybind.wailadisplay=Göster/Gizle
+waila.keybind.liquid=Sıvıları Göster
+waila.keybind.recipe=Tarifi Göster
+waila.keybind.usage=Kullanımı Göster
+
+client.msg.norecipe=Tarif bulunamadı.
+client.msg.nousage=Kullanım bulunamadı.
+
+hud.msg.empty=<Boş>
+hud.msg.health=Sağlık
+hud.msg.growth=Büyüme
+hud.msg.growth.value=%.0f %%
+hud.msg.mature=Olgun
+hud.msg.off=Kapalı
+hud.msg.on=Açık
+hud.msg.state=Durum
+hud.msg.delay=Gecikme
+hud.msg.comparator=Karşılaştırıcı
+hud.msg.substractor=Substraktör
+hud.msg.record=Kayıt
+hud.msg.toomuch=Çok fazla...
+hud.msg.power=Güç
+hud.msg.offers=Teklifler
+hud.msg.demands=Talepler
+hud.msg.career=Kariyer: %s
+
+hud.item.melonstem=Kavun Kökü
+hud.item.pumpkinstem=Balkabağı Kökü
+
+cfg.theme.vanilla=Vanilla
+cfg.theme.dark=Dark
+
+option.vanilla.spawntype=Yaratıcı Tipi
+option.vanilla.growthvalue=Büyüme Değeri
+option.vanilla.leverstate=Salter Durumu
+option.vanilla.repeater=Tekrarlayıcı Gecikmesi
+option.vanilla.comparator=Karşılaştırıcı Modu
+option.vanilla.redstone=Kızıltaş Gücü
+option.vanilla.jukebox=Müzik Kutusu Diski
+option.vanilla.silverfish=Gümüşçülü Gizle
+option.vanilla.furnacedisplay=Ocak İlerlemesini Göster
+option.general.showents=Varlıkları Göster
+option.general.showhp=Varlıkların Sağlıklarını Göster
+option.general.showcrop=Ekin Büyümesini Göster
+option.general.registry=Kayıt defteri verilerini Göster
+option.capability.tankinfo=Depo Verilerini Göster
+option.capability.energyinfo=Enerji Verilerini Göster
+
+nei.options.keys.showenchant=Büyüleyici Değerlerini Göster

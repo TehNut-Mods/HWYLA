@@ -5,6 +5,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.cbcore.LangUtil;
+import mcp.mobius.waila.config.FormattingConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockSilverfish;
@@ -89,12 +90,18 @@ public class HUDHandlerVanilla implements IWailaDataProvider {
         }
 
         // Melon Stem instead of Melon Seeds
-        if (block == melonStem)
-            currenttip.set(0, TextFormatting.WHITE + I18n.translateToLocal("hud.item.melonstem"));
+        if (block == melonStem) {
+            if (FormattingConfig.useRarityColor)
+                currenttip.set(0, itemStack.getRarity().rarityColor + I18n.translateToLocal("hud.item.melonstem"));
+            else currenttip.set(0, String.format(FormattingConfig.blockFormat, I18n.translateToLocal("hud.item.melonstem")));
+        }
 
         // Pumpkin Stem instead of Pumpkin Seeds
-        if (block == pumpkinStem)
-            currenttip.set(0, TextFormatting.WHITE + I18n.translateToLocal("hud.item.pumpkinstem"));
+        if (block == pumpkinStem) {
+            if (FormattingConfig.useRarityColor)
+                currenttip.set(0, itemStack.getRarity().rarityColor + I18n.translateToLocal("hud.item.pumpkinstem"));
+            else currenttip.set(0, String.format(FormattingConfig.blockFormat, I18n.translateToLocal("hud.item.pumpkinstem")));
+        }
 
         return currenttip;
     }

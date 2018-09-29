@@ -185,7 +185,10 @@ public class DisplayUtil {
         if (namelist.get(0) == null || namelist.get(0).equals(""))
             namelist.set(0, "Unnamed");
 
-        namelist.set(0, itemstack.getRarity().rarityColor.toString() + namelist.get(0));
+        if (FormattingConfig.useRarityColor)
+            namelist.set(0, itemstack.getRarity().rarityColor + namelist.get(0));
+         else namelist.set(0, String.format(FormattingConfig.blockFormat, namelist.get(0)));
+
         for (int i = 1; i < namelist.size(); i++)
             namelist.set(i, namelist.get(i));
 
@@ -193,8 +196,7 @@ public class DisplayUtil {
     }
 
     public static String itemDisplayNameShort(ItemStack itemstack) {
-        List<String> list = itemDisplayNameMultiline(itemstack);
-        return String.format(FormattingConfig.blockFormat, list.get(0));
+        return itemDisplayNameMultiline(itemstack).get(0);
     }
 
     public static void renderIcon(int x, int y, int sx, int sy, IconUI icon) {

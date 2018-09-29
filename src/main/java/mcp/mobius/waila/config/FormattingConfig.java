@@ -7,4 +7,5 @@ public class FormattingConfig {
     public static String fluidFormat = "\u00a7f%s";
     public static String entityFormat = "\u00a7f%s";
     public static String metaFormat = "\u00a77[%s@%d]";
+    public static boolean useRarityColor = true;
 }

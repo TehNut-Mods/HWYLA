@@ -24,6 +24,7 @@ public final class Constants {
     public static final String CFG_WAILA_FLUIDNAMEFORMAT = "waila.cfg.fluidnameformat";
     public static final String CFG_WAILA_ENTITYNAMEFORMAT = "waila.cfg.entitynameformat";
     public static final String CFG_WAILA_METADATAFORMAT = "waila.cfg.metadataformat";
+    public static final String CFG_WAILA_USERARITYCOLOR = "waila.cfg.useraritycolor";
     public static final String CFG_WAILA_MODE = "waila.cfg.showmode";
     public static final String CFG_WAILA_LIQUID = "waila.cfg.liquid";
     public static final String CFG_WAILA_METADATA = "waila.cfg.metadata";

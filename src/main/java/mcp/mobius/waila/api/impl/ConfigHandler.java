@@ -196,6 +196,7 @@ public class ConfigHandler implements IWailaConfigHandler {
         FormattingConfig.fluidFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_FLUIDNAMEFORMAT, StringEscapeUtils.escapeJava("\u00a7f%s")).getString());
         FormattingConfig.entityFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_ENTITYNAMEFORMAT, StringEscapeUtils.escapeJava("\u00a7f%s")).getString());
         FormattingConfig.metaFormat = StringEscapeUtils.unescapeJava(config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_METADATAFORMAT, StringEscapeUtils.escapeJava("\u00a77[%s@%d]")).getString());
+        FormattingConfig.useRarityColor = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_USERARITYCOLOR, true).getBoolean();
 
         HUDHandlerEntities.nhearts = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_NHEARTS, 20).getInt();
         HUDHandlerEntities.maxhpfortext = config.get(Configuration.CATEGORY_GENERAL, Constants.CFG_WAILA_MAXHP, 40).getInt();

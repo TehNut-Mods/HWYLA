@@ -82,9 +82,9 @@ option.vanilla.silverfish=Silberfisch verdecken
 option.vanilla.furnacedisplay=Zeige Fortschritt des Ofens
 option.general.showents=Zeige Wesen
 option.general.showhp=Zeige Gesundheit des Lebewesens
-option.general.showcrop=Zeige den Pflanzenwachstum
-option.general.registry=Zeige die Registrierungsdaten
-option.capability.tankinfo=Zeige die Tankdaten
-option.capability.energyinfo=Zeige die Energiedaten
+option.general.showcrop=Zeige Pflanzenwachstum
+option.general.registry=Zeige Registrierungsdaten
+option.capability.tankinfo=Zeige Tankdaten
+option.capability.energyinfo=Zeige Energiedaten
 
 nei.options.keys.showenchant=Zeige die Verzauberungs-Werte

@@ -13,7 +13,7 @@ screen.button.hidden=Versteckt
 screen.button.visible=Sichtbar
 screen.button.maintained=Gewartet
 screen.button.toggled=Umschalten
-screen.hwyla.warning=§cWarnung:§r Du verwendest eine Abspaltung(fork) von Waila auch genannt Hwyla. Du kannst die (zum größtenteils fertige) Liste der Änderungen sehen, durch das Klicken auf der Schaltfläche oben links in diesem Fenster.
+screen.hwyla.warning=§cWarnung:§r Du verwendest eine Abspaltung(fork) von Waila, auch genannt Hwyla. Du kannst die (zum größtenteils fertige) Liste der Änderungen sehen, wenn du auf die Schaltfläche oben links in diesem Fenster klickst.
 
 choice.showhidewaila=Zeige/Verstecke Waila
 choice.showhideidmeta=Zeige ID:Metadaten

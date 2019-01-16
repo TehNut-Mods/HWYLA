@@ -1,0 +1,91 @@
+screen.button.waila=Waila
+screen.button.modules=Moduler
+screen.label.scale=Skala
+screen.label.dragtuto=Dra i gränssnittet för att ändra dess position.
+
+screen.button.default=Standard
+screen.button.cancel=Avbryt
+screen.button.ok=OK
+screen.button.yes=Ja
+screen.button.no=Nej
+screen.button.back=Tillbaka
+screen.button.hidden=Dold
+screen.button.visible=Visas
+screen.button.maintained=Vid knapptryck
+screen.button.toggled=Slås på/av
+screen.hwyla.warning=§cVarning:§r Du använder en förgrening av Waila som heter Hwyla. Du kan se (den nästan fullständiga) listan över ändringar genom att klicka på knappen längst upp till vänster.
+
+choice.showhidewaila=Visa/dölj Waila
+choice.showhideidmeta=Visa ID:Metadata
+choice.toggledmaintained=Visa inforuta
+choice.showliquids=Vätskor
+choice.shifttoggledblock=Smyg f. att se block
+choice.shifttoggledents=Smyg f. att se entitet
+choice.hidefromlist=Dölj för spelarlistan
+choice.hidefromdebug=Dölj för F3-menyn
+choice.showitem=Visa föremål
+choice.tts=Läs upp block
+choice.format.modname=Modnamn
+choice.format.blockname=Blocknamn
+choice.format.fluidname=Vätskenamn
+choice.format.entityname=Entitetsnamn
+choice.format.metadata=Metadata
+choice.format.background=Bakgrundsfärg
+choice.format.gradienttop=Gradientfärg (överkant)
+choice.format.gradientbottom=Gradientfärg (nederkant)
+choice.format.font=Textfärg
+screen.button.configureaspect=Konfigurera utseende...
+screen.button.configureformat=Formatera innehåll...
+screen.button.exporttheme=Exportera tema
+
+waila.keybind.wailaconfig=Konfigurationsmeny
+waila.keybind.wailadisplay=Visa/dölj Waila
+waila.keybind.liquid=Visa vätskor
+waila.keybind.recipe=Visa recept
+waila.keybind.usage=Visa användning
+
+client.msg.norecipe=Inga recept hittades.
+client.msg.nousage=Ingen användning hittades.
+
+hud.msg.empty=<Tom>
+hud.msg.health=Hälsa
+hud.msg.growth=Tillväxt
+hud.msg.growth.value=%.0f %%
+hud.msg.mature=Fullvuxen
+hud.msg.off=Av
+hud.msg.on=På
+hud.msg.state=Tillstånd
+hud.msg.delay=Fördröjning
+hud.msg.comparator=Jämförare
+hud.msg.substractor=Subtraktion
+hud.msg.record=Skiva
+hud.msg.toomuch=För många...
+hud.msg.power=Styrka
+hud.msg.offers=Erbjuder
+hud.msg.demands=Kräver
+hud.msg.career=Karriär: %s
+
+hud.item.melonstem=Melonstjälk
+hud.item.pumpkinstem=Pumpastjälk
+
+cfg.theme.vanilla=Minecraft-standard
+cfg.theme.dark=Mörkt
+
+option.vanilla.spawntype=Monsterskapartyp
+option.vanilla.growthvalue=Tillväxtvärde
+option.vanilla.leverstate=Spaktillstånd
+option.vanilla.repeater=Repeterarfördröjn.
+option.vanilla.comparator=Jämförarläge
+option.vanilla.redstone=Redstonestyrka
+option.vanilla.jukebox=Jukeboxskiva
+option.vanilla.silverfish=Dölj silverfiskblock
+option.vanilla.furnacedisplay=Visa ugnsförlopp
+option.general.showents=Visa entiteter
+option.general.showhp=Visa entitethälsa
+option.general.showcrop=Visa grödors tillväxt
+option.general.showstates=Visa tillstånd
+option.general.registry=Visa registerdata
+option.capability.tankinfo=Visa tankdata
+option.capability.energyinfo=Visa energidata
+
+nei.options.keys.showenchant=Visa förtrollningsvärden

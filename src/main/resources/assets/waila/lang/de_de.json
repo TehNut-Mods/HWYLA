@@ -74,7 +74,7 @@
   "config.waila.plugin_waila.show_registry": "Zeige Registrierungsnamen",
   "config.waila.plugin_waila.show_entities": "Zeige Kreaturen",
   "config.waila.plugin_waila.show_entity_hp": "Zeige Gesundheit von Kreaturen",
-  "config.waila.plugin_waila.show_states": "Zeige Status"
+  "config.waila.plugin_waila.show_states": "Zeige Status",
   
    "entity.minecraft.villager.none": "Nichtsnutz"
 }

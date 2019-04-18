@@ -27,6 +27,7 @@ public class ModIdentification {
 
     private static final Map<String, ModMetadata> CONTAINER_CACHE = Maps.newHashMap();
     private static final ModMetadata MC_MOD_INFO = new DummyModMetadata("minecraft", "Minecraft");
+    private static final ModMetadata COMMON_INFO = new DummyModMetadata("c", "Common");
     static {
         CONTAINER_CACHE.put(MC_MOD_INFO.getId(), MC_MOD_INFO);
     }

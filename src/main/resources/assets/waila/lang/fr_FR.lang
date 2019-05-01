@@ -30,7 +30,7 @@ waila.keybind.usage=Afficher l'utilisation
 client.msg.norecipe=Pas de recette trouvée.
 client.msg.nousage=Pas d'utilisation trouvée.
 
-hud.msg.empty=<Vide
+hud.msg.empty=<Vide>
 hud.msg.health=Vie
 hud.msg.growth=Croissance
 hud.msg.growth.value=%.0f %%

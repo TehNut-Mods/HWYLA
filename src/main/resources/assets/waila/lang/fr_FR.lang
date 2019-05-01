@@ -37,7 +37,7 @@ hud.msg.growth.value=%.0f %%
 hud.msg.mature=Mature
 hud.msg.off=Désactivé
 hud.msg.on=Activé
-hud.msg.state=Status
+hud.msg.state=Statut
 hud.msg.delay=Délai
 hud.msg.comparator=Comparateur
 hud.msg.substractor=Soustracteur
@@ -56,7 +56,7 @@ cfg.theme.dark=Sombre
 
 option.vanilla.spawntype=Type de générateur (spawner)
 option.vanilla.growthvalue=Valeur de croissance
-option.vanilla.leverstate=Status de levier
+option.vanilla.leverstate=Statut de levier
 option.vanilla.repeater=Délai de répéteur
 option.vanilla.comparator=Mode de comparateur
 option.vanilla.redstone=Puissance de redstone

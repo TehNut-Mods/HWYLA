@@ -79,7 +79,7 @@ This feature now works correctly when the crop has a non-standard maximum age.
 
 ---
 ### Introduced a string formatting system for Blocks, Entities, and Mod Names.
-You can now wrap custom text around the tooltip strings, with support for [MOTD-like formatting codes](http://minecraft.gamepedia.com/Formatting_codes#Use_in_server.properties_and_pack.mcmeta).
+You can now wrap custom text around the tooltip strings, with support for [MOTD-like formatting codes](https://minecraft.gamepedia.com/Formatting_codes#Use_in_server.properties_and_pack.mcmeta).
 
 *Due to limitations presented by item rarity colouring, the block name itself will always be a fixed colour, and also reset the formatting after itself. To avoid the format resetting, reapply your format codes after `%s` in the config string.*
 

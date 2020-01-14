@@ -1,5 +1,5 @@
 # Here's What You're Looking At
-[![Build Status](http://tehnut.info/jenkins/buildStatus/icon?job=HWYLA/1.10)](http://tehnut.info/jenkins/job/HWYLA/job/1.10/) [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-blue.svg)](https://bit.ly/cc-by-nc-sa-40) [![](http://cf.way2muchnoise.eu/HWYLA.svg)](https://minecraft.curseforge.com/projects/HWYLA)
+[![Build Status](https://tehnut.info/jenkins/buildStatus/icon?job=HWYLA/1.10)](https://tehnut.info/jenkins/job/HWYLA/job/1.10/) [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-blue.svg)](https://bit.ly/cc-by-nc-sa-40) [![](http://cf.way2muchnoise.eu/HWYLA.svg)](https://minecraft.curseforge.com/projects/HWYLA)
 
 ##### **HWYLA** (pronounced "Hwhy-la", similar to "Coo-Hwhip") - a fork of [WAILA](https://minecraft.curseforge.com/projects/waila) by [ProfMobius](https://minecraft.curseforge.com/members/ProfMobius).
 
@@ -15,7 +15,7 @@
 
 ```groovy
 repositories {  
-    maven {url "http://tehnut.info/maven"}
+    maven {url "https://tehnut.info/maven"}
 }
 
 dependencies {

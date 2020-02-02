@@ -45,7 +45,7 @@
   "config.waila.overlay": "重疊",
   "config.waila.overlay_pos_x": "水平比",
   "config.waila.overlay_pos_y": "垂直比",
-  "config.waila.overlay_scale": "顯示比例",
+  "config.waila.overlay_scale": "顯示縮放",
 
   "config.waila.overlay_color": "顏色",
   "config.waila.overlay_alpha": "Alpha",

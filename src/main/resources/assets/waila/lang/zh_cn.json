@@ -76,6 +76,6 @@
   "config.waila.plugin_waila.show_entity_hp": "显示实体生命值",
   "config.waila.plugin_waila.show_states": "显示状态",
 
-  "entity.minecraft.villager.none": "失业",
+  "entity.minecraft.villager.none": "无业",
   "entity.minecraft.villager.nitwit": "傻子",
 }

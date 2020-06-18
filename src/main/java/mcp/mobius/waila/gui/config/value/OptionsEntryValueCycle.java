@@ -2,6 +2,7 @@ package mcp.mobius.waila.gui.config.value;
 
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.text.LiteralText;
 
@@ -33,11 +34,11 @@ public class OptionsEntryValueCycle extends OptionsEntryValue<String> {
     }
 
     @Override
-    protected void drawValue(int entryWidth, int entryHeight, int x, int y, int mouseX, int mouseY, boolean selected, float partialTicks) {
+    protected void drawValue(MatrixStack matrices, int entryWidth, int entryHeight, int x, int y, int mouseX, int mouseY, boolean selected, float partialTicks) {
         this.button.x = x + 135;
         this.button.y = y + entryHeight / 6;
         this.button.setMessage(createLocale ? new TranslatableText(translationKey + "_" + value.replace(" ", "_").toLowerCase(Locale.ROOT)) : new LiteralText(value));
-        this.button.render(mouseX, mouseY, partialTicks);
+        this.button.render(matrices, mouseX, mouseY, partialTicks);
     }
 
     @Override

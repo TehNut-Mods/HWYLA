@@ -8,9 +8,11 @@ import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.text.StringRenderable;
+import net.minecraft.text.LiteralText;
 
 import java.util.List;
 
@@ -60,11 +62,11 @@ public abstract class GuiOptions extends Screen {
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks) {
-        renderBackground();
-        options.render(mouseX, mouseY, partialTicks);
-        drawCenteredString(textRenderer, title.asFormattedString(), width / 2, 12, 16777215);
-        super.render(mouseX, mouseY, partialTicks);
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float partialTicks) {
+        renderBackground(matrices);
+        options.render(matrices, mouseX, mouseY, partialTicks);
+        drawCenteredString(matrices, textRenderer, title.getString(), width / 2, 12, 16777215);
+        super.render(matrices, mouseX, mouseY, partialTicks);
 
         if (mouseY < 32 || mouseY > height - 32)
             return;
@@ -75,13 +77,13 @@ public abstract class GuiOptions extends Screen {
 
                 if (I18n.hasTranslation(value.getDescription())) {
                     int valueX = value.getX() + 10;
-                    String title = value.getTitle().asFormattedString();
+                    String title = value.getTitle().getString();
                     if (mouseX < valueX || mouseX > valueX + textRenderer.getWidth(title))
                         return;
 
-                    List<StringRenderable> tooltip = Lists.newArrayList(title);
+                    List<StringRenderable> tooltip = Lists.newArrayList(new LiteralText(title));
                     tooltip.addAll(textRenderer.wrapLines(new TranslatableText(value.getDescription()), 200));
-                    renderTooltip(tooltip, mouseX, mouseY);
+                    renderTooltip(matrices, tooltip, mouseX, mouseY);
                 }
             }
         });

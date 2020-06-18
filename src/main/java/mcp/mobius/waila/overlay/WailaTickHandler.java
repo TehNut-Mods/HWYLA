@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.impl.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -46,7 +47,7 @@ public class WailaTickHandler {
             if (event.getAccessor().getBlock() == Blocks.AIR && event.getAccessor().getEntity() == null)
                 return;
 
-            String narrate = event.getCurrentTip().get(0).asFormattedString();
+            String narrate = event.getCurrentTip().get(0).getString();
             if (lastNarration.equalsIgnoreCase(narrate))
                 return;
 
@@ -56,8 +57,8 @@ public class WailaTickHandler {
         });
     }
 
-    public void renderOverlay() {
-        OverlayRenderer.renderOverlay();
+    public void renderOverlay(MatrixStack matrices) {
+        OverlayRenderer.renderOverlay(matrices);
     }
 
     public void tickClient() {

@@ -5,6 +5,7 @@ import mcp.mobius.waila.api.impl.config.PluginConfig;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.client.util.math.MatrixStack;
 
 public class GuiConfigHome extends Screen {
 
@@ -32,9 +33,9 @@ public class GuiConfigHome extends Screen {
     }
 
     @Override
-    public void render(int x, int y, float partialTicks) {
-        renderBackground();
-        drawCenteredString(textRenderer, title.asFormattedString(), width / 2, height / 3, 16777215);
-        super.render(x, y, partialTicks);
+    public void render(MatrixStack matrices, int x, int y, float partialTicks) {
+        renderBackground(matrices);
+        drawCenteredString(matrices, textRenderer, title.getString(), width / 2, height / 3, 16777215);
+        super.render(matrices, x, y, partialTicks);
     }
 }

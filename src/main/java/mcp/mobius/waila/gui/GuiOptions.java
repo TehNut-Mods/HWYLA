@@ -9,6 +9,8 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.text.StringRenderable;
 
 import java.util.List;
 
@@ -40,17 +42,17 @@ public abstract class GuiOptions extends Screen {
         setFocused(options);
 
         if (saver != null && canceller != null) {
-            addButton(new ButtonWidget(width / 2 - 100, height - 25, 100, 20, I18n.translate("gui.done"), w -> {
+            addButton(new ButtonWidget(width / 2 - 100, height - 25, 100, 20, new TranslatableText("gui.done"), w -> {
                 options.save();
                 saver.run();
                 onClose();
             }));
-            addButton(new ButtonWidget(width / 2 + 5, height - 25, 100, 20, I18n.translate("gui.cancel"), w -> {
+            addButton(new ButtonWidget(width / 2 + 5, height - 25, 100, 20, new TranslatableText("gui.cancel"), w -> {
                 canceller.run();
                 onClose();
             }));
         } else {
-            addButton(new ButtonWidget(width / 2 - 50, height - 25, 100, 20, I18n.translate("gui.done"), w -> {
+            addButton(new ButtonWidget(width / 2 - 50, height - 25, 100, 20, new TranslatableText("gui.done"), w -> {
                 options.save();
                 onClose();
             }));
@@ -74,11 +76,11 @@ public abstract class GuiOptions extends Screen {
                 if (I18n.hasTranslation(value.getDescription())) {
                     int valueX = value.getX() + 10;
                     String title = value.getTitle().asFormattedString();
-                    if (mouseX < valueX || mouseX > valueX + textRenderer.getStringWidth(title))
+                    if (mouseX < valueX || mouseX > valueX + textRenderer.getWidth(title))
                         return;
 
-                    List<String> tooltip = Lists.newArrayList(title);
-                    tooltip.addAll(textRenderer.wrapStringToWidthAsList(I18n.translate(value.getDescription()), 200));
+                    List<StringRenderable> tooltip = Lists.newArrayList(title);
+                    tooltip.addAll(textRenderer.wrapLines(new TranslatableText(value.getDescription()), 200));
                     renderTooltip(tooltip, mouseX, mouseY);
                 }
             }

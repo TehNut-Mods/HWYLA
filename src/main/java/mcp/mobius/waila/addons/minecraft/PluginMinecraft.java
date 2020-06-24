@@ -27,6 +27,7 @@ public class PluginMinecraft implements IWailaPlugin {
     static final ResourceLocation CONFIG_DISPLAY_FURNACE = new ResourceLocation("display_furnace_contents");
     static final ResourceLocation CONFIG_HIDE_SILVERFISH = new ResourceLocation("hide_infestations");
     static final ResourceLocation CONFIG_SPAWNER_TYPE = new ResourceLocation("spawner_type");
+    static final ResourceLocation POTTED_PLANTS = new ResourceLocation("potted_plants");
     static final ResourceLocation CONFIG_CROP_PROGRESS = new ResourceLocation("crop_progress");
     static final ResourceLocation CONFIG_LEVER = new ResourceLocation("lever");
     static final ResourceLocation CONFIG_REPEATER = new ResourceLocation("repeater");
@@ -38,6 +39,7 @@ public class PluginMinecraft implements IWailaPlugin {
     public void register(IRegistrar registrar) {
         registrar.addConfig(CONFIG_DISPLAY_FURNACE, true);
         registrar.addSyncedConfig(CONFIG_HIDE_SILVERFISH, true);
+        registrar.addConfig(POTTED_PLANTS, true);
         registrar.addConfig(CONFIG_SPAWNER_TYPE, true);
         registrar.addConfig(CONFIG_CROP_PROGRESS, true);
         registrar.addConfig(CONFIG_LEVER, true);
@@ -54,13 +56,14 @@ public class PluginMinecraft implements IWailaPlugin {
         registrar.registerStackProvider(HUDHandlerVanilla.INSTANCE, CropsBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.HEAD, SilverfishBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.HEAD, MobSpawnerTileEntity.class);
+        registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.HEAD, FlowerPotBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, CropsBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, StemBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, CocoaBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, LeverBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, RepeaterBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, ComparatorBlock.class);
-        registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, RedstoneBlock.class);
+        registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, RedstoneWireBlock.class);
         registrar.registerComponentProvider(HUDHandlerVanilla.INSTANCE, TooltipPosition.BODY, JukeboxTileEntity.class);
         registrar.registerBlockDataProvider(HUDHandlerVanilla.INSTANCE, JukeboxTileEntity.class);
 

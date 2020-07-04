@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.Set;
@@ -21,15 +22,15 @@ public class GuiConfigPlugins extends GuiOptions {
 
     @Override
     public OptionsListWidget getOptions() {
-        OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30, PluginConfig.INSTANCE::save);
+        OptionsListWidget options = new OptionsListWidget(this, field_230706_i_, field_230708_k_ + 45, field_230709_l_, 32, field_230709_l_ - 32, 30, PluginConfig.INSTANCE::save);
         PluginConfig.INSTANCE.getNamespaces().forEach(namespace -> {
             String translationKey = "config.waila.plugin_" + namespace;
             Set<ResourceLocation> keys = PluginConfig.INSTANCE.getKeys(namespace);
-            options.add(new OptionsEntryButton(translationKey, new Button(0, 0, 100, 20, "", w -> {
-                minecraft.displayGuiScreen(new GuiOptions(GuiConfigPlugins.this, new TranslationTextComponent(translationKey)) {
+            options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(translationKey), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+                field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigPlugins.this, new TranslationTextComponent(translationKey)) {
                     @Override
                     public OptionsListWidget getOptions() {
-                        OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30);
+                        OptionsListWidget options = new OptionsListWidget(this, field_230706_i_, field_230708_k_ + 45, field_230709_l_, 32, field_230709_l_ - 32, 30);
                         keys.stream().sorted((o1, o2) -> o1.getPath().compareToIgnoreCase(o2.getPath())).forEach(i -> {
                             ConfigEntry entry = PluginConfig.INSTANCE.getEntry(i);
                             if (!entry.isSynced() || Minecraft.getInstance().getCurrentServerData() == null)

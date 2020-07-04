@@ -1,6 +1,7 @@
 package mcp.mobius.waila.overlay;
 
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import mcp.mobius.waila.Waila;
 import mcp.mobius.waila.api.ITaggableList;
 import mcp.mobius.waila.api.RenderableTextComponent;
@@ -74,7 +75,7 @@ public class Tooltip {
                     xOffset += size.width;
                 }
             } else {
-                client.fontRenderer.drawStringWithShadow(line.getComponent().getFormattedText(), position.x, position.y, color.getFontColor());
+                client.fontRenderer.func_238405_a_(new MatrixStack(),line.getComponent().getString(), position.x, position.y, color.getFontColor());
             }
             position.y += line.size.height;
         }
@@ -104,7 +105,7 @@ public class Tooltip {
             }
         }
 
-        return new Dimension(client.fontRenderer.getStringWidth(component.getFormattedText()), client.fontRenderer.FONT_HEIGHT + 1);
+        return new Dimension(client.fontRenderer.getStringWidth(component.getString()), client.fontRenderer.FONT_HEIGHT + 1);
     }
 
     public List<Line> getLines() {

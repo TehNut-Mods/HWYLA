@@ -1,5 +1,6 @@
 package mcp.mobius.waila.overlay;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mcp.mobius.waila.utils.WailaExceptionHandler;
 import net.minecraft.client.Minecraft;
@@ -49,7 +50,7 @@ public class DisplayUtil {
             RenderSystem.disableLighting();
             RenderSystem.disableDepthTest();
             RenderSystem.disableBlend();
-            fr.drawStringWithShadow(s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 6 + 3), 16777215);
+            fr.func_238405_a_(new MatrixStack(), s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 6 + 3), 16777215);
             RenderSystem.enableLighting();
             RenderSystem.enableDepthTest();
             RenderSystem.enableBlend();
@@ -141,7 +142,7 @@ public class DisplayUtil {
 
     public static void renderIcon(int x, int y, int sx, int sy, IconUI icon) {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        CLIENT.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
+        CLIENT.getTextureManager().bindTexture(AbstractGui.field_230665_h_);
 
         if (icon == null)
             return;

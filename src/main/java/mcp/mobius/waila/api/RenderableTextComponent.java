@@ -48,7 +48,7 @@ public class RenderableTextComponent extends StringTextComponent {
 
     private CompoundNBT getData() {
         try {
-            return JsonToNBT.getTagFromJson(getFormattedText());
+            return JsonToNBT.getTagFromJson(getString());
         } catch (CommandSyntaxException e) {
             return new CompoundNBT();
         }
@@ -65,7 +65,7 @@ public class RenderableTextComponent extends StringTextComponent {
         CompoundNBT container = new CompoundNBT();
         ListNBT renderData = new ListNBT();
         for (RenderableTextComponent component : components)
-            renderData.add(StringNBT.valueOf(component.getFormattedText()));
+            renderData.add(StringNBT.valueOf(component.getString()));
         container.put("renders", renderData);
         return container.toString();
     }

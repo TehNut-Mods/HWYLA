@@ -24,7 +24,7 @@ public class GuiConfigWaila extends GuiOptions {
     @Override
     public OptionsListWidget getOptions() {
         OptionsListWidget options = new OptionsListWidget(this, field_230706_i_, field_230708_k_ + 45, field_230709_l_, 32, field_230709_l_ - 32, 30, Waila.CONFIG::save);
-        options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "general"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+        options.add(new OptionsEntryButton(new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "general"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
             field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigWaila.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "general")))) {
                 @Override
                 public OptionsListWidget getOptions() {
@@ -57,7 +57,7 @@ public class GuiConfigWaila extends GuiOptions {
                 }
             });
         })));
-        options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+        options.add(new OptionsEntryButton(new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
             field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigWaila.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay")))) {
                 @Override
                 public OptionsListWidget getOptions() {
@@ -71,7 +71,7 @@ public class GuiConfigWaila extends GuiOptions {
                     options.add(new OptionsEntryValueInput<>(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay_scale")), Waila.CONFIG.get().getOverlay().getOverlayScale(), val ->
                             Waila.CONFIG.get().getOverlay().setOverlayScale(Math.min(2.0F, Math.max(0.1F, val)))
                             , OptionsEntryValueInput.FLOAT));
-                    options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay_color"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+                    options.add(new OptionsEntryButton(new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay_color"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
                         field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigWaila.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay_color")))) {
                             @Override
                             public OptionsListWidget getOptions() {
@@ -93,7 +93,7 @@ public class GuiConfigWaila extends GuiOptions {
                 }
             });
         })));
-        options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "formatting"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+        options.add(new OptionsEntryButton(new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "formatting"))), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
             field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigWaila.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(Waila.MODID, "overlay")))) {
                 @Override
                 public OptionsListWidget getOptions() {

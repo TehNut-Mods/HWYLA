@@ -22,13 +22,13 @@ public class GuiConfigHome extends Screen {
 
     @Override
     protected void func_231160_c_() {
-        func_230480_a_(new Button(field_230708_k_ / 2 - 105, field_230709_l_ / 2 - 10, 100, 20, ITextComponent.func_241827_a_(I18n.format("gui.waila.waila_settings", Waila.NAME)), w -> {
+        func_230480_a_(new Button(field_230708_k_ / 2 - 105, field_230709_l_ / 2 - 10, 100, 20, new TranslationTextComponent("gui.waila.waila_settings", Waila.NAME), w -> {
             field_230706_i_.displayGuiScreen(new GuiConfigWaila(GuiConfigHome.this));
         }));
-        func_230480_a_(new Button(field_230708_k_ / 2 + 5, field_230709_l_ / 2 - 10, 100, 20, ITextComponent.func_241827_a_("gui.waila.plugin_settings"), w -> {
+        func_230480_a_(new Button(field_230708_k_ / 2 + 5, field_230709_l_ / 2 - 10, 100, 20, new TranslationTextComponent("gui.waila.plugin_settings"), w -> {
             field_230706_i_.displayGuiScreen(new GuiConfigPlugins(GuiConfigHome.this));
         }));
-        func_230480_a_(new Button(field_230708_k_ / 2 - 50, field_230709_l_ / 2 + 20, 100, 20, ITextComponent.func_241827_a_("gui.done"), w -> {
+        func_230480_a_(new Button(field_230708_k_ / 2 - 50, field_230709_l_ / 2 + 20, 100, 20, new TranslationTextComponent("gui.done"), w -> {
             Waila.CONFIG.save();
             PluginConfig.INSTANCE.save();
             field_230706_i_.displayGuiScreen(parent);

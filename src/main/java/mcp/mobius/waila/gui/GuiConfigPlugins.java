@@ -26,7 +26,7 @@ public class GuiConfigPlugins extends GuiOptions {
         PluginConfig.INSTANCE.getNamespaces().forEach(namespace -> {
             String translationKey = "config.waila.plugin_" + namespace;
             Set<ResourceLocation> keys = PluginConfig.INSTANCE.getKeys(namespace);
-            options.add(new OptionsEntryButton(ITextComponent.func_241827_a_(translationKey), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
+            options.add(new OptionsEntryButton(new TranslationTextComponent(translationKey), new Button(0, 0, 100, 20, ITextComponent.func_241827_a_(""), w -> {
                 field_230706_i_.displayGuiScreen(new GuiOptions(GuiConfigPlugins.this, new TranslationTextComponent(translationKey)) {
                     @Override
                     public OptionsListWidget getOptions() {

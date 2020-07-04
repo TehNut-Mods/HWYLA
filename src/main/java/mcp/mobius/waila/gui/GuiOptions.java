@@ -9,12 +9,11 @@ import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.ITextProperties;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-import java.util.Collection;
 import java.util.List;
 
 public abstract class GuiOptions extends Screen {
@@ -45,17 +44,17 @@ public abstract class GuiOptions extends Screen {
         func_231035_a_(options);
 
         if (saver != null && canceller != null) {
-            func_230480_a_(new Button(width / 2 - 100, height - 25, 100, 20, new StringTextComponent(I18n.format("gui.done")), w -> {
+            func_230480_a_(new Button(width / 2 - 100, height - 25, 100, 20, new TranslationTextComponent("gui.done"), w -> {
                 options.save();
                 saver.run();
                 func_231175_as__();
             }));
-            func_230480_a_(new Button(width / 2 + 5, height - 25, 100, 20, new StringTextComponent(I18n.format("gui.cancel")), w -> {
+            func_230480_a_(new Button(width / 2 + 5, height - 25, 100, 20, new TranslationTextComponent("gui.cancel"), w -> {
                 canceller.run();
                 func_231175_as__();
             }));
         } else {
-            func_230480_a_(new Button(width / 2 - 50, height - 25, 100, 20, new StringTextComponent(I18n.format("gui.done")), w -> {
+            func_230480_a_(new Button(width / 2 - 50, height - 25, 100, 20, new TranslationTextComponent("gui.done"), w -> {
                 options.save();
                 func_231175_as__();
             }));

@@ -65,6 +65,8 @@ public class Tooltip {
         position.width += hasItem() ? 24 : 4;
         position.y += 6;
 
+        MatrixStack matrixStack = new MatrixStack();
+
         for (Line line : lines) {
             if (line.getComponent() instanceof RenderableTextComponent) {
                 RenderableTextComponent component = (RenderableTextComponent) line.getComponent();
@@ -75,7 +77,7 @@ public class Tooltip {
                     xOffset += size.width;
                 }
             } else {
-                client.fontRenderer.func_238405_a_(new MatrixStack(),line.getComponent().getString(), position.x, position.y, color.getFontColor());
+                client.fontRenderer.drawStringWithShadow(matrixStack, line.getComponent().getString(), position.x, position.y, color.getFontColor());
             }
             position.y += line.size.height;
         }

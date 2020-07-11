@@ -1,6 +1,6 @@
 {
   "modLoader": "javafml",
-  "loaderVersion": "[26,)",
+  "loaderVersion": "[32,)",
   "issueTrackerURL": "https://github.com/TehNut/Hwyla/issues",
   "displayURL": "https://github.com/TehNut/Hwyla",
   "authors": "TehNut, ProfMobius",
@@ -17,7 +17,7 @@
       {
         "modId": "forge",
         "mandatory": true,
-        "versionRange": "[31.0.0,)",
+        "versionRange": "[32.0.0,)",
         "ordering": "NONE",
         "side": "BOTH"
       },

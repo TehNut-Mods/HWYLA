@@ -32,7 +32,7 @@ public class DisplayUtil {
             ItemStack overlayRender = stack.copy();
             overlayRender.setCount(1);
             CLIENT.getItemRenderer().renderItemOverlayIntoGUI(CLIENT.fontRenderer, overlayRender, x, y, null);
-            renderStackSize(CLIENT.fontRenderer, stack, x, y);
+            renderStackSize(new MatrixStack(), CLIENT.fontRenderer, stack, x, y);
         } catch (Exception e) {
             String stackStr = stack != null ? stack.toString() : "NullStack";
             WailaExceptionHandler.handleErr(e, "renderStack | " + stackStr, null);
@@ -40,7 +40,7 @@ public class DisplayUtil {
         enable2DRender();
     }
 
-    public static void renderStackSize(FontRenderer fr, ItemStack stack, int xPosition, int yPosition) {
+    public static void renderStackSize(MatrixStack matrixStack, FontRenderer fr, ItemStack stack, int xPosition, int yPosition) {
         if (!stack.isEmpty() && stack.getCount() != 1) {
             String s = shortHandNumber(stack.getCount());
 
@@ -50,7 +50,7 @@ public class DisplayUtil {
             RenderSystem.disableLighting();
             RenderSystem.disableDepthTest();
             RenderSystem.disableBlend();
-            fr.func_238405_a_(new MatrixStack(), s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 6 + 3), 16777215);
+            fr.drawStringWithShadow(matrixStack, s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 6 + 3), 16777215);
             RenderSystem.enableLighting();
             RenderSystem.enableDepthTest();
             RenderSystem.enableBlend();
@@ -142,7 +142,7 @@ public class DisplayUtil {
 
     public static void renderIcon(int x, int y, int sx, int sy, IconUI icon) {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        CLIENT.getTextureManager().bindTexture(AbstractGui.field_230665_h_);
+        CLIENT.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
 
         if (icon == null)
             return;

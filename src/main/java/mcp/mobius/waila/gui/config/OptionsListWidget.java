@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Matrix4f;
 
 public class OptionsListWidget extends AbstractList<OptionsListWidget.Entry> {
 
@@ -34,6 +35,20 @@ public class OptionsListWidget extends AbstractList<OptionsListWidget.Entry> {
         return 250;
     }
 
+    private void renderHoleBackground(MatrixStack matrixStack, int int_1, int int_2, int int_3, int int_4){
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder buffer = tessellator.getBuffer();
+        Minecraft.getInstance().getTextureManager().bindTexture(BACKGROUND_LOCATION);
+        Matrix4f matrix = matrixStack.getLast().getMatrix();
+        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        buffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
+        buffer.pos(matrix, x0, int_2, 0.0F).tex(0, (int_2 / 32.0F)).color(64, 64, 64, int_4).endVertex();
+        buffer.pos(matrix, x0 + this.width, int_2, 0.0F).tex((this.width / 32.0F), (int_2 / 32.0F)).color(64, 64, 64, int_4).endVertex();
+        buffer.pos(matrix, x0 + this.width, int_1, 0.0F).tex((this.width / 32.0F), (int_1 / 32.0F)).color(64, 64, 64, int_3).endVertex();
+        buffer.pos(matrix, x0, int_1, 0.0F).tex(0, (int_1 / 32.0F)).color(64, 64, 64, int_3).endVertex();
+        tessellator.draw();
+    }
+
     @Override
     public void render(MatrixStack matrixStack, int int_1, int int_2, float float_1) {
         this.renderBackground(matrixStack);
@@ -50,8 +65,8 @@ public class OptionsListWidget extends AbstractList<OptionsListWidget.Entry> {
 
         this.renderList(matrixStack, int_5, int_6, int_1, int_2, float_1);
         RenderSystem.disableDepthTest();
-        this.hLine(matrixStack,0, this.y0, 255, 255);
-        this.hLine(matrixStack,this.y1, this.height, 255, 255);
+        this.renderHoleBackground(matrixStack,0, this.y0, 255, 255);
+        this.renderHoleBackground(matrixStack,this.y1, this.height, 255, 255);
         RenderSystem.enableBlend();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE);
         RenderSystem.disableAlphaTest();

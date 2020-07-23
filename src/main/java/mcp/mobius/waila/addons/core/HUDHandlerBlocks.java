@@ -2,7 +2,10 @@ package mcp.mobius.waila.addons.core;
 
 import com.google.common.base.Strings;
 import mcp.mobius.waila.Waila;
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IComponentProvider;
+import mcp.mobius.waila.api.IDataAccessor;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.ITaggableList;
 import mcp.mobius.waila.utils.ModIdentification;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.BooleanProperty;

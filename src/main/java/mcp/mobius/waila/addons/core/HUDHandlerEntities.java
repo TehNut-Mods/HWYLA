@@ -1,12 +1,19 @@
 package mcp.mobius.waila.addons.core;
 
 import mcp.mobius.waila.Waila;
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IEntityAccessor;
+import mcp.mobius.waila.api.IEntityComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.ITaggableList;
+import mcp.mobius.waila.api.RenderableTextComponent;
 import mcp.mobius.waila.utils.ModIdentification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.List;
 

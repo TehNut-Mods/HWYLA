@@ -46,9 +46,10 @@ public class WailaClient {
             List<ModInfo> sortedList = (List<ModInfo>) _getSortedList.invokeExact((ModList) ModList.get());
             ModInfo wailaInfo = sortedList.stream().filter(modInfo -> modInfo.getModId().equals(Waila.MODID)).findFirst().get();
 
-            Field tempConfig = ModInfo.class.getDeclaredField("config");
-            tempConfig.setAccessible(true);
-            IConfigurable config = (IConfigurable) tempConfig.get(wailaInfo);
+            Field _config = ModInfo.class.getDeclaredField("config");
+            _config.setAccessible(true);
+            IConfigurable config = (IConfigurable) _config.get(wailaInfo);
+
             WailaModInfo modInfo = new WailaModInfo(wailaInfo, config);
             sortedList.set(sortedList.indexOf(wailaInfo), new WailaModInfo(wailaInfo, config));
 

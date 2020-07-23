@@ -90,6 +90,7 @@ public abstract class GuiOptions extends Screen {
         minecraft.displayGuiScreen(parent);
     }
 
+    @Override
     public IGuiEventListener addListener(IGuiEventListener listener) {
         children.add(listener);
         return listener;

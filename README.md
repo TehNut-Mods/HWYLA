@@ -19,11 +19,14 @@ Note: 1.14 versions for Fabric require the [plugin-loader](https://tehnut.info/m
 
 ```groovy
 repositories {  
-    maven {url "http://tehnut.info/maven"}
+    maven {
+        name 'HWYLA'
+        url 'https://maven.tehnut.info'
+    }
 }
 
 dependencies {
-    deobfCompile "mcp.mobius.waila:Hwyla:<HWYLA_VERSION>"
+    compileOnly "mcp.mobius.waila:Hwyla:<HWYLA_VERSION>"
 }
 ```
 

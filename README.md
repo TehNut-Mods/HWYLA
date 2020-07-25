@@ -26,7 +26,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly "mcp.mobius.waila:Hwyla:<HWYLA_VERSION>"
+    compileOnly "mcp.mobius.waila:Hwyla:<HWYLA_VERSION>:api"
+    runtimeOnly "mcp.mobius.waila:Hwyla:<HWYLA_VERSION>"
 }
 ```
 

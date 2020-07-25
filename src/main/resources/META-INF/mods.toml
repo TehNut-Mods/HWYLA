@@ -1,0 +1,50 @@
+# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[32,)" #mandatory (32 is current forge version)
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+
+# The modid of the mod
+modId="waila" #mandatory
+
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
+version="${file.jarVersion}" #mandatory
+
+# A display name for the mod
+displayName="Waila" #mandatory
+
+# A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/TehNut/Hwyla/issues" #optional
+
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://github.com/TehNut/Hwyla" #optional
+
+# A text field displayed in the mod UI
+authors="TehNut, ProfMobius" #optional
+
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+You are using Hwyla, a fork of Waila. You can find more information on the Hwyla CurseForge page.
+Hwyla (Here's What You're Looking At) is a UI improvement mod aimed at providing block information directly in-game.
+'''
+
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.waila]] #optional
+# the modid of the dependency
+modId="forge" #mandatory
+# Does this dependency have to exist - if not, ordering below must be specified
+mandatory=true #mandatory
+# The version range of the dependency
+versionRange="[32.0.67,)" #mandatory
+# An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+ordering="NONE"
+# Side this dependency is applied on - BOTH, CLIENT or SERVER
+side="BOTH"
+# Here's another dependency
+[[dependencies.waila]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.1,)"
+ordering="NONE"
+side="BOTH"

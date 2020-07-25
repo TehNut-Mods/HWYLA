@@ -5,6 +5,7 @@ import mcp.mobius.waila.api.impl.DumpGenerator;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class CommandDumpHandlers {
                     File file = new File("waila_handlers.md");
                     try (FileWriter writer = new FileWriter(file)) {
                         writer.write(DumpGenerator.generateInfoDump());
-                        context.getSource().sendFeedback(new TranslationTextComponent("command.waila.dump_success"), false);
+                        context.getSource().sendFeedback(new TranslationTextComponent("command.waila.dump_success").mergeStyle(TextFormatting.GREEN), false);
                         return 1;
                     } catch (IOException e) {
                         context.getSource().sendErrorMessage(new StringTextComponent(e.getClass().getSimpleName() + ": " + e.getMessage()));

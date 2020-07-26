@@ -27,17 +27,17 @@ public class HUDHandlerBlocks implements IComponentProvider {
 
         ((ITaggableList<ResourceLocation, ITextComponent>) tooltip).setTag(OBJECT_NAME_TAG, new StringTextComponent(String.format(Waila.CONFIG.get().getFormatting().getBlockName(), accessor.getStack().getDisplayName().getString())));
         if (config.get(PluginCore.CONFIG_SHOW_REGISTRY))
-            ((ITaggableList<ResourceLocation, ITextComponent>) tooltip).setTag(REGISTRY_NAME_TAG, new StringTextComponent(accessor.getBlock().getRegistryName().toString()).func_240701_a_(TextFormatting.GRAY));
+            ((ITaggableList<ResourceLocation, ITextComponent>) tooltip).setTag(REGISTRY_NAME_TAG, new StringTextComponent(accessor.getBlock().getRegistryName().toString()).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override
     public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
         if (config.get(PluginCore.CONFIG_SHOW_STATES)) {
             BlockState state = accessor.getBlockState();
-            state.func_235904_r_().forEach(p -> {
+            state.getProperties().forEach(p -> {
                 Comparable<?> value = state.get(p);
-                ITextComponent valueText = new StringTextComponent(value.toString()).func_240701_a_(p instanceof BooleanProperty ? value == Boolean.TRUE ? TextFormatting.GREEN : TextFormatting.RED : TextFormatting.RESET);
-                tooltip.add(new StringTextComponent(p.getName() + ":").func_230529_a_(valueText));
+                ITextComponent valueText = new StringTextComponent(value.toString()).mergeStyle(p instanceof BooleanProperty ? value == Boolean.TRUE ? TextFormatting.GREEN : TextFormatting.RED : TextFormatting.RESET);
+                tooltip.add(new StringTextComponent(p.getName() + ":").append(valueText));
             });
         }
     }

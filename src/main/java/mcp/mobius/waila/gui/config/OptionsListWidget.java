@@ -113,7 +113,7 @@ public class OptionsListWidget extends AbstractList<OptionsListWidget.Entry> {
     }
 
     public void save() {
-        children()
+        getEventListeners()
                 .stream()
                 .filter(e -> e instanceof OptionsEntryValue)
                 .map(e -> (OptionsEntryValue) e)

@@ -99,7 +99,7 @@ public class Waila {
 
     @SubscribeEvent
     public void serverStarting(FMLServerStartingEvent event) {
-        CommandDumpHandlers.register(event.getCommandDispatcher());
+        CommandDumpHandlers.register(event.getServer().getCommandManager().getDispatcher());
     }
 
     @SubscribeEvent

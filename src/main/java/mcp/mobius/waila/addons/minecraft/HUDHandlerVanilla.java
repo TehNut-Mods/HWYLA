@@ -51,9 +51,9 @@ public class HUDHandlerVanilla implements IComponentProvider, IServerDataProvide
         if (accessor.getBlock() == Blocks.SPAWNER && config.get(PluginMinecraft.CONFIG_SPAWNER_TYPE)) {
             MobSpawnerTileEntity spawner = (MobSpawnerTileEntity) accessor.getTileEntity();
             ((ITaggableList<ResourceLocation, ITextComponent>) tooltip).setTag(OBJECT_NAME_TAG, new TranslationTextComponent(accessor.getBlock().getTranslationKey())
-                    .func_230529_a_(new StringTextComponent(" ("))
-                    .func_230529_a_(spawner.getSpawnerBaseLogic().getCachedEntity().getDisplayName())
-                    .func_230529_a_(new StringTextComponent(")"))
+                    .append(new StringTextComponent(" ("))
+                    .append(spawner.getSpawnerBaseLogic().getCachedEntity().getDisplayName())
+                    .append(new StringTextComponent(")"))
             );
         }
     }

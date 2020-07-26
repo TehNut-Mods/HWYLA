@@ -38,22 +38,22 @@ public abstract class GuiOptions extends Screen {
 
         options = getOptions();
         children.add(options);
-        setFocused(options);
+        setListener(options);
 
         if (saver != null && canceller != null) {
             addButton(new Button(width / 2 - 100, height - 25, 100, 20, new TranslationTextComponent("gui.done"), w -> {
                 options.save();
                 saver.run();
-                onClose();
+                minecraft.displayGuiScreen(parent);
             }));
             addButton(new Button(width / 2 + 5, height - 25, 100, 20, new TranslationTextComponent("gui.cancel"), w -> {
                 canceller.run();
-                onClose();
+                minecraft.displayGuiScreen(parent);
             }));
         } else {
             addButton(new Button(width / 2 - 50, height - 25, 100, 20, new TranslationTextComponent("gui.done"), w -> {
                 options.save();
-                onClose();
+                minecraft.displayGuiScreen(parent);
             }));
         }
     }
@@ -83,11 +83,6 @@ public abstract class GuiOptions extends Screen {
                 renderTooltip(matrixStack, tooltip, mouseX, mouseY);
             }
         }
-    }
-
-    @Override
-    public void onClose() {
-        minecraft.displayGuiScreen(parent);
     }
 
     public IGuiEventListener addListener(IGuiEventListener listener) {

@@ -1,6 +1,5 @@
 package mcp.mobius.waila.overlay;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mcp.mobius.waila.Waila;
 import mcp.mobius.waila.utils.WailaExceptionHandler;
@@ -9,14 +8,15 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.BufferBuilder;
+import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import org.lwjgl.opengl.GL11;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -71,12 +71,12 @@ public class DisplayUtil {
     }
 
     public static void enable3DRender() {
-        RenderSystem.enableLighting();
+        DiffuseLighting.enableGuiDepthLighting();
         RenderSystem.enableDepthTest();
     }
 
     public static void enable2DRender() {
-        RenderSystem.disableLighting();
+        DiffuseLighting.disable();
         RenderSystem.disableDepthTest();
     }
 
@@ -94,17 +94,17 @@ public class DisplayUtil {
         RenderSystem.disableTexture();
         RenderSystem.enableBlend();
         RenderSystem.disableAlphaTest();
-        RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ZERO);
-        RenderSystem.shadeModel(7425);
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.shadeModel(GL11.GL_SMOOTH);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder buffer = tessellator.getBuffer();
-        buffer.begin(7, VertexFormats.POSITION_COLOR);
+        buffer.begin(GL11.GL_QUADS, VertexFormats.POSITION_COLOR);
         buffer.vertex((double) (left + right), (double) top, (double) zLevel).color(f1, f2, f3, f).next();
         buffer.vertex((double) left, (double) top, (double) zLevel).color(f1, f2, f3, f).next();
         buffer.vertex((double) left, (double) (top + bottom), (double) zLevel).color(f5, f6, f7, f4).next();
         buffer.vertex((double) (left + right), (double) (top + bottom), (double) zLevel).color(f5, f6, f7, f4).next();
         tessellator.draw();
-        RenderSystem.shadeModel(7424);
+        RenderSystem.shadeModel(GL11.GL_FLAT);
         RenderSystem.disableBlend();
         RenderSystem.enableAlphaTest();
         RenderSystem.enableTexture();

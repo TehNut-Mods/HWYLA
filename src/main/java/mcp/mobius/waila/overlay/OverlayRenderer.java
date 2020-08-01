@@ -10,6 +10,7 @@ import mcp.mobius.waila.api.impl.config.PluginConfig;
 import mcp.mobius.waila.api.impl.config.WailaConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.hit.HitResult;
 import org.lwjgl.opengl.GL11;
@@ -69,7 +70,7 @@ public class OverlayRenderer {
 
         RenderSystem.disableRescaleNormal();
 
-        RenderSystem.disableLighting();
+        DiffuseLighting.disable();
         RenderSystem.disableDepthTest();
 
         WailaRenderEvent.Pre preEvent = new WailaRenderEvent.Pre(DataAccessor.INSTANCE, tooltip.getPosition());
@@ -80,7 +81,7 @@ public class OverlayRenderer {
         drawTooltipBox(position.x, position.y, position.width, position.height, color.getBackgroundColor(), color.getGradientStart(), color.getGradientEnd());
 
         RenderSystem.enableBlend();
-        RenderSystem.blendFunc(770, 771);
+        RenderSystem.defaultBlendFunc();
         tooltip.draw(matrices);
         RenderSystem.disableBlend();
 

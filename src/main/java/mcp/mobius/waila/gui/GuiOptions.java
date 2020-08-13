@@ -1,6 +1,5 @@
 package mcp.mobius.waila.gui;
 
-import com.google.common.collect.Lists;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import mcp.mobius.waila.gui.config.OptionsListWidget;
 import mcp.mobius.waila.gui.config.value.OptionsEntryValue;
@@ -80,7 +79,7 @@ public abstract class GuiOptions extends Screen {
                 if (mouseX < valueX || mouseX > valueX + font.getStringWidth(title))
                     return;
 
-                List<IReorderingProcessor> tooltip = Lists.transform(Arrays.asList(new StringTextComponent(title)), ITextComponent::func_241878_f);
+                List<IReorderingProcessor> tooltip = Arrays.asList(new StringTextComponent(title).func_241878_f());
                 tooltip.addAll(font.func_238425_b_(new TranslationTextComponent(value.getDescription()), 200));
                 renderTooltip(matrixStack, tooltip, mouseX, mouseY);
             }

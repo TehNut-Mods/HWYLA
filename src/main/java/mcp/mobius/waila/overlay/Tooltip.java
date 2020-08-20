@@ -77,7 +77,7 @@ public class Tooltip {
                     xOffset += size.width;
                 }
             } else {
-                client.fontRenderer.drawStringWithShadow(matrixStack, line.getComponent().getString(), position.x, position.y, color.getFontColor());
+                client.fontRenderer.drawStringWithShadow(matrixStack, line.getComponent(), position.x, position.y, color.getFontColor());
             }
             position.y += line.size.height;
         }

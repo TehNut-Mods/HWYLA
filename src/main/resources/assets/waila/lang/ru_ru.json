@@ -28,7 +28,7 @@
   "config.waila.display_tooltip_desc": "Показывать информацию в виде подсказок",
   "config.waila.display_fluids": "Показывать жидкости",
   "config.waila.display_fluids_desc": "Показывать информацию о жидкостях",
-  "config.waila.sneaky_details": "Показывать родсказки пригнувшись",
+  "config.waila.sneaky_details": "Показывать подсказки пригнувшись",
   "config.waila.sneaky_details_desc": "Показывать подсказки только пригнувшись",
   "config.waila.display_mode": "Режим отображения",
   "config.waila.display_mode_desc": "Режим отображения подсказок\nПереключаемый: Оверлей скрывается или отображается при нажатии на соответствующую клавишу\nУдержание: Оверлей отображается при зажатии соответствующей клавиши",

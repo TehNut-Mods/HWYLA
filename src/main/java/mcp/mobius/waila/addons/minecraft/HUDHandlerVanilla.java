@@ -96,7 +96,7 @@ public class HUDHandlerVanilla implements IComponentProvider, IServerDataProvide
 
         if (config.get(PluginMinecraft.CONFIG_JUKEBOX) && accessor.getBlock() == Blocks.JUKEBOX) {
             if (accessor.getServerData().contains("record"))
-                tooltip.add(new TranslationTextComponent("record.nowPlaying", ITextComponent.Serializer.func_240643_a_(accessor.getServerData().getString("record"))));
+                tooltip.add(new TranslationTextComponent("record.nowPlaying", ITextComponent.Serializer.getComponentFromJsonLenient(accessor.getServerData().getString("record"))));
             else
                 tooltip.add(new TranslationTextComponent("tooltip.waila.empty"));
         }

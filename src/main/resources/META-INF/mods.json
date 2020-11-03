@@ -1,6 +1,6 @@
 {
   "modLoader": "javafml",
-  "loaderVersion": "[33,)",
+  "loaderVersion": "[35,)",
   "issueTrackerURL": "https://github.com/TehNut/Hwyla/issues",
   "displayURL": "https://github.com/TehNut/Hwyla",
   "authors": "TehNut, ProfMobius",
@@ -18,14 +18,14 @@
       {
         "modId": "forge",
         "mandatory": true,
-        "versionRange": "[33.0.0,)",
+        "versionRange": "[35.0.0,)",
         "ordering": "NONE",
         "side": "BOTH"
       },
       {
         "modId": "minecraft",
         "mandatory": true,
-        "versionRange": "[1.16.2,)",
+        "versionRange": "[1.16.4,)",
         "ordering": "NONE",
         "side": "BOTH"
       }

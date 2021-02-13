@@ -71,7 +71,7 @@ public class GuiConfigWaila extends GuiOptions {
                     options.add(new OptionsEntryValueEnum<>(Util.createTranslationKey("config", new Identifier(Waila.MODID, "overlay_size")), WailaConfig.ConfigOverlay.SizeChoice.values(), Waila.CONFIG.get().getOverlay().getOverlaySize(), val ->
                             Waila.CONFIG.get().getOverlay().setOverlaySize(val)
                     ));
-                    options.add(new OptionsEntryButton(Util.createTranslationKey("config", new Identifier(Waila.MODID, "overlay_color")), new ButtonWidget(0, 0, 100, 20, null, w -> {
+                    options.add(new OptionsEntryButton(Util.createTranslationKey("config", new Identifier(Waila.MODID, "overlay_color")), new ButtonWidget(0, 0, 100, 20, new LiteralText(""), w -> {
                         client.openScreen(new GuiOptions(GuiConfigWaila.this, new TranslatableText(Util.createTranslationKey("config", new Identifier(Waila.MODID, "overlay_color")))) {
                             @Override
                             public OptionsListWidget getOptions() {

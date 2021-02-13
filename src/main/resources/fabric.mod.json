@@ -21,6 +21,9 @@
     ],
     "client": [
       "mcp.mobius.waila.WailaClient"
+    ],
+    "modmenu": [
+      "mcp.mobius.waila.WailaConfigModMenu"
     ]
   },
   "mixins": [
@@ -81,7 +84,9 @@
     "Eracer",
     "odininon",
     "Artoria2e5",
-    "plusls"
+    "plusls",
+    "sschr15",
+    "DeltaNedas"
   ],
 
   "depends": {

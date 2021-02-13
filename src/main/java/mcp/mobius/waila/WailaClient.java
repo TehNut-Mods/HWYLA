@@ -27,19 +27,6 @@ public class WailaClient implements ClientModInitializer {
         openConfig = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.waila.config", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_KP_0, Waila.NAME));
         showOverlay = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.waila.show_overlay", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_KP_1, Waila.NAME));
         toggleLiquid = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.waila.toggle_liquid", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_KP_2, Waila.NAME));
-
-        if (FabricLoader.getInstance().isModLoaded("modmenu") && FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT)
-            enableModMenuConfig();
-    }
-
-    private static void enableModMenuConfig() {
-        try {
-            Class<?> modMenuApi_ = Class.forName("io.github.prospector.modmenu.ModMenu");
-            Method addConfigOverride_ = modMenuApi_.getMethod("addLegacyConfigScreenTask", String.class, Runnable.class);
-            addConfigOverride_.invoke(null, Waila.MODID, (Runnable) () -> MinecraftClient.getInstance().openScreen(new GuiConfigHome(null)));
-        } catch (Exception e) {
-            Waila.LOGGER.error("Error enabling the Mod Menu config button for Hwyla", e);
-        }
     }
 
     public static void handleKeybinds() {

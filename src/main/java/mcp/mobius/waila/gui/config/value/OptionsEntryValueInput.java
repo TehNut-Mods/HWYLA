@@ -67,7 +67,7 @@ public class OptionsEntryValueInput<T> extends OptionsEntryValue<T> {
 
     private static class WatchedTextfield extends TextFieldWidget {
         public WatchedTextfield(OptionsEntryValueInput<?> watcher, TextRenderer fontRenderer, int x, int y, int width, int height) {
-            super(fontRenderer, x, y, width, height, new LiteralText(""));
+            super(fontRenderer, x, y, width, height, LiteralText.EMPTY);
             this.setChangedListener(watcher::setValue);
         }
     }

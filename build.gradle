@@ -18,7 +18,12 @@ minecraft {
 }
 
 repositories {
-
+    maven {
+        url "https://maven.terraformersmc.com/releases/"
+        content {
+            includeGroup "com.terraformersmc"
+        }
+    }
 }
 
 dependencies {
@@ -32,6 +37,7 @@ dependencies {
     modCompile "net.fabricmc.fabric-api:fabric-key-binding-api-v1:${api_keybinding_version}"
     modCompile "net.fabricmc.fabric-api:fabric-networking-v0:${api_networking_version}"
     modCompile "net.fabricmc.fabric-api:fabric-resource-loader-v0:${api_resources_version}"
+    modCompile "com.terraformersmc:modmenu:${modmenu_version}"
 }
 
 task sourcesJar(type: Jar) {

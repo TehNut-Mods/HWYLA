@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -79,6 +80,11 @@ public class ModIdentification {
         @Override
         public Version getVersion() {
             return new StringVersion("1");
+        }
+
+        @Override
+        public Collection<String> getProvides() {
+            return new ArrayList<String>();
         }
 
         @Override

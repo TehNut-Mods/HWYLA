@@ -30,9 +30,7 @@
   "config.waila.sneaky_details": "スニークして詳細を表示する",
   "config.waila.sneaky_details_desc": "スニークしない限り本体の文字を隠す",
   "config.waila.display_mode": "表示モード",
-  "config.waila.display_mode_desc": "ツールチップの表示の振るまい
-切り替え: 設定されたキーで表示のオン/オフを切り替える
-維持: 設定されたキーを押している間だけ表示される",
+  "config.waila.display_mode_desc": "ツールチップの表示の振るまい\n切り替え: 設定されたキーで表示のオン/オフを切り替える\n維持: 設定されたキーを押している間だけ表示される",
   "config.waila.display_mode_toggle": "切り替え",
   "config.waila.display_mode_hold_key": "維持",
   "config.waila.hide_from_players": "プレイヤーリストを表示中に隠す",
